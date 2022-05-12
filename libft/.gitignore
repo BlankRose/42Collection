@@ -1,0 +1,13 @@
+.vscode/*
+*Tester*
+*test*
+main.c
+.normignore
+*.[oa]
+*.exe
+*.exe*
+*.out
+*.out*
+test*
+test
+.DS_Store
