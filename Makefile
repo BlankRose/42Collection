@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/12 17:18:57 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/12 17:44:14 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,10 @@ LIB_FOLDER = ./libft/
 LIB_NAME = libft.a
 LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 
+PIPEX_FOLDER = ./pipex/
+PIPEX_NAME = pipex.a
+PIPEX = $(addprefix $(PIPEX_FOLDER), $(PIPEX_NAME))
+
 CORE_FOLDER = ./minishell/
 CORE_FILES = main.c
 CORE = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
@@ -52,6 +56,10 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
+dependency:
+	@make -sC $(LIB_FOLDER)
+	@make -sC $(PIPEX_FOLDER)
+
 .c.o:
 	@gcc $(FLAGS) $(DEFINES) -o $@ -c $<
 
@@ -63,6 +71,10 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
-re: fclean all
+aclean: fclean
+	@make fclean -sC $(LIB_FOLDER)
+	@make fclean -sC $(PIPEX_FOLDER)
 
-.PHONY: all clean fclean re
+re: aclean all
+
+.PHONY: all clean fclean aclean re
