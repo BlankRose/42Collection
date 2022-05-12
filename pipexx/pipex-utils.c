@@ -1,47 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex-utils.c                                      :+:      :+:    :+:   */
+/*   pipex-utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cciobanu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 17:07:48 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/04/22 17:09:11 by cciobanu         ###   ########.fr       */
+/*   Created: 2022/04/22 17:09:37 by cciobanu          #+#    #+#             */
+/*   Updated: 2022/05/12 18:05:33 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	length;
-
-	length = 0;
-	while (s[length])
-		length++;
-	return (length);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*result;
-	unsigned int	i;
-
-	result = malloc(sizeof(*s) * len + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	if (start < ft_strlen(s))
-	{
-		while (s[start + i] && i < len)
-		{
-			result[i] = s[start + i];
-			i++;
-		}
-	}
-	result[i] = '\0';
-	return (result);
-}
 
 int	ft_wordcount(const char *str, char c)
 {
@@ -64,59 +33,58 @@ int	ft_wordcount(const char *str, char c)
 	return (res);
 }
 
-char	**ft_split(char const *str, char c)
+static char	*ft_commandjoin(char *path, char *command)
 {
-	size_t	i;
-	size_t	j;
-	int		k;
-	char	**res;
+	char	*tmp;
 
-	res = malloc((sizeof(char *) * (ft_wordcount(str, c) + 1)));
-	if (!str || !res)
-		return (0);
-	i = 0;
-	j = 0;
-	k = -1;
-	while (i <= ft_strlen(str))
-	{
-		if (str[i] != c && k < 0)
-			k = i;
-		else if ((str[i] == c || i == ft_strlen(str)) && k >= 0)
-		{
-			res[j++] = ft_substr(str, k, i - k);
-			k = -1;
-		}
-		i++;
-	}
-	res[j] = NULL;
-	return (res);
+	tmp = path;
+	path = ft_strjoin(path, "/");
+	if (!path)
+		return (NULL);
+	free(tmp);
+	tmp = path;
+	path = ft_strjoin(path, command);
+	if (!path)
+		return (NULL);
+	free(tmp);
+	return (path);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_getbin(char *command, char **envp)
 {
-	int		lengths1;
-	int		lengths2;
+	char	*path;
+	char	**paths;
 	int		i;
-	int		j;
-	char	*result;
 
-	i = 0;
-	lengths1 = ft_strlen(s1);
-	lengths2 = ft_strlen(s2);
-	result = malloc(sizeof(*s1) * (lengths1 + lengths2) + 1);
-	if (!result)
+	i = -1;
+	if (!command || !envp)
 		return (NULL);
-	while (s1[i])
+	while (envp[++i])
 	{
-		result[i] = s1[i];
-		i++;
+		if (!ft_strncmp(envp[i], "PATH=", 5))
+			path = envp[i];
 	}
-	j = -1;
-	while (s2[++j])
+	paths = ft_split(&path[5], ':');
+	i = -1;
+	while (paths[++i])
 	{
-		result[i] = s2[j];
-		i++;
+		paths[i] = ft_commandjoin(paths[i], command);
+		if (!access(paths[i], F_OK))
+		{
+			path = ft_strdup(paths[i]);
+			return (path);
+		}
 	}
-	result[i] = '\0';
-	return (result);
+	ft_freemem(paths);
+	return (NULL);
+}
+
+void	ft_freemem(char **arr)
+{
+	int	i;
+
+	i = -1;
+	while (arr[++i])
+		free(arr[i]);
+	free(arr);
 }

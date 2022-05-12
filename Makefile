@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/12 17:52:31 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/12 18:13:12 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,12 @@ DANGER = $(FLAGS) -fsanitize=address -g3
 #==--------------------------------------==#
 
 LIB_FOLDER = ./libft/
-LIB_NAME = libft.a
-LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
+LIB_NAME = ft
 
 PIPEX_FOLDER = ./pipexx/
-PIPEX_NAME = pipex.a
-PIPEX = $(addprefix $(PIPEX_FOLDER), $(PIPEX_NAME))
+PIPEX_NAME = pipex
 
-CORE_FOLDER = ./minishell/
+CORE_FOLDER = ./core/
 CORE_FILES = main.c
 CORE = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE:.c=.o)
@@ -63,7 +61,9 @@ dependency:
 .c.o:
 	@gcc $(FLAGS) $(DEFINES) -o $@ -c $<
 
-$(NAME): $(OBJ)
+$(NAME): dependency $(OBJ)
+	@gcc $(DANGER) -L$(LIB_FOLDER) -l$(LIB_NAME) -L$(PIPEX_FOLDER) -l$(PIPEX_NAME) $(OBJ) -o $(NAME)
+	@printf "\033[32mThe programm $(NAME) has been compiled successfully!\033[0m\n"
 
 clean:
 	@rm -f $(OBJ)
