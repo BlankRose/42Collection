@@ -1,0 +1,28 @@
+
+RM = rm -f
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRC = pipex.c pipex-utils.c pipex-utils2.c
+OBJ = $(SRC:.c=.o)
+
+NAME = pipex.a
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@ar -rsc $(NAME) $(OBJ)
+	@printf "\033[32mThe library PIPEX has been loaded!\033[0m\n"
+
+%.o: %.c
+	@${CC} ${CFLAGS} -c $< -o $@
+
+clean: 
+	@$(RM) $(OBJ)
+
+fclean: clean
+	@$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
