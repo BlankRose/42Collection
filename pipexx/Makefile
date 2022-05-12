@@ -3,10 +3,10 @@ RM = rm -f
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = pipex.c pipex-utils.c pipex-utils2.c
+SRC = pipex.c pipex-utils.c
 OBJ = $(SRC:.c=.o)
 
-NAME = pipex.a
+NAME = libpipex.a
 
 all: $(NAME)
 
