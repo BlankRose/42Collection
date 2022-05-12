@@ -14,5 +14,6 @@
 # define CORE_H
 
 # include "../libft/libft.h"
+# include "../pipexx/pipex.h"
 
 #endif

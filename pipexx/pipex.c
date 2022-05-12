@@ -57,19 +57,18 @@ void	ft_processfirst(char *command, char **envp, int inputfd)
 	}
 }
 
-int	main(int argc, char **argv, char **envp)
+int	pipex(int *fds, int argc, char **argv, char **envp)
 {
 	int	input_file;
 	int	output_file;
 	int	count;
 
-	count = 3;
-	if (argc >= 5)
+	count = 0;
+	if (argc >= 2)
 	{
-		input_file = open(argv[1], O_RDONLY);
-		output_file = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-		if (output_file == -1 || input_file == -1)
-			exit(2);
+		input_file = fds[0];
+		output_file = fds[1];
+
 		dup2(input_file, STDIN_FILENO);
 		dup2(output_file, STDOUT_FILENO);
 		ft_processfirst(argv[2], envp, input_file);

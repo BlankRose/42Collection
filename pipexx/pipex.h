@@ -28,4 +28,5 @@ char	*ft_strdup(const char *src);
 char	*ft_getbin(char *command, char **envp);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_freemem(char **arr);
+int	pipex(int *fds, int argc, char **argv, char **envp);
 #endif
