@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 12:45:44 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/13 13:13:10 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/13 13:13:16 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "core.h"
 
-# include "../libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
-
-int		ft_wordcount(const char *str, char c);
-char	*ft_getbin(char *command, char **envp);
-void	ft_freemem(char **arr);
-int		pipex(int *fds, int argc, char **argv, char **envp);
-
-void	ms_signal_handler(int sig);
-
-#endif
+void	ms_signal_handler(int sig)
+{
+	if (sig == SIGQUIT)
+		exit(1);
+}
