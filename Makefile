@@ -62,7 +62,7 @@ dependency:
 	@gcc $(FLAGS) $(DEFINES) -o $@ -c $<
 
 $(NAME): dependency $(OBJ)
-	@gcc $(DANGER) -L$(LIB_FOLDER) -l$(LIB_NAME) -L$(PIPEX_FOLDER) -l$(PIPEX_NAME) $(OBJ) -o $(NAME)
+	@gcc $(DANGER) -lreadline -L$(LIB_FOLDER) -l$(LIB_NAME) -L$(PIPEX_FOLDER) -l$(PIPEX_NAME) $(OBJ) -o $(NAME)
 	@printf "\033[32mThe programm $(NAME) has been compiled successfully!\033[0m\n"
 
 clean:
