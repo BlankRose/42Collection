@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/12 18:13:12 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/13 13:07:44 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ PIPEX_FOLDER = ./pipexx/
 PIPEX_NAME = pipex
 
 CORE_FOLDER = ./core/
-CORE_FILES = main.c
+CORE_FILES = main.c signals.c
 CORE = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE:.c=.o)
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex-b.c                                          :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cciobanu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 09:35:42 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/04/23 12:43:18 by cciobanu         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:08:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	pipex(int *fds, int argc, char **argv, char **envp)
 	{
 		input_file = fds[0];
 		output_file = fds[1];
-
 		dup2(input_file, STDIN_FILENO);
 		dup2(output_file, STDOUT_FILENO);
 		ft_processfirst(argv[2], envp, input_file);
@@ -81,4 +80,5 @@ int	pipex(int *fds, int argc, char **argv, char **envp)
 		perror("Error : You should give at least 4 atguments!");
 		exit(1);
 	}
+	return (0);
 }

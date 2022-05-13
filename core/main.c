@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/12 18:08:03 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:08:23 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int	main(int c, char **args, char **envp)
 	c = 0;
 	args = 0;
 	envp = 0;
+	signal(SIGQUIT, ms_signal_handler);
 }
