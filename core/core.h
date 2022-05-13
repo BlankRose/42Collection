@@ -15,5 +15,16 @@
 
 # include "../libft/libft.h"
 # include "../pipexx/pipex.h"
+#include <readline/readline.h>
+#include <readline/history.h>
+
+typedef struct s_main
+{
+    int exit;
+    int fds[2];
+
+    char **envp;
+
+}   t_main;
 
 #endif

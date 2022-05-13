@@ -18,7 +18,9 @@ void	ft_process(char *command, char **envp)
 	char	**arr;
 
 	arr = ft_split(command, ' ');
+	//printf("%s \n", envp[0]);
 	path = ft_getbin(arr[0], envp);
+	//printf("%s\n", path);
 	if (path)
 	{
 		arr[0] = path;
@@ -71,14 +73,15 @@ int	pipex(int *fds, int argc, char **argv, char **envp)
 
 		dup2(input_file, STDIN_FILENO);
 		dup2(output_file, STDOUT_FILENO);
-		ft_processfirst(argv[2], envp, input_file);
+		ft_processfirst(argv[0], envp, input_file);
 		while (count < (argc - 2))
 			ft_processfirst(argv[count++], envp, 1);
 		ft_process(argv[count], envp);
+		return (0);
 	}
 	else
 	{
 		perror("Error : You should give at least 4 atguments!");
-		exit(1);
+		return (1);
 	}
 }
