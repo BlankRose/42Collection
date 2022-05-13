@@ -17,7 +17,7 @@ void	ft_process(char *command, char **envp)
 	char	*path;
 	char	**arr;
 
-	arr = ft_split(command, ' ');
+	arr = ft_split(command, '|');
 	//printf("%s \n", envp[0]);
 	path = ft_getbin(arr[0], envp);
 	//printf("%s\n", path);
