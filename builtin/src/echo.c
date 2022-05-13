@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 18:32:49 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/13 20:23:36 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/13 20:46:38 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "../../core/core.h"
 
-void	ms_signal_handler(int sig, siginfo_t *info, void *context)
+int	main(int c, char **args)
 {
-	static t_main	*main;
+	size_t	i;
+	int		newline;
 
-	if (sig < 0)
-		main = (t_main *) context;
-	if (sig == SIGINT)
+	i = 1;
+	newline = 1;
+	if (args[1])
+		newline = ft_strncmp("-n", args[1], 3);
+	if (!newline)
+		i++;
+	while (args[i])
 	{
-		write(1, "\n", 1);
-		ms_prompt_new(main);
+		ft_putstr_fd(args[i++], 1);
+		if (args[i])
+			ft_putchar_fd(' ', 1);
 	}
-	if (sig == SIGQUIT)
-		rl_redisplay();
-	info = 0;
+	if (!newline && c >= 1)
+		ft_printf(1, "%s%s", BG_REVERSE, RESETFONT);
+	else if (newline)
+		ft_putchar_fd('\n', 1);
+	return (0);
 }

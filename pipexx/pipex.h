@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:45:44 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/13 13:13:10 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:24:51 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ int		ft_wordcount(const char *str, char c);
 char	*ft_getbin(char *command, char **envp);
 void	ft_freemem(char **arr);
 int		pipex(int *fds, int argc, char **argv, char **envp);
-
-void	ms_signal_handler(int sig);
 
 #endif

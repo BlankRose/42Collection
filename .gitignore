@@ -1,4 +1,6 @@
 *.txt
 *.[oa]
-vscode
+.vscode
 minishell
+builtin/env
+builtin/echo

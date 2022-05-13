@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 18:32:49 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/13 20:02:03 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/13 20:17:32 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "../../core/core.h"
 
-void	ms_signal_handler(int sig, siginfo_t *info, void *context)
+int	main(int c, char **args, char **env)
 {
-	static t_main	*main;
+	size_t	i;
 
-	if (sig < 0)
-		main = (t_main *) context;
-	if (sig == SIGINT)
+	if (c > 1)
 	{
-		write(1, "\n", 1);
-		ms_prompt_new(main);
+		ft_printf(1, "%senv: %s: No such file or directory\n%s", \
+			RED, args[1], FONTLESS);
+		return (1);
 	}
-	if (sig == SIGQUIT)
-		rl_redisplay();
-	info = 0;
+	i = 0;
+	while (env[i])
+		ft_putendl_fd(env[i++], 1);
+	return (1);
 }

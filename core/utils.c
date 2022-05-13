@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 18:32:49 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/13 15:34:55 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/13 16:06:37 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 
-void	ms_signal_handler(int sig, siginfo_t *info, void *context)
+int	ms_arraylen(char **arr)
 {
-	static t_main	*main;
+	int		i;
 
-	if (sig < 0)
-		main = (t_main *) context;
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		ms_prompt_new(main);
-	}
-	if (sig == SIGQUIT)
-		rl_redisplay();
-	info = 0;
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
+char	**ms_array_cpy(char **arr)
+{
+	char	**res;
+	int		i;
+	int		len;
+
+	i = -1;
+	len = ms_arraylen(arr);
+	res = malloc(sizeof(*res) * len + 1);
+	if (!res)
+		return (NULL);
+	while (++i < len)
+		res[i] = ft_strdup(arr[i]);
+	res[i] = NULL;
+	return (res);
+}
+
+t_list	*ms_arrtolist(char **arr)
+{
+	ms_arraylen(arr);
+	return (NULL);
 }
