@@ -14,14 +14,13 @@
 
 void	ms_signal_handler(int sig, siginfo_t *info, void *context)
 {
-	if (sig < 0)
-		g_main = (t_main *) context;
 	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
-		ms_prompt_new(g_main);
+		ms_prompt_new();
 	}
 	if (sig == SIGQUIT)
 		rl_redisplay();
+	context = 0;
 	info = 0;
 }

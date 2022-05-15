@@ -17,7 +17,7 @@ t_main	*g_main;
 int	ms_startshell(void)
 {
 	while (!(g_main -> exit))
-		ms_prompt_new(g_main);
+		ms_prompt_new();
 	return (0);
 }
 
@@ -49,8 +49,24 @@ int	ms_init(char **envp)
 // 	sigaction(SIGQUIT, &sa, 0);
 // }
 
+
+void ms_printtoken(t_list *lst)
+{
+	t_tok * tok;
+	
+	while (lst)
+	{	
+		tok = (t_tok*)(lst -> content);
+		printf("%d %d %s\n", tok -> type, tok -> index, tok -> value);
+		lst = lst -> next;
+	}
+	
+}
+
 int	main(int c, char **args, char **envp)
 {
+	t_list *tokens;
+	
 	c++;
 	args = 0;
 	g_main = malloc(sizeof(t_main));
@@ -63,10 +79,11 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	// printf("%s \n", ms_parseline("\"sfasdfds$PATHasdfds$LANG\"  \'   yyy   y\' xxx", main));
-	// printf("%s \n", ms_parseline("\"$PATHa$asdfds\"  xxx \'z  $LANG    z\'", main));
-	// printf("%s \n", ms_parseline("\"asdfds$PAT\"  xxxx \'     \' ", main));
+
+	tokens = ms_tokenize("asdf    as>><<");
+	ms_printtoken(tokens);
+
 	//ms_printlist(main -> envplist);
 	// ms_siginit(main);
-	ms_startshell();
+	//ms_startshell();
 }

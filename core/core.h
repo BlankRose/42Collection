@@ -121,5 +121,5 @@ char	**ms_appendtoarr(char **arr, char *str);
 
 int		ms_builtin_echo(int c, char **args, char **env);
 int		ms_builtin_env(int c, char **args, char **env);
-
+t_list	*ms_tokenize(char *line);
 #endif
