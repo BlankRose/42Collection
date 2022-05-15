@@ -1,32 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/15 19:36:30 by flcollar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "core.h"
 
-t_tok *ms_createtoken(int type, int index, char value)
+t_tok	*ms_createtoken(int type, int index, char value)
 {
-    t_tok *tok;
+	t_tok	*tok;
 
-    tok = malloc(sizeof(*tok));
-    if (!tok)
-        return (NULL);
+	tok = malloc(sizeof(*tok));
+	if (!tok)
+		return (NULL);
 	tok->value = malloc(sizeof(char) * 2);
-    tok->index = index;
-    tok->type = type;
+	tok->index = index;
+	tok->type = type;
 	tok->value[0] = value;
 	tok->value[1] = '\0';
-    return (tok);
+	return (tok);
 }
 
-t_list *ms_tokenize(char *line)
+t_list	*ms_tokenize(char *line)
 {
-	t_list *tokens;
+	t_list	*tokens;
+	int		i;
 
-	int i;
-
-    i = -1;
+	i = -1;
 	tokens = 0;
-    while (line[++i])
-    {
-        if (ft_isspace(line[i]))
-			ft_lstadd_back(&tokens , ft_lstnew(ms_createtoken(0, i, line[i])));
+	while (line[++i])
+	{
+		if (ft_isspace(line[i]))
+			ft_lstadd_back(&tokens, ft_lstnew(ms_createtoken(0, i, line[i])));
 		else if (line[i] == '|')
 			ft_lstadd_back(&tokens, ft_lstnew(ms_createtoken(2, i, line[i])));
 		else if (line[i] == '\'')
@@ -38,7 +49,7 @@ t_list *ms_tokenize(char *line)
 		else if (line[i] == '>')
 			ft_lstadd_back(&tokens, ft_lstnew(ms_createtoken(6, i, line[i])));
 		else
-			ft_lstadd_back(&tokens, ft_lstnew(ms_createtoken(1, i, line[i])));	
+			ft_lstadd_back(&tokens, ft_lstnew(ms_createtoken(1, i, line[i])));
 	}
 	return (tokens);
 }
@@ -47,7 +58,7 @@ t_list *ms_tokenize(char *line)
 // {
 // 	t_tok *curr;
 // 	t_tok *next;
-	
+
 // 	while (list && list -> next)
 // 	{
 // 		curr =(t_tok *)(list -> content);

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:34:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 18:48:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:52:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,43 +60,37 @@ t_plist	*ms_envptolist(char **envp)
 	return (list);
 }
 
-int	ms_isspace(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == ' ')
-		return (1);
-	return (0);
-}
+/* ft_strexpend(char *, char *, bool) fait le même effet */
 
-char	*ms_strjoin(char *s1, char *s2)
-{
-	int		lengths1;
-	int		lengths2;
-	int		i;
-	int		j;
-	char	*result;
+// char	*ms_strjoin(char *s1, char *s2)
+// {
+// 	int		lengths1;
+// 	int		lengths2;
+// 	int		i;
+// 	int		j;
+// 	char	*result;
 
-	i = 0;
-	lengths1 = ft_strlen(s1);
-	lengths2 = ft_strlen(s2);
-	result = malloc(sizeof(*s1) * (lengths1 + lengths2) + 1);
-	if (!result)
-		return (NULL);
-	while (s1[i])
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	j = -1;
-	while (s2[++j])
-	{
-		result[i] = s2[j];
-		i++;
-	}
-	result[i] = '\0';
-	free(s1);
-	return (result);
-}
+// 	i = 0;
+// 	lengths1 = ft_strlen(s1);
+// 	lengths2 = ft_strlen(s2);
+// 	result = malloc(sizeof(*s1) * (lengths1 + lengths2) + 1);
+// 	if (!result)
+// 		return (NULL);
+// 	while (s1[i])
+// 	{
+// 		result[i] = s1[i];
+// 		i++;
+// 	}
+// 	j = -1;
+// 	while (s2[++j])
+// 	{
+// 		result[i] = s2[j];
+// 		i++;
+// 	}
+// 	result[i] = '\0';
+// 	free(s1);
+// 	return (result);
+// }
 
 int	ms_isquote(int c)
 {

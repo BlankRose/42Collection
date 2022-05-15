@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:06:30 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:48:12 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ extern t_main	*g_main;
 
 /*********************************************************/
 /*                                                       */
-/*                      TOKENS                           */
+/*                      DEFINITIONS                      */
 /*                                                       */
 /*********************************************************/
 
@@ -74,6 +74,8 @@ extern t_main	*g_main;
 # define REDIR_OUT      6
 # define HEREDOC        7
 # define REDIR_OUT_APP  8
+
+typedef int (builtin_ft)(int, char **, char **);
 
 /*********************************************************/
 /*                                                       */
@@ -99,9 +101,6 @@ t_plist	*ms_envptolist(char **envp);
 
 /* Gets a new prompt ready */
 void	ms_prompt_new(void);
-
-/* Checks if the char is a whitespace */
-int		ms_isspace(char c);
 
 t_plist	*ms_lstlocate(t_plist *lst, size_t n);
 t_plist	*ms_lstlast(t_plist *lst);

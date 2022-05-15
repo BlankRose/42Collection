@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/15 18:46:09 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/15 19:39:04 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBRARIES = -L$(LIB_FOLDER) -l$(LIB_NAME) \
 
 CORE_FOLDER = ./core/
 CORE_FILES = main.c signals.c utils.c cmds.c lists.c \
-			lexer.c init.c
+			lexer.c init.c lists2.c
 CORE_SRC = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE_SRC:.c=.o)
 
