@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lists.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/15 14:19:51 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/15 14:20:09 by flcollar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "core.h"
 
 t_plist	*ms_lstlocate(t_plist *lst, size_t n)
@@ -40,7 +52,7 @@ t_plist	*ms_lstnew(char *key, char *value)
 	if (!lst)
 		return (0);
 	lst->key = key;
-    lst->value = value;
+	lst->value = value;
 	lst->next = 0;
 	return (lst);
 }

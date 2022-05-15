@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 18:32:49 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:19:10 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	ms_signal_handler(int sig, siginfo_t *info, void *context)
 {
-	static t_main	*main;
-
 	if (sig < 0)
-		main = (t_main *) context;
+		g_main = (t_main *) context;
 	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
-		ms_prompt_new(main);
+		ms_prompt_new(g_main);
 	}
 	if (sig == SIGQUIT)
 		rl_redisplay();

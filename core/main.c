@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:12:31 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:16:28 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 t_main	*g_main;
 
-int	ms_startshell(t_main *main)
+int	ms_startshell(void)
 {
-	while (!(main -> exit))
-		ms_prompt_new(main);
+	while (!(g_main -> exit))
+		ms_prompt_new(g_main);
 	return (0);
 }
 
-int	ms_init(t_main *main, char **envp)
+int	ms_init(char **envp)
 {
 	char	buff[100];
 
-	main->prompt_msg = ft_strexpend(ft_strexpend(ft_strexpend(ft_strjoin("╭─────────\
+	g_main->prompt_msg = ft_strexpend(ft_strexpend(ft_strexpend(ft_strjoin("╭─────────\
 (\033[34m", &envp[1][5]), " - ", FALSE), getcwd(buff, 100), FALSE), \
 "\033[0m)\n╰─▻ ", FALSE);
-	main->fds[0] = 0;
-	main->fds[1] = 1;
-	main->exit = 0;
-	main->envp = ms_array_cpy(envp);
-	main->envplist = ms_envptolist(envp);
+	g_main->fds[0] = 0;
+	g_main->fds[1] = 1;
+	g_main->exit = 0;
+	g_main->envp = ms_array_cpy(envp);
+	g_main->envplist = ms_envptolist(envp);
 	return (0);
 }
 
@@ -51,15 +51,12 @@ int	ms_init(t_main *main, char **envp)
 
 int	main(int c, char **args, char **envp)
 {
-	t_main	*main;
-	// int i;
-
-	c++; // a retirer
+	c++;
 	args = 0;
-	main = malloc(sizeof(*main));
-	if (!main)
+	g_main = malloc(sizeof(t_main));
+	if (!g_main)
 		return (1);
-	ms_init(main, envp);
+	ms_init(envp);
 	//char *test[4] = {"/bin/echo", "\"$PATH\"", "test", NULL};
 	//main -> envp = ms_appendtoarr(main -> envp , "abc=123");
 	// i = -1;
@@ -71,5 +68,5 @@ int	main(int c, char **args, char **envp)
 	// printf("%s \n", ms_parseline("\"asdfds$PAT\"  xxxx \'     \' ", main));
 	//ms_printlist(main -> envplist);
 	// ms_siginit(main);
-	ms_startshell(main);
+	ms_startshell();
 }

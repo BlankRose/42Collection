@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 13:44:44 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:22:01 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ typedef struct s_main {
 	char	**envp;
 	char	*prompt_msg;
 	t_plist	*envplist;
-
 	int		in_file;
 	int		out_file;
 	int		out_file_app;
 	int		in_file_here;
-
 }	t_main;
+
+extern t_main	*g_main;
 
 /*********************************************************/
 /*                                                       */
@@ -106,17 +106,17 @@ Return: newly created list */
 t_plist	*ms_envptolist(char **envp);
 
 /* Gets a new prompt ready */
-void	ms_prompt_new(t_main *main);
+void	ms_prompt_new(void);
 
 /* Checks if the char is a whitespace */
 int		ms_isspace(char c);
 
-char	*ms_getfromenvp(char *str, t_main *main);
+char	*ms_getfromenvp(char *str);
 char	*ms_strjoin(char *s1, char *s2);
-char	*ms_parsedbquotes(char *str, t_main *main);
+char	*ms_parsedbquotes(char *str);
 char	*ms_parsequotes(char *str);
 char	*ms_charjoin(char *str, char c);
-char	*ms_parseline(char *line, t_main *main);
+char	*ms_parseline(char *line);
 char	**ms_appendtoarr(char **arr, char *str);
 
 int		ms_builtin_echo(int c, char **args, char **env);

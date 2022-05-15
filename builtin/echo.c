@@ -6,13 +6,13 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:23:36 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:07:32 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:19:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core/core.h"
 
-int	ms_builtin_echo(int c, char **args, char **env, t_main *main)
+int	ms_builtin_echo(int c, char **args, char **env)
 {
 	size_t	i;
 	int		newline;
@@ -34,6 +34,5 @@ int	ms_builtin_echo(int c, char **args, char **env, t_main *main)
 	else if (newline)
 		ft_putchar_fd('\n', 1);
 	env = 0;
-	main = 0;
 	return (0);
 }

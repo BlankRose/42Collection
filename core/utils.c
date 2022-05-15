@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:34:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 16:06:37 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:20:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,16 @@ char	**ms_array_cpy(char **arr)
 
 t_plist	*ms_envptolist(char **envp)
 {
-	t_plist *list;
-	t_plist *elem;
-	char **tmp;
-	int i;
-	int len;
+	t_plist	*list;
+	t_plist	*elem;
+	char	**tmp;
+	int		i;
+	int		len;
 
 	len = ms_arraylen(envp);
-	
 	i = 0;
 	tmp = ft_split(envp[i], '=');
 	list = ms_lstnew(tmp[0], tmp[1]);
-
 	while (envp[++i])
 	{
 		tmp = ft_split(envp[i], '=');
@@ -62,7 +60,7 @@ t_plist	*ms_envptolist(char **envp)
 	return (list);
 }
 
-int ms_isspace(char c)
+int	ms_isspace(char c)
 {
 	if (c == '\t' || c == '\n' || c == '\v'
 		|| c == '\f' || c == ' ')

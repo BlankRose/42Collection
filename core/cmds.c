@@ -6,12 +6,12 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:08:35 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:18:50 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-typedef int (builtin_ft)(int, char **, char **, t_main *);
+typedef int (builtin_ft)(int, char **, char **);
 
 static builtin_ft	*ms_is_builtin(char *line)
 {
@@ -24,7 +24,7 @@ static builtin_ft	*ms_is_builtin(char *line)
 	return (0);
 }
 
-void	ms_prompt_new(t_main *main)
+void	ms_prompt_new(void)
 {
 	builtin_ft	*ft;
 	char		*line;
@@ -32,7 +32,7 @@ void	ms_prompt_new(t_main *main)
 	char		*target;
 	int			len;
 
-	line = readline(main->prompt_msg);
+	line = readline(g_main->prompt_msg);
 	if (line)
 		add_history(line);
 	ft = ms_is_builtin(line);
@@ -99,7 +99,7 @@ char *ms_parsequotes(char *str)
 	return (tmp);
 }
 
-char *ms_getfromenvp(char *str, t_main *main)
+char *ms_getfromenvp(char *str)
 {
 	t_plist *lst;
 	char *tmp;
@@ -113,7 +113,7 @@ char *ms_getfromenvp(char *str, t_main *main)
 	tmp[0] = '\0';
 	res[0] = '\0';
 
-	lst = main -> envplist;
+	lst = g_main -> envplist;
 	i = -1;
 	while(str[++i] && str[i] != '\"' && str[i] != '$' && !ft_isspace(str[i]))
 		tmp = ms_charjoin(tmp, str[i]);
@@ -131,7 +131,7 @@ char *ms_getfromenvp(char *str, t_main *main)
 
 
 //NOT FINISHED
-char *ms_parsedbquotes(char *str, t_main *main)
+char *ms_parsedbquotes(char *str)
 {
 	int i;
 	char *tmp;
@@ -148,7 +148,7 @@ char *ms_parsedbquotes(char *str, t_main *main)
 		if (str[i] == '$')
 		{
 			//TO-DO  Get the value from ENVP
-			env = ms_getfromenvp(&str[++i], main);
+			env = ms_getfromenvp(&str[++i]);
 			if (env && env[0])
 			{
 				tmp = ft_strjoin(tmp , env);
@@ -166,7 +166,7 @@ char *ms_parsedbquotes(char *str, t_main *main)
 
 }
 
- char *ms_parseline(char *line, t_main *main)
+ char *ms_parseline(char *line)
  {
 	char *commands;
 	char *tmp;
@@ -183,7 +183,7 @@ char *ms_parsedbquotes(char *str, t_main *main)
 	{
 		if (line[i] == '\"')
 		{
-			tmp = ms_parsedbquotes(&line[++i], main);
+			tmp = ms_parsedbquotes(&line[++i]);
 			commands = ft_strjoin(commands, tmp);
 			while (line[i] && line[i] != '\"')
 				i++;
