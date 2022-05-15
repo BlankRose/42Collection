@@ -6,34 +6,44 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 17:50:46 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:08:35 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
+typedef int (builtin_ft)(int, char **, char **, t_main *);
+
+static builtin_ft	*ms_is_builtin(char *line)
+{
+	if (!ft_strncmp(line, "exit", 4))
+		exit(0);
+	if (!ft_strncmp(line, "echo", 4))
+		return (ms_builtin_echo);
+	if (!ft_strncmp(line, "env", 3))
+		return (ms_builtin_env);
+	return (0);
+}
 
 void	ms_prompt_new(t_main *main)
 {
-	char	*line;
-	char	**commands;
-	char	*target;
-	int		len;
-	char	buf[100];
+	builtin_ft	*ft;
+	char		*line;
+	char		**commands;
+	char		*target;
+	int			len;
 
 	line = readline(main->prompt_msg);
-	add_history(line);
-	if (!ft_strncmp(line, "exit", 4))
-		exit(0);
+	if (line)
+		add_history(line);
+	ft = ms_is_builtin(line);
 	commands = ft_split(line, ' ');
 	len = ms_arraylen(commands);
-	chdir("..");
-	chdir("minishell");
-	getcwd(buf, 50);
 	//printf("%s \n", envp[0]);
 	//ft_printf(1, "LEN = %d\n", len);
 	//pipex(main -> fds, len, commands, main -> envp);
-	target = ft_getbin(line, main->envp);
-	if (!target)
+	//target = ft_getbin(line, main->envp);
+	target = 0;
+	if (!target && !ft)
 		printf("%sMiniShell: command not found: %s\n%s", RED, line, RESETFONT);
 }
 

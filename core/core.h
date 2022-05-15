@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 18:22:28 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:44:44 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,28 @@
 /*********************************************************/
 
 typedef struct s_plist {
-    char *key;
-    char *value;
-
-    struct s_plist *next;
-}   t_plist;
+	char			*key;
+	char			*value;
+	struct s_plist	*next;
+}	t_plist;
 
 typedef struct s_tok {
-    int type;
-    int index;
-    char *value;
-}   t_tok;
+	int		type;
+	int		index;
+	char	*value;
+}	t_tok;
 
 typedef struct s_main {
 	int		exit;
 	int		fds[2];
 	char	**envp;
 	char	*prompt_msg;
-    t_plist *envplist;
+	t_plist	*envplist;
 
-    int in_file;
-    int out_file;
-    int out_file_app;
-    int in_file_here;
+	int		in_file;
+	int		out_file;
+	int		out_file_app;
+	int		in_file_here;
 
 }	t_main;
 
@@ -76,14 +75,13 @@ typedef struct s_main {
 # define HEREDOC        7
 # define REDIR_OUT_APP  8
 
-
 t_plist	*ms_lstlocate(t_plist *lst, size_t n);
 t_plist	*ms_lstlast(t_plist *lst);
 size_t	ms_lstsize(t_plist *lst);
 t_plist	*ms_lstnew(char *key, char *value);
 void	ms_lstadd_front(t_plist **lst, t_plist *new);
 void	ms_lstadd_back(t_plist **lst, t_plist *new);
-int     ms_printlist(t_plist *lst);
+int		ms_printlist(t_plist *lst);
 
 /*********************************************************/
 /*                                                       */
@@ -111,14 +109,17 @@ t_plist	*ms_envptolist(char **envp);
 void	ms_prompt_new(t_main *main);
 
 /* Checks if the char is a whitespace */
-int ms_isspace(char c);
+int		ms_isspace(char c);
 
-char *ms_getfromenvp(char *str, t_main *main);
+char	*ms_getfromenvp(char *str, t_main *main);
 char	*ms_strjoin(char *s1, char *s2);
-char *ms_parsedbquotes(char *str, t_main *main);
-char *ms_parsequotes(char *str);
-char *ms_charjoin(char *str, char c);
-char *ms_parseline(char *line, t_main *main);
-char **ms_appendtoarr(char **arr, char *str);
+char	*ms_parsedbquotes(char *str, t_main *main);
+char	*ms_parsequotes(char *str);
+char	*ms_charjoin(char *str, char c);
+char	*ms_parseline(char *line, t_main *main);
+char	**ms_appendtoarr(char **arr, char *str);
+
+int		ms_builtin_echo(int c, char **args, char **env);
+int		ms_builtin_env(int c, char **args, char **env);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:23:36 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 20:46:38 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:07:32 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../core/core.h"
+#include "../core/core.h"
 
-int	main(int c, char **args)
+int	ms_builtin_echo(int c, char **args, char **env, t_main *main)
 {
 	size_t	i;
 	int		newline;
@@ -33,5 +33,7 @@ int	main(int c, char **args)
 		ft_printf(1, "%s%s", BG_REVERSE, RESETFONT);
 	else if (newline)
 		ft_putchar_fd('\n', 1);
+	env = 0;
+	main = 0;
 	return (0);
 }
