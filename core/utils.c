@@ -39,8 +39,63 @@ char	**ms_array_cpy(char **arr)
 	return (res);
 }
 
-t_list	*ms_arrtolist(char **arr)
+t_plist	*ms_envptolist(char **envp)
 {
-	ms_arraylen(arr);
-	return (NULL);
+	t_plist *list;
+	t_plist *elem;
+	char **tmp;
+	int i;
+	int len;
+
+	len = ms_arraylen(envp);
+	
+	i = 0;
+	tmp = ft_split(envp[i], '=');
+	list = ms_lstnew(tmp[0], tmp[1]);
+
+	while (envp[++i])
+	{
+		tmp = ft_split(envp[i], '=');
+		elem = ms_lstnew(tmp[0], tmp[1]);
+		ms_lstadd_back(&list, elem);
+	}
+	return (list);
+}
+
+int ms_isspace(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == ' ')
+		return (1);
+	return (0);
+}
+
+char	*ms_strjoin(char *s1, char *s2)
+{
+	int		lengths1;
+	int		lengths2;
+	int		i;
+	int		j;
+	char	*result;
+
+	i = 0;
+	lengths1 = ft_strlen(s1);
+	lengths2 = ft_strlen(s2);
+	result = malloc(sizeof(*s1) * (lengths1 + lengths2) + 1);
+	if (!result)
+		return (NULL);
+	while (s1[i])
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	j = -1;
+	while (s2[++j])
+	{
+		result[i] = s2[j];
+		i++;
+	}
+	result[i] = '\0';
+	free(s1);
+	return (result);
 }

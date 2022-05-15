@@ -35,7 +35,8 @@ LIBRARIES = -L$(LIB_FOLDER) -l$(LIB_NAME) \
 			-lreadline
 
 CORE_FOLDER = ./core/
-CORE_FILES = main.c signals.c utils.c cmds.c
+CORE_FILES = main.c signals.c utils.c cmds.c lists.c \
+			lexer.c
 CORE_SRC = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE_SRC:.c=.o)
 
@@ -55,7 +56,7 @@ OBJ = $(CORE_OBJ) $(BUILTIN_OBJ)
 # *                                      * #
 #==--------------------------------------==#
 
-all: builtin $(NAME)
+all: $(NAME)
 
 builtin:
 	@gcc $(FLAGS) $(LIBRARIES) -o ./builtin/env ./builtin/src/env.c
@@ -68,7 +69,7 @@ dependency:
 .c.o:
 	@gcc $(FLAGS) $(DEFINES) -o $@ -c $<
 
-$(NAME): dependency $(CORE_OBJ)
+$(NAME): dependency builtin $(CORE_OBJ)
 	@gcc $(DANGER) $(LIBRARIES) $(CORE_OBJ) -o $(NAME)
 	@printf "\033[32mThe programm $(NAME) has been compiled successfully!\033[0m\n"
 

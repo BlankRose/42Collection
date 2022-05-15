@@ -19,6 +19,7 @@ int	ms_startshell(t_main *main)
 	return (0);
 }
 
+
 int	ms_init(t_main *main, char **envp)
 {
 	main->prompt_msg = ft_strexpend(ft_strjoin("╭─────────(\033[34m", \
@@ -28,6 +29,7 @@ int	ms_init(t_main *main, char **envp)
 	main->fds[1] = 1;
 	envp[3] = ft_strjoin("PATH=./builtin:", &envp[3][5]);
 	main->envp = ms_array_cpy(envp);
+	main->envplist = ms_envptolist(envp);
 	return (0);
 }
 
@@ -47,6 +49,7 @@ int	ms_init(t_main *main, char **envp)
 int	main(int c, char **args, char **envp)
 {
 	t_main	*main;
+	int i;
 
 	c++; // a retirer
 	args = 0;
@@ -54,9 +57,23 @@ int	main(int c, char **args, char **envp)
 	if (!main)
 		return (1);
 	ms_init(main, envp);
+
+	char *test[3] = {"/bin/echo", "$PATH", NULL};
+
+	main -> envp = ms_appendtoarr(main -> envp , "abc=123");
+	int	i = -1;
+	while(main->envp[++i])
+		printf("%s \n", main->envp[i]);
+
+	execve("/bin/echo", test, envp);
+
+	// printf("%s \n", ms_parseline("\"sfasdfds$PATHasdfds$LANG\"  \'   yyy   y\' xxx", main));
+	// printf("%s \n", ms_parseline("\"$PATHa$asdfds\"  xxx \'z  $LANG    z\'", main));
+	// printf("%s \n", ms_parseline("\"asdfds$PAT\"  xxxx \'     \' ", main));
+
+	//ms_printlist(main -> envplist);
+
 	// ms_siginit(main);
-	// int	i = -1;
-	// while(main->envp[++i])
-	// 	printf("%s \n", main->envp[i]);
-	ms_startshell(main);
+
+	//ms_startshell(main);
 }
