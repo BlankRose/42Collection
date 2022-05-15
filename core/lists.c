@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:51 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:20:09 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:34:53 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,33 @@ int ms_printlist(t_plist *lst)
         lst = lst -> next;
     }
     return (1);
+}
+
+void	ms_plstdelone(t_plist *lst, void (*del)(void*))
+{
+	if (!lst)
+		return ;
+	if (del)
+	{
+		del(lst->key);
+		del(lst->value);
+	}
+	free(lst);
+}
+
+void	ms_plstclear(t_plist **lst, void (*del)(void*))
+{
+	t_plist	*current;
+	t_plist	*next;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		next = current->next;
+		ms_plstdelone(current, del);
+		current = next;
+	}
+	*lst = 0;
 }

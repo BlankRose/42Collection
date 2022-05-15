@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:16:28 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:51:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	ms_startshell(void)
 
 int	ms_init(char **envp)
 {
-	char	buff[100];
+	char	buff[501];
 
-	g_main->prompt_msg = ft_strexpend(ft_strexpend(ft_strexpend(ft_strjoin("╭─────────\
-(\033[34m", &envp[1][5]), " - ", FALSE), getcwd(buff, 100), FALSE), \
+	getcwd(buff, 500);
+	g_main->prompt_msg = ft_strexpend(ft_strexpend(ft_strexpend(ft_strjoin("╭───\
+────(\033[34m", &envp[1][5]), " - ", FALSE), ft_strrchr(buff, '/') + 1, FALSE), \
 "\033[0m)\n╰─▻ ", FALSE);
 	g_main->fds[0] = 0;
 	g_main->fds[1] = 1;
@@ -49,24 +50,22 @@ int	ms_init(char **envp)
 // 	sigaction(SIGQUIT, &sa, 0);
 // }
 
-
-void ms_printtoken(t_list *lst)
+void	ms_printtoken(t_list *lst)
 {
-	t_tok * tok;
-	
+	t_tok	*tok;
+
 	while (lst)
 	{	
-		tok = (t_tok*)(lst -> content);
+		tok = (t_tok *)(lst -> content);
 		printf("%d %d %s\n", tok -> type, tok -> index, tok -> value);
 		lst = lst -> next;
 	}
-	
 }
 
 int	main(int c, char **args, char **envp)
 {
-	t_list *tokens;
-	
+	//t_list *tokens;
+
 	c++;
 	args = 0;
 	g_main = malloc(sizeof(t_main));
@@ -79,11 +78,9 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-
-	tokens = ms_tokenize("asdf    as>><<");
-	ms_printtoken(tokens);
-
+	// tokens = ms_tokenize("asdf    as>><<");
+	// ms_printtoken(tokens);
 	//ms_printlist(main -> envplist);
 	// ms_siginit(main);
-	//ms_startshell();
+	ms_startshell();
 }

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:22:01 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:06:30 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,6 @@ extern t_main	*g_main;
 # define HEREDOC        7
 # define REDIR_OUT_APP  8
 
-t_plist	*ms_lstlocate(t_plist *lst, size_t n);
-t_plist	*ms_lstlast(t_plist *lst);
-size_t	ms_lstsize(t_plist *lst);
-t_plist	*ms_lstnew(char *key, char *value);
-void	ms_lstadd_front(t_plist **lst, t_plist *new);
-void	ms_lstadd_back(t_plist **lst, t_plist *new);
-int		ms_printlist(t_plist *lst);
-
 /*********************************************************/
 /*                                                       */
 /*                   PROGRAMM FUNCTIONS                  */
@@ -111,6 +103,16 @@ void	ms_prompt_new(void);
 /* Checks if the char is a whitespace */
 int		ms_isspace(char c);
 
+t_plist	*ms_lstlocate(t_plist *lst, size_t n);
+t_plist	*ms_lstlast(t_plist *lst);
+size_t	ms_lstsize(t_plist *lst);
+t_plist	*ms_lstnew(char *key, char *value);
+void	ms_lstadd_front(t_plist **lst, t_plist *new);
+void	ms_lstadd_back(t_plist **lst, t_plist *new);
+int		ms_printlist(t_plist *lst);
+void	ms_plstclear(t_plist **lst, void (*del)(void*));
+void	ms_plstdelone(t_plist *lst, void (*del)(void*));
+
 char	*ms_getfromenvp(char *str);
 char	*ms_strjoin(char *s1, char *s2);
 char	*ms_parsedbquotes(char *str);
@@ -119,7 +121,18 @@ char	*ms_charjoin(char *str, char c);
 char	*ms_parseline(char *line);
 char	**ms_appendtoarr(char **arr, char *str);
 
+char	***ms_split_cmd(char *line);
+void	ms_print_cmd(char ***cmd);
+char	***ms_free_cmd(char ***cmd);
+
+int		ms_isquote(int c);
+int		ms_isoperator(int c);
+
 int		ms_builtin_echo(int c, char **args, char **env);
 int		ms_builtin_env(int c, char **args, char **env);
+int		ms_builtin_exit(int c, char **args, char **env);
+int		ms_builtin_pwd(int c, char **args, char **env);
+
 t_list	*ms_tokenize(char *line);
+
 #endif

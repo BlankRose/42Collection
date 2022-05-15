@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:02:44 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 15:45:50 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:35:07 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ms_builtin_exit(int c, char **args, char **env)
 		c = ft_atoi(args[1]);
 	else if (c < 2)
 	{
-		ms_lstclear(&g_main->envplist, free);
+		ms_plstclear(&g_main->envplist, free);
 		free(g_main->prompt_msg);
 		free(g_main->envp);
 		free(g_main);

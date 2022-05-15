@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:34:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:20:55 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:48:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,18 @@ char	*ms_strjoin(char *s1, char *s2)
 	result[i] = '\0';
 	free(s1);
 	return (result);
+}
+
+int	ms_isquote(int c)
+{
+	if (c == '\'' || c == '\"')
+		return (1);
+	return (0);
+}
+
+int	ms_isoperator(int c)
+{
+	if (c == '>' || c == '<' || c == '|')
+		return (1);
+	return (0);
 }

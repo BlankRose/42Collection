@@ -5,202 +5,112 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:18:50 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/15 18:48:29 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/15 19:20:11 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-typedef int (builtin_ft)(int, char **, char **);
+#include "../core/core.h"
 
-static builtin_ft	*ms_is_builtin(char *line)
+static char	*ms_getnextcmd(char *line)
 {
-	if (!ft_strncmp(line, "exit", 4))
-		exit(0);
-	if (!ft_strncmp(line, "echo", 4))
-		return (ms_builtin_echo);
-	if (!ft_strncmp(line, "env", 3))
-		return (ms_builtin_env);
+	if (!line)
+		return (0);
+	else if (*line && !ms_isoperator(*line))
+	{
+		while (*line && (!ms_isoperator(*line) || ft_isspace(*line)))
+			line++;
+		return (line);
+	}
+	else
+	{
+		while (*line && (ms_isoperator(*line) || ft_isspace(*line)))
+			line++;
+		return (line);
+	}
+}
+
+static size_t	ms_count_cmd(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	if (!line)
+		return (0);
+	while (*line)
+	{
+		while (ft_isspace(*line))
+			line++;
+		line = ms_getnextcmd(line);
+		if (line)
+			i++;
+	}
+	return (i);
+}
+
+char	***ms_split_cmd(char *line)
+{
+	char		***res;
+	char		*tmp;
+	t_vector3	v;
+
+	if (!line)
+		return (0);
+	v = ft_vector3_new(ms_count_cmd(line), 0, 0);
+	res = (char ***) ft_calloc(v.x + 1, sizeof(char **));
+	if (!res)
+		return (0);
+	while (v.y < v.x)
+	{
+		tmp = ms_getnextcmd(line);
+		tmp = ft_substr(line, 0, ft_strlen(line) - ft_strlen(tmp));
+		res[v.y] = ft_split(tmp, ' ');
+		line = ms_getnextcmd(line);
+		free (tmp);
+		v.y++;
+	}
+	res[v.x] = 0;
+	return (res);
+}
+
+void	ms_print_cmd(char ***cmd)
+{
+	t_vector2	v;
+
+	v = ft_vector2_new(0, 0);
+	if (!cmd)
+		return ;
+	while (cmd[v.x])
+	{
+		v.y = 0;
+		printf("[CMD %d]==----\n", v.x);
+		while (cmd[v.x][v.y])
+		{
+			printf("%d\t%s\n", v.y, cmd[v.x][v.y]);
+			v.y++;
+		}
+		v.x++;
+	}
+}
+
+char	***ms_free_cmd(char ***cmd)
+{
+	t_vector2	v;
+
+	v = ft_vector2_new(0, 0);
+	if (!cmd)
+		return (0);
+	while (cmd[v.x])
+	{
+		v.y = 0;
+		while (cmd[v.x][v.y])
+		{
+			free(cmd[v.x][v.y]);
+			v.y++;
+		}
+		free(cmd[v.x]);
+		v.x++;
+	}
+	free(cmd);
 	return (0);
 }
-
-void	ms_prompt_new(void)
-{
-	builtin_ft	*ft;
-	char		*line;
-	char		**commands;
-	char		*target;
-	int			len;
-
-	line = readline(g_main->prompt_msg);
-	if (line)
-		add_history(line);
-	ft = ms_is_builtin(line);
-	commands = ft_split(line, ' ');
-	len = ms_arraylen(commands);
-	//printf("%s \n", envp[0]);
-	//ft_printf(1, "LEN = %d\n", len);
-	//pipex(main -> fds, len, commands, main -> envp);
-	//target = ft_getbin(line, main->envp);
-	target = 0;
-	if (!target && !ft)
-		printf("%sMiniShell: command not found: %s\n%s", RED, line, RESETFONT);
-}
-
-char *ms_charjoin(char *str, char c)
-{
-	char *res;
-	int i;
-
-	res = malloc(sizeof(*res) * ft_strlen(str) + 2);
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		res[i] = str[i];
-	res[i] = c;
-	res[++i] = '\0';
-	//free(str);
-	return (res);
-}
-
-char **ms_appendtoarr(char **arr, char *str)
-{
-	char **tmp;
-	int i;
-	int len;
-
-	len = ms_arraylen(arr);
-	tmp = malloc(sizeof(*tmp) * len + 2);
-	i = -1;
-	while (arr[++i])
-		tmp[i] =arr[i];
-	tmp[i++] = str;
-	tmp[i] = NULL;
-	free(arr);
-	return (tmp);
-}
- 
-char *ms_parsequotes(char *str)
-{
-	int i;
-	char *tmp;
-
-	tmp = malloc(sizeof(*tmp));
-	if (!tmp)
-		return (NULL);
-	tmp = "";
-	i = 0;
-	while (str[i] && str[i] != '\'')
-	{
-		tmp = ms_charjoin(tmp, str[i]);
-		i++;
-	}
-	return (tmp);
-}
-
-char *ms_getfromenvp(char *str)
-{
-	t_plist *lst;
-	char *tmp;
-	char *res;
-	int i;
-
-	tmp = malloc(sizeof(*tmp));
-	res = malloc(sizeof(*tmp));
-	if (!tmp || !res)
-		return (NULL);
-	tmp[0] = '\0';
-	res[0] = '\0';
-
-	lst = g_main -> envplist;
-	i = -1;
-	while(str[++i] && str[i] != '\"' && str[i] != '$' && !ft_isspace(str[i]))
-		tmp = ms_charjoin(tmp, str[i]);
-	while (lst)
-	{
-		if (ft_strlen(tmp) == ft_strlen(lst -> key) && !ft_strncmp(tmp, lst -> key, ft_strlen(tmp)))
-		{
-			res = ft_strjoin(res, lst -> value);
-			break;
-		}
-		lst = lst -> next;
-	}
-	return (res);
-}
-
-
-//NOT FINISHED
-char *ms_parsedbquotes(char *str)
-{
-	int i;
-	char *tmp;
-	char *env;
-
-
-	tmp = malloc(sizeof(*tmp));
-	if (!tmp)
-		return (NULL);
-	tmp = "";
-	i = 0;
-	while (str[i] && str[i] != '\"')
-	{
-		if (str[i] == '$')
-		{
-			//TO-DO  Get the value from ENVP
-			env = ms_getfromenvp(&str[++i]);
-			if (env && env[0])
-			{
-				tmp = ft_strjoin(tmp , env);
-				i += ft_strlen(env);
-			}
-			while(str[i] && str[i] != '\"' && str[i] != '$' && !ft_isspace(str[i]))
-				i++;
-		}
-		else
-		{
-			tmp = ms_charjoin(tmp , str[i++]);
-		}
-	}
-	return (tmp);
-
-}
-
- char *ms_parseline(char *line)
- {
-	char *commands;
-	char *tmp;
-	int i;
-
-	commands = malloc(sizeof(*commands));
-	if (!commands)
-		return (NULL);
-	commands[0] = '\0';
-	i = 0;
-	while (line[i] && ms_isspace(line[i]))
-		i++;
-	while (line[i])
-	{
-		if (line[i] == '\"')
-		{
-			tmp = ms_parsedbquotes(&line[++i]);
-			commands = ft_strjoin(commands, tmp);
-			while (line[i] && line[i] != '\"')
-				i++;
-			if (line[i] == '\"')
-				i++;
-		}
-		else if (line[i] == '\'')
-		{
-			tmp = ms_parsequotes(&line[++i]);
-			commands = ft_strjoin(commands, tmp);
-			while (line[i] && line[i] != '\'')
-				i++;
-			if (line[i] == '\'')
-				i++;
-		}
-		else
-			ms_charjoin(commands, line[i++]);
-	}
-	return (commands);
- }
