@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:43:04 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 15:49:42 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:45:32 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ms_builtin_pwd(int c, char **args, char **env)
 
 	if (c > 1)
 		ft_printf(1, "%spwd: too many arguments\n%s", \
-			RED, FONTLESS);
+			RED, RESETFONT);
 	else
 	{
 		getcwd(buff, 500);

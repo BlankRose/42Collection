@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:48:12 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:32:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,12 @@ char	*ms_charjoin(char *str, char c);
 char	*ms_parseline(char *line);
 char	**ms_appendtoarr(char **arr, char *str);
 
+char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);
 void	ms_print_cmd(char ***cmd);
 char	***ms_free_cmd(char ***cmd);
 
+int		ms_checkquote(char c, int hasquote);
 int		ms_isquote(int c);
 int		ms_isoperator(int c);
 

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:47:11 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:48:43 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	ms_prompt_new(void)
 	line = readline(g_main->prompt_msg);
 	if (line)
 		add_history(line);
-	ft = ms_is_builtin(line);
 	commands = ms_split_cmd(line);
-	ms_print_cmd(commands);
+	ft = ms_is_builtin(commands[0][0]);
+	//ms_print_cmd(commands);
 	//printf("%s \n", envp[0]);
 	//ft_printf(1, "LEN = %d\n", len);
 	//pipex(main -> fds, len, commands, main -> envp);
 	if (ft)
-		ft(1, 0, g_main->envp);
+		ft(ms_arraylen(commands[0]), commands[0], g_main->envp);
 	else
 	{
 		target = ft_getbin(line, g_main->envp);
@@ -51,6 +51,7 @@ void	ms_prompt_new(void)
 			RED, line, RESETFONT);
 	}
 	commands = ms_free_cmd(commands);
+	free(line);
 }
 
 char	*ms_charjoin(char *str, char c)

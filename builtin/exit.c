@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:02:44 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 16:35:07 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:45:37 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	ms_builtin_exit(int c, char **args, char **env)
 	}
 	else
 		ft_printf(1, "%sexit: too many arguments\n%s", \
-			RED, FONTLESS);
+			RED, RESETFONT);
 	return (1);
 }
