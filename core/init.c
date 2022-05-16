@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 20:30:20 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:39:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ms_getfromenvp(char *str)
 	res[0] = '\0';
 	lst = g_main -> envplist;
 	i = -1;
-	while (str[++i] && str[i] != '\"' && str[i] != '$' && !ft_isspace(str[i]))
+	while (str[++i] && !ft_isset(str[i], "\"\'$") && !ft_isspace(str[i]))
 		tmp = ms_charjoin(tmp, str[i]);
 	while (lst)
 	{

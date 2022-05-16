@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 23:11:01 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:10:39 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*ms_pre_emptive2(char *new, char **line)
 	if (*line && **line == '$')
 	{
 		new = ft_strexpend(new, ms_getfromenvp(*line + 1), TRUE);
-		*line += ft_strlenlimitset(*line, " \"");
+		*line += ft_strlen(*line) - ft_strlen(ft_strchrset(*line + 1, " \"\'$"));
 	}
 	if (*line && **line == '\'')
 	{

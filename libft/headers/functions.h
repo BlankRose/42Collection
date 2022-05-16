@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/11 17:35:48 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:09:01 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ size_t		ft_strnchr(const char *s, int c);
 /* Locates the first C in the string S
 Return: address of first C found */
 char		*ft_strchr(const char *s, int c);
+
+/* Locates the first character being part of the SET in the string S
+Return: address of first char within SET found */
+char		*ft_strchrset(const char *s, char *set);
 
 /* Locates the last C in the string S
 Return: address of last C found */
