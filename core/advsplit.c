@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 13:19:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 14:03:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:22:49 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ static size_t	ms_splitadv_size(const char *s, char c)
 	i = 0;
 	len = 0;
 	hasquote = 0;
-	while (s[i++])
+	while (s[i])
 	{
 		while (s[i] && (hasquote || s[i] != c))
-			hasquote = ms_checkquote(s[i++], hasquote);
+		{
+			hasquote = ms_checkquote(s[i], hasquote);
+			i++;
+		}
 		len++;
 		while (s[i] == c && s[i])
 			i++;
@@ -32,16 +35,14 @@ static size_t	ms_splitadv_size(const char *s, char c)
 	return (len);
 }
 
-static char	**ms_splitadv2(const char *s, char c, char **res)
+static char	**ms_splitadv2(const char *s, char c, char **res, int hasquote)
 {
-	int		hasquote;
 	size_t	len;
 	size_t	i;
 	size_t	y;
 
 	i = 0;
 	y = 0;
-	hasquote = 0;
 	while (s[y])
 	{
 		len = 0;
@@ -74,7 +75,7 @@ char	**ms_splitadv(const char *s, char c)
 	r = (char **)malloc(sizeof(char *) * (ms_splitadv_size(&s[i], c) + 1));
 	if (!r)
 		return (0);
-	return (ms_splitadv2(&s[i], c, r));
+	return (ms_splitadv2(&s[i], c, r, 0));
 }
 
 int	ms_checkquote(char c, int hasquote)

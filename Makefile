@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/16 13:24:44 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/16 20:35:30 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,13 @@ PIPEX_FOLDER = ./pipexx/
 PIPEX_NAME = pipex
 LIBRARIES = -L$(LIB_FOLDER) -l$(LIB_NAME) \
 			-L$(PIPEX_FOLDER) -l$(PIPEX_NAME) \
+			-I .brew/opt/readline/include \
 			-lreadline
 
 CORE_FOLDER = ./core/
 CORE_FILES = main.c signals.c utils.c cmds.c lists.c \
-			lexer.c init.c lists2.c advsplit.c parse.c
+			lexer.c init.c lists2.c advsplit.c parse.c \
+			prompt.c
 CORE_SRC = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE_SRC:.c=.o)
 

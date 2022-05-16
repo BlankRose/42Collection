@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:48:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 14:38:02 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:48:35 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static char	*ms_getnextcmd(char *line)
 {
 	int		hasquote;
+	char	prev;
 
 	hasquote = 0;
+	prev = 0;
 	if (!line)
 		return (0);
 	else if (*line && !ms_isoperator(*line))
@@ -25,6 +27,7 @@ static char	*ms_getnextcmd(char *line)
 			|| hasquote))
 		{
 			hasquote = ms_checkquote(*line, hasquote);
+			prev = *line;
 			line++;
 		}
 		return (line);
@@ -94,7 +97,7 @@ void	ms_print_cmd(char ***cmd)
 		printf("[CMD %d]==----\n", v.x);
 		while (cmd[v.x][v.y])
 		{
-			printf("%d\t%s\n", v.y, cmd[v.x][v.y]);
+			printf("%d\t[%s]\n", v.y, cmd[v.x][v.y]);
 			v.y++;
 		}
 		v.x++;

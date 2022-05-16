@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:44:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/07 11:51:47 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:47:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@
 # define HEXA_LOW "0123456789abcdef"
 # define HEXA_UP "0123456789ABCDEF"
 # define HEXA HEXA_UP
+
+# define SET_ALPHA_LOW "abcdefghijklmnopqrstuvwxyz"
+# define SET_ALPHA_UP "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define SET_ALPHA "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define SET_NUMERIC "0123456789"
+# define SET_SPACES "\t\n\v\f\r "
 
 /*********************************************************/
 /*                                                       */
@@ -108,25 +114,25 @@
 /*                                                       */
 /*********************************************************/
 
-// Character
+/* Character */
 # define CHAR_MAX 127
 # define CHAR_MIN -128
 # define UN_CHAR_MAX 255
 # define UN_CHAR_MIN 0
 
-// Short
+/* Short */
 # define SHORT_MAX 32767
 # define SHORT_MIN -32768
 # define UN_SHORT_MAX 65535
 # define UN_SHORT_MIN 0
 
-// Integer
+/* Integer */
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 # define UN_INT_MAX 4294967295
 # define UN_INT_MIN 0
 
-// Long
+/* Long */
 # define LONG_MAX 9223372036854775807L
 # define LONG_MIN -9223372036854775807L
 # define UN_LONG_MAX 18446744073709551615L
