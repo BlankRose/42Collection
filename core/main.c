@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:37:27 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:42:33 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,6 @@ int	ms_init(char **envp)
 	return (0);
 }
 
-// void	ms_siginit(t_main *main)
-// {
-// 	struct sigaction	sa;
-// 	sigset_t			sigset;
-
-// 	sigemptyset(&sigset);
-// 	ms_signal_handler(-1, 0, main);
-// 	sa.sa_flags = SA_SIGINFO;
-// 	sa.sa_sigaction = ms_signal_handler;
-// 	sigaction(SIGINT, &sa, 0);
-// 	sigaction(SIGQUIT, &sa, 0);
-// }
-
 void	ms_printtoken(t_list **token)
 {
 	t_tok	*tok;
@@ -63,11 +50,13 @@ void	ms_printtoken(t_list **token)
 	}
 }
 
-void	ms_print_welcome(void)
+static void	ms_print_welcome(void)
 {
-	ft_printf(1, "%s", GREEN);
-	ft_printf(1, "Welcome to MiniShell (TM)\n");
-	ft_printf(1, "BY:\tRosie & Cristian\n");
+	ft_printf(1, "\n%s", YELLOW);
+	ft_printf(1, " ┌─═══════╤\t   ☲    ☴\n");
+	ft_printf(1, " │  ◔ ▿ ◔ │\tMiniShell (TM)\n");
+	ft_printf(1, " └─┬──╥─╥─┘│\tBY:  Rosie & Cristian\n");
+	ft_printf(1, "  ⎧│  ∇ ╟──╯\t     ☵         ☱\n");
 	ft_printf(1, "%s", RESETFONT);
 }
 

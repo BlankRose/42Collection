@@ -4,3 +4,4 @@
 minishell
 builtin/env
 builtin/echo
+unused.c

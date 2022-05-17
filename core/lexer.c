@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:45:06 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:13:00 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ t_list	**ms_tokenize(char *line)
 	return (list);
 }
 
-void ms_spacetokjoining(t_list *list)
+void	ms_spacetokjoining(t_list *list)
 {
-	t_tok *nexttok;
-	t_list *tmplst;
+	t_tok	*nexttok;
+	t_list	*tmplst;
 
 	nexttok = (t_tok *)(list -> next -> content);
 	tmplst = list -> next;
@@ -91,37 +91,15 @@ void ms_spacetokjoining(t_list *list)
 	free(tmplst);
 }
 
-void ms_wordtokjoining(t_list *list)
+void	ms_wordtokjoining(t_list *list)
 {
-	t_tok *currtok;
-	t_tok *nexttok;
-	t_list *tmplst;
-	char *str;
-	char *tmp;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	t_list	*tmplst;
+	char	*str;
+	char	*tmp;
 
-	currtok =(t_tok *)(list -> content);
-	nexttok = (t_tok *)(list -> next -> content);
-
-	tmp = currtok -> value;
-	str = ft_strjoin(currtok -> value, nexttok -> value);
-	free(tmp);
-	currtok -> value = str;
-	tmplst = list -> next;
-	list -> next = list -> next -> next;
-	free(nexttok -> value);
-	free(nexttok);
-	free(tmplst);
-}
-
-void ms_wqjoining(t_list *list)
-{
-	t_tok *currtok;
-	t_tok *nexttok;
-	t_list *tmplst;
-	char *str;
-	char *tmp;
-
-	currtok =(t_tok *)(list -> content);
+	currtok = (t_tok *)(list -> content);
 	nexttok = (t_tok *)(list -> next -> content);
 
 	tmp = currtok -> value;
@@ -135,19 +113,42 @@ void ms_wqjoining(t_list *list)
 	free(tmplst);
 }
 
-void ms_wordquotesjoining(t_list *list)
+void	ms_wqjoining(t_list *list)
 {
-	t_tok *currtok;
-	t_tok *nexttok;
-	int joined;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	t_list	*tmplst;
+	char	*str;
+	char	*tmp;
+
+	currtok = (t_tok *)(list -> content);
+	nexttok = (t_tok *)(list -> next -> content);
+
+	tmp = currtok -> value;
+	str = ft_strjoin(currtok -> value, nexttok -> value);
+	free(tmp);
+	currtok -> value = str;
+	tmplst = list -> next;
+	list -> next = list -> next -> next;
+	free(nexttok -> value);
+	free(nexttok);
+	free(tmplst);
+}
+
+void	ms_wordquotesjoining(t_list *list)
+{
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	int		joined;
 
 	while (list && list -> next)
 	{
 		joined = 0;
-		currtok =(t_tok *)(list -> content);
+		currtok = (t_tok *)(list -> content);
 		nexttok = (t_tok *)(list -> next -> content);
-		if ((currtok -> type == WORD || currtok -> type == QUOTE || currtok -> type == DQUOTE)
-			 && (nexttok -> type == WORD || nexttok -> type == QUOTE || nexttok -> type == DQUOTE))
+		if ((currtok -> type == WORD || currtok -> type == QUOTE
+				|| currtok -> type == DQUOTE) && (nexttok -> type == WORD
+				|| nexttok -> type == QUOTE || nexttok -> type == DQUOTE))
 		{
 			ms_wqjoining(list);
 			joined = 1;
@@ -157,15 +158,15 @@ void ms_wordquotesjoining(t_list *list)
 	}
 }
 
-void ms_redirtokjoining(t_list *list, int rtype)
+void	ms_redirtokjoining(t_list *list, int rtype)
 {
-	t_tok *currtok;
-	t_tok *nexttok;
-	t_list *tmplst;
-	char *str;
-	char *tmp;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	t_list	*tmplst;
+	char	*str;
+	char	*tmp;
 
-	currtok =(t_tok *)(list -> content);
+	currtok = (t_tok *)(list -> content);
 	nexttok = (t_tok *)(list -> next -> content);
 
 	tmp = currtok -> value;
@@ -182,20 +183,20 @@ void ms_redirtokjoining(t_list *list, int rtype)
 	free(tmplst);
 }
 
-void ms_spacetokdel(t_list **list)
+void	ms_spacetokdel(t_list **list)
 {
-	t_list *tmplst;
-	t_list *lst;
-	t_tok *currtok;
-	t_tok *nexttok;
+	t_list	*tmplst;
+	t_list	*lst;
+	t_tok	*currtok;
+	t_tok	*nexttok;
 
 	if (!list)
 		return ;
 	lst = *list;
-	if (lst && ((t_tok *)(lst -> content)) -> type == SEP)
+	if (lst && ((t_tok *)(lst->content))->type == SEP)
 	{	
 		*list = lst -> next;
-		free(((t_tok *)(lst -> content)) -> value);
+		free(((t_tok *)(lst->content))->value);
 		free(lst -> content);
 		free(lst);
 	}
@@ -215,67 +216,10 @@ void ms_spacetokdel(t_list **list)
 	}	
 }
 
-
-// int ms_redirdbcheck(t_list *list)
-// {
-// 	int redincount;
-// 	int redoutcount;
-// 	t_tok *currtok;
-// 	t_tok *nexttok;
-	
-// 	redincount = 0;
-// 	redoutcount = 0;
-// 	while (list && list -> next)
-// 	{
-// 		currtok = (t_tok *)list -> content;
-// 		nexttok = (t_tok *)list -> next ->content;
-// 		if (currtok -> type == HEREDOC)
-// 			redincount++;
-// 		if ((currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP) && nexttok -> type != WORD)
-// 			return (-1);
-// 		if (currtok -> type == REDIR_OUT_APP)
-// 			redoutcount++;
-// 		list = list -> next;
-// 	}
-// 	if (((t_tok *)(list -> content)) -> type == HEREDOC || ((t_tok *)(list -> content)) -> type == REDIR_OUT_APP)
-// 		return (-1);
-// 	if (redincount > 1 || redoutcount > 1)
-// 		return (-1);	
-// 	return (0);
-// }
-
-// int ms_redircheck(t_list *list)
-// {
-// 	int redincount;
-// 	int redoutcount;
-// 	t_tok *currtok;
-// 	t_tok *nexttok;
-	
-// 	redincount = 0;
-// 	redoutcount = 0;
-// 	while (list && list -> next)
-// 	{
-// 		currtok = (t_tok *)list -> content;
-// 		nexttok = (t_tok *)list -> next ->content;
-// 		if (currtok -> type == REDIR_IN)
-// 			redincount++;
-// 		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT) && nexttok -> type != WORD)
-// 			return (-1);
-// 		if (currtok -> type == REDIR_OUT)
-// 			redoutcount++;
-// 		list = list -> next;
-// 	}
-// 	if (((t_tok *)(list -> content)) -> type == REDIR_IN || ((t_tok *)(list -> content)) -> type == REDIR_OUT)
-// 		return (-1);
-// 	if (redincount > 1 || redoutcount > 1)
-// 		return (-1);	
-// 	return (0);
-// }
-
-int ms_pipecheck(t_list *list)
+int	ms_pipecheck(t_list *list)
 {
-	t_tok *currtok;
-	t_tok *nexttok;
+	t_tok	*currtok;
+	t_tok	*nexttok;
 
 	if (((t_tok *) list->content)->type == PIPE)
 		return (-1);
@@ -283,7 +227,7 @@ int ms_pipecheck(t_list *list)
 	{
 		currtok = (t_tok *)list -> content;
 		nexttok = (t_tok *)list -> next ->content;
-		if (currtok -> type == PIPE 
+		if (currtok -> type == PIPE
 			&& nexttok -> type == PIPE)
 			return (-1);
 		list = list -> next;
@@ -294,13 +238,13 @@ int ms_pipecheck(t_list *list)
 	return (0);
 }
 
-int ms_redircheck(t_list *list)
+int	ms_redircheck(t_list *list)
 {
-	int redirs[4];	
-	int i;
-	t_tok *currtok;
-	t_tok *nexttok;
-	
+	int		redirs[4];	
+	int		i;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+
 	i = -1;
 	while (++i < 4)
 		redirs[i] = 0;
@@ -309,7 +253,7 @@ int ms_redircheck(t_list *list)
 		currtok = (t_tok *)list -> content;
 		nexttok = (t_tok *)list -> next ->content;
 		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT
-			|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
+				|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
 			&& (nexttok -> type != WORD && nexttok -> type != QUOTE && nexttok -> type != DQUOTE))
 			return (-1);
 		if (currtok -> type == REDIR_IN)
@@ -331,16 +275,16 @@ int ms_redircheck(t_list *list)
 	return (0);
 }
 
-void ms_tokjoining(t_list *list)
+void	ms_tokjoining(t_list *list)
 {
-	t_tok *currtok;
-	t_tok *nexttok;
-	int joined;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	int		joined;
 
 	while (list && list -> next)
 	{
 		joined = 0;
-		currtok =(t_tok *)(list -> content);
+		currtok = (t_tok *)(list -> content);
 		nexttok = (t_tok *)(list -> next -> content);
 		if (currtok -> type == WORD && currtok -> type == nexttok -> type)
 		{

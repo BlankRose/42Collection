@@ -6,52 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:53:46 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:45:51 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-
-// static char	*ms_pre_emptive2(char *new, char **line)
-// {
-// 	if (*line && !ft_strncmp(*line, "$?", 2))
-// 	{
-// 		new = ft_strexpend(new, ft_itoa(g_main->last_exit_code), TRUE);
-// 		*line += 2;
-// 	}
-// 	if (*line && **line == '$')
-// 	{
-// 		new = ft_strexpend(new, ms_getfromenvp(*line + 1), TRUE);
-// 		*line += ft_strlen(*line) - ft_strlen(ft_strchrset(*line + 1, " \"\'$"));
-// 	}
-// 	if (*line && **line == '\'')
-// 	{
-// 		new = ft_strexpend(new, ft_substr(*line, 0, ft_strlen(*line) -
-// 			ft_strlen(ft_strchr(*(line + 1), '\'')) + 2), TRUE);
-// 		*line += ft_strlen(*line) - ft_strlen(ft_strchr(*line + 1, '\''));
-// 		if (**line == '\'')
-// 			(*line)++;
-// 	}
-// 	return (new);
-// }
-
-// static char	*ms_pre_emptive(char *line)
-// {
-// 	char	*new;
-
-// 	new = 0;
-// 	while (line && *line)
-// 	{
-// 		new = ms_pre_emptive2(new, &line);
-// 		if (line && *line && !ft_isset(*line, "$\'"))
-// 		{
-// 			new = ft_strexpend(new, ft_substr(line, 0,
-// 				ft_strlenlimitset(line, "$\'")), TRUE);
-// 			line = line + ft_strlenlimitset(line, "$\'");
-// 		}
-// 	}
-// 	return (new);
-// }
 
 static builtin_ft	*ms_is_builtin(char *line)
 {
