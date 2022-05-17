@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 16:35:22 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:32:49 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void	ms_print_welcome(void)
 
 int	main(int c, char **args, char **envp)
 {
-	t_list	**tokens;
-
 	c++;
 	args = 0;
 	g_main = malloc(sizeof(t_main));
@@ -87,17 +85,6 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	tokens = ms_tokenize("asdf $abc$?|\"x |  $^  as>> $?$PATH'lol' x>> . x$abc\" abcdef 'x   $abc   |<>>< x' > abcdef ");
-	ms_tokjoining(*tokens);
-	ms_parse_words(tokens);
-	ms_wordquotesjoining(*tokens);
-	ms_spacetokdel(tokens);
-
-	ms_printtoken(tokens);
-	if (ms_redircheck(*tokens) == -1)
-	{
-		printf("Redirect tokens non valides\n");
-	}
 	signal(SIGINT, ms_signal_handler);
 	signal(SIGQUIT, ms_signal_handler);
 	ms_print_welcome();
