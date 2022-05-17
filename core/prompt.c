@@ -6,24 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:36:31 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:53:46 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-
-// static builtin_ft	*ms_is_builtin(char *line)
-// {
-// 	if (!ft_strncmp(line, "exit", 5))
-// 		return (ms_builtin_exit);
-// 	if (!ft_strncmp(line, "echo", 5))
-// 		return (ms_builtin_echo);
-// 	if (!ft_strncmp(line, "env", 4))
-// 		return (ms_builtin_env);
-// 	if (!ft_strncmp(line, "pwd", 4))
-// 		return (ms_builtin_pwd);
-// 	return (0);
-// }
 
 // static char	*ms_pre_emptive2(char *new, char **line)
 // {
@@ -66,6 +53,19 @@
 // 	return (new);
 // }
 
+static builtin_ft	*ms_is_builtin(char *line)
+{
+	if (!ft_strncmp(line, "exit", 5))
+		return (ms_builtin_exit);
+	if (!ft_strncmp(line, "echo", 5))
+		return (ms_builtin_echo);
+	if (!ft_strncmp(line, "env", 4))
+		return (ms_builtin_env);
+	if (!ft_strncmp(line, "pwd", 4))
+		return (ms_builtin_pwd);
+	return (0);
+}
+
 static t_list	**ms_prompt_tokenize(char *line)
 {
 	t_list	**tokens;
@@ -77,28 +77,6 @@ static t_list	**ms_prompt_tokenize(char *line)
 	ms_spacetokdel(tokens);
 	return (tokens);
 }
-
-// static void	ms_prompt_execute(char *line, t_list **tokens)
-// {
-// 	builtin_ft	*ft;
-// 	char		*target;
-
-// 	if (!line)
-// 		return ;
-// 	ft = ms_is_builtin(g_main->cmds[0][0]);
-// 	if (ft)
-// 		ft(ms_arraylen(g_main->cmds[0]), g_main->cmds[0], g_main->envp);
-// 	else
-// 	{
-// 		target = ft_getbin(g_main->cmds[0][0], g_main->envp);
-// 		if (!target)
-// 			printf("%sMiniShell: command not found: %s\n%s", \
-// 			RED, g_main->cmds[0][0], RESETFONT);
-// 		else
-// 			execve(target, g_main->cmds[0], g_main->envp);
-// 	}
-// 	free(line);
-// }
 
 static size_t	ms_count_entries(t_list **tokens)
 {
@@ -150,7 +128,6 @@ static char	***ms_tokens2args(t_list **tokens)
 			ms_count_subentries(&current) + 1);
 		while (current && token && token->type != PIPE)
 		{
-			printf("%s\n", token->value);
 			args[v.x][v.y++] = token->value;
 			current = current->next;
 			if (current)
@@ -169,12 +146,25 @@ static char	***ms_tokens2args(t_list **tokens)
 
 static int	ms_prompt_execute(t_list **tokens)
 {
-	char	***args;
+	builtin_ft	*ft;
+	char		*target;
 
-	if (ms_redircheck(*tokens) == -1)
-		return (printf("Redirect tokens non valides\n"));
-	args = ms_tokens2args(tokens);
-	ms_print_cmd(args);
+	if (ms_redircheck(*tokens) || ms_pipecheck(*tokens))
+		return (printf("%sMiniShell: parse error\n%s", RED, RESETFONT));
+	g_main->cmds = ms_tokens2args(tokens);
+	ft = ms_is_builtin(g_main->cmds[0][0]);
+	if (ft)
+		ft(ms_arraylen(g_main->cmds[0]), g_main->cmds[0], g_main->envp);
+	else
+	{
+		target = ft_getbin(g_main->cmds[0][0], g_main->envp);
+		if (!target)
+			printf("%sMiniShell: command not found: %s\n%s", \
+			RED, g_main->cmds[0][0], RESETFONT);
+		else
+			execve(target, g_main->cmds[0], g_main->envp);
+	}
+	ms_free_cmd(g_main->cmds);
 	return (0);
 }
 

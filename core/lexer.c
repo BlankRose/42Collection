@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:36:21 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:45:06 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,6 +277,8 @@ int ms_pipecheck(t_list *list)
 	t_tok *currtok;
 	t_tok *nexttok;
 
+	if (((t_tok *) list->content)->type == PIPE)
+		return (-1);
 	while (list && list -> next)
 	{
 		currtok = (t_tok *)list -> content;
@@ -289,7 +291,7 @@ int ms_pipecheck(t_list *list)
 	currtok = (t_tok *)list -> content;
 	if (currtok -> type == PIPE)
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int ms_redircheck(t_list *list)
@@ -324,7 +326,6 @@ int ms_redircheck(t_list *list)
 	if (currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT ||
 		currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
 		return (-1);
-	printf("REDIRS : %d %d %d %d\n", redirs[0], redirs[1], redirs[2], redirs[3]);
 	if (redirs[0] + redirs[2] > 1 || redirs[1] + redirs[3] > 1)
 		return (-1);	
 	return (0);
