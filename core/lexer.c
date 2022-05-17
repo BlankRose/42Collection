@@ -188,9 +188,18 @@ void ms_spacetokdel(t_list **list)
 // 		nexttok = (t_tok *)list -> next ->content;
 // 		if (currtok -> type == REDIR_IN)
 // 			redincount++;
-// 		if (currtok -> type == REDIR_IN && nexttok -> )
+// 		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT) && nexttok -> type != WORD)
+// 		{
+// 			perror("Error : syntax error in redirect");
+// 			exit(1);
+// 		}
 // 		if (currtok -> type == REDIR_OUT)
 // 			redoutcount++;
+// 	}
+// 	if (redincount > 1 || redoutcount > 1)
+// 	{
+
+
 // 	}
 	
 // }

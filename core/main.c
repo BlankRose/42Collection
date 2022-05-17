@@ -76,7 +76,7 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	tokens = ms_tokenize("asdf  $? \"x |    as>> $abc  x>> . x\"<'x   $abc   |<>>< x'>>< < << ");
+	tokens = ms_tokenize("asdf  $? \"x |    as>> $PATH  x>> . x\"<'x   $abc   |<>>< x'>>< < << ");
 	ms_tokjoining(*tokens);
 	ms_spacetokdel(tokens);
 	ms_printtoken(tokens);

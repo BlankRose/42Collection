@@ -51,8 +51,9 @@ char	*ms_parsedbquotes(char *str)
 
 			if (env && env[0])
 			{
+				i += ft_strlen(tmp);
 				tmp = ft_strjoin(tmp, env);
-				i += ft_strlen(env);
+				// i += ft_strlen(env);
 			}
 			while (str[i] && str[i] != '\"' && str[i] != '$'
 				&& !ft_isspace(str[i]))
