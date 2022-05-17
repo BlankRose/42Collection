@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:43:32 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 14:26:49 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:46:44 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*ms_parsedbquotes(char *str)
 		}
 		if (str[i] == '$')
 		{
-			//TO-DO  Get the value from ENVP
 			env = ms_getfromenvp(&str[++i]);
 			if (env && env[0])
 				tmp = ft_strexpend(tmp, env, TRUE);
