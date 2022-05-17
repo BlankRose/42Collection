@@ -272,6 +272,26 @@ void ms_spacetokdel(t_list **list)
 // 	return (0);
 // }
 
+int ms_pipecheck(t_list *list)
+{
+	t_tok *currtok;
+	t_tok *nexttok;
+
+	while (list && list -> next)
+	{
+		currtok = (t_tok *)list -> content;
+		nexttok = (t_tok *)list -> next ->content;
+		if (currtok -> type == PIPE 
+			&& nexttok -> type == PIPE)
+			return (-1);
+		list = list -> next;
+	}
+	currtok = (t_tok *)list -> content;
+	if (currtok -> type == PIPE)
+		return (-1);
+	return (1);
+}
+
 int ms_redircheck(t_list *list)
 {
 	int redirs[4];	
@@ -288,7 +308,7 @@ int ms_redircheck(t_list *list)
 		nexttok = (t_tok *)list -> next ->content;
 		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT
 			|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
-			&& nexttok -> type != WORD)
+			&& (nexttok -> type != WORD && nexttok -> type != QUOTE && nexttok -> type != DQUOTE))
 			return (-1);
 		if (currtok -> type == REDIR_IN)
 			redirs[0]++;

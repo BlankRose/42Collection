@@ -132,6 +132,7 @@ int		ms_redircheck(t_list *list);
 int ms_redirdbcheck(t_list *list);
 void ms_wqjoining(t_list *list);
 void ms_wordquotesjoining(t_list *list);
+int ms_pipecheck(t_list *list);
 
 
 
