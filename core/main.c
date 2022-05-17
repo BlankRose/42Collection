@@ -87,11 +87,17 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	tokens = ms_tokenize("asdf $abc $? \"x |  $^  as>> $?$PATH'lol' x>> . x$abc\"<'x   $abc   |<>>< x'>>< < << ");
+	tokens = ms_tokenize("asdf $abc$?|\"x |  $^  as>> $?$PATH'lol' x>> . x$abc\" abcdef 'x   $abc   |<>>< x' > abcdef ");
 	ms_tokjoining(*tokens);
-	ms_spacetokdel(tokens);
 	ms_parse_words(tokens);
+	ms_wordquotesjoining(*tokens);
+	ms_spacetokdel(tokens);
+
 	ms_printtoken(tokens);
+	if (ms_redircheck(*tokens) == -1)
+	{
+		printf("Redirect tokens non valides\n");
+	}
 	signal(SIGINT, ms_signal_handler);
 	signal(SIGQUIT, ms_signal_handler);
 	ms_print_welcome();
