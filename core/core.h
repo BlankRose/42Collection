@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:35:32 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:38:31 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,15 @@ void	ms_tokjoining(t_list *list);
 void	ms_printtoken(t_list **lst);
 void	ms_spacetokdel(t_list **list);
 void	ms_parse_words(t_list **tokens);
+
 int		ms_redircheck(t_list *list);
 int		ms_redirdbcheck(t_list *list);
 void	ms_wqjoining(t_list *list);
 void	ms_wordquotesjoining(t_list *list);
+int		ms_redirdbcheck(t_list *list);
+void	ms_wqjoining(t_list *list);
+void	ms_wordquotesjoining(t_list *list);
+int		ms_pipecheck(t_list *list);
 
 char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);
