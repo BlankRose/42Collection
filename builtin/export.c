@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 20:23:36 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 13:53:54 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/17 13:50:38 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/17 14:04:21 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	ms_builtin_echo(int c, char **args, char **env)
+static int	ms_isvalid(char *str)
 {
-	size_t	i;
-	int		newline;
+}
 
-	i = 1;
-	newline = 1;
-	if (args[1])
-		newline = ft_strncmp("-n", args[1], 3);
-	if (!newline)
-		i++;
-	while (args[i])
+int	ms_builtin_export(int c, char **args, char **env)
+{
+	if (c < 2)
 	{
-		ft_putstr_fd(args[i++], 1);
-		if (args[i])
-			ft_putchar_fd(' ', 1);
+		ms_builtin_env(c, args, env);
+		return (0);
 	}
-	if (!newline && c >= 1)
-		ft_printf(1, "%s%s", BG_REVERSE, RESETFONT);
-	else if (newline)
-		ft_putchar_fd('\n', 1);
-	env = 0;
+	args++;
+	while (*args)
+	{
+	}
 	return (0);
 }

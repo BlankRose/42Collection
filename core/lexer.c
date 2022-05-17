@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:36:30 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:24:37 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_tok	*ms_createtoken(int type, int index, char value)
 
 t_list	**ms_tokenize(char *line)
 {
-	t_list **list;
+	t_list	**list;
 	t_list	*tokens;
-	char *tmp;
-	t_list *lst;
+	char	*tmp;
+	t_list	*lst;
 	int		i;
 
 	i = -1;
@@ -50,10 +50,10 @@ t_list	**ms_tokenize(char *line)
 		else if (line[i] == '\'')
 		{
 			tmp = ms_parsequotes(&line[++i]);
-			//printf("%s \n", tmp);
+			// printf("%s \n", tmp);
 			lst = ft_lstnew(ms_createtoken(4, i, '\0'));
-			free(((t_tok *)(lst -> content)) -> value);
-			((t_tok *)(lst -> content)) -> value = tmp;
+			free(((t_tok *)(lst->content))->value);
+			((t_tok *)(lst->content))-> value = tmp;
 			ft_lstadd_back(list, lst);
 			i += ft_strlen(tmp);
 		}
@@ -61,8 +61,8 @@ t_list	**ms_tokenize(char *line)
 		{
 			tmp = ms_parsedbquotes(&line[++i]);
 			lst = ft_lstnew(ms_createtoken(4, i, '\0'));
-			free(((t_tok *)(lst -> content)) -> value);
-			((t_tok *)(lst -> content)) -> value = tmp;
+			free(((t_tok *)(lst->content))->value);
+			((t_tok *)(lst->content))->value = tmp;
 			ft_lstadd_back(list, lst);
 			while (line[i] != '\"')
 				i++;
@@ -74,9 +74,8 @@ t_list	**ms_tokenize(char *line)
 		else
 			ft_lstadd_back(list, ft_lstnew(ms_createtoken(1, i, line[i])));
 	}
-	//ms_printtoken(list);
+	// ms_printtoken(list);
 	return (list);
-	
 }
 
 void ms_spacetokjoining(t_list *list)

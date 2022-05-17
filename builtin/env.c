@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:02:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 14:45:42 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:53:50 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../core/core.h"
+#include "builtin.h"
 
 int	ms_builtin_env(int c, char **args, char **env)
 {

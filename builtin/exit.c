@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:02:44 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 17:54:36 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:53:45 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../core/core.h"
+#include "builtin.h"
 
 int	ms_builtin_exit(int c, char **args, char **env)
 {

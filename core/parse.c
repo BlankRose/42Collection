@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:43:32 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:47:59 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:26:49 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,94 @@ char	*ms_parsedbquotes(char *str)
 	tmp = malloc(sizeof(*tmp));
 	if (!tmp)
 		return (NULL);
-	tmp = "";
+	tmp = 0;
 	i = 0;
 	while (str[i] && str[i] != '\"')
 	{
+		if (!ft_strncmp(&str[i], "$?", 2))
+		{
+			tmp = ft_strexpend(tmp, ft_itoa(g_main->last_exit_code), TRUE);
+			i += 2;
+		}
 		if (str[i] == '$')
 		{
 			//TO-DO  Get the value from ENVP
 			env = ms_getfromenvp(&str[++i]);
-
 			if (env && env[0])
-			{
-				i += ft_strlen(tmp);
-				tmp = ft_strjoin(tmp, env);
-				// i += ft_strlen(env);
-			}
-			while (str[i] && str[i] != '\"' && str[i] != '$'
-				&& !ft_isspace(str[i]))
+				tmp = ft_strexpend(tmp, env, TRUE);
+			while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 				i++;
 		}
 		else
-			tmp = ms_charjoin(tmp, str[i++]);
+			tmp = ft_strexpend(tmp, ft_substr(&str[i++], 0, 1), TRUE);
 	}
 	if (!str[i])
 	{
 		perror("Errors in opening double quotes");
 		exit(1);
 	}
+	return (tmp);
+}
+
+void	ms_parse_words(t_list **tokens)
+{
+	t_list	*current;
+	t_list	*prev;
+	t_tok	*token;
+
+	current = *tokens;
+	prev = 0;
+	while (current)
+	{
+		token = (t_tok *) current->content;
+		if (token->type == WORD)
+			token->value = ms_parsedunquotes(token->value);
+		if (!token->value)
+		{
+			if (!prev)
+				*tokens = current->next;
+			else
+				prev->next = current->next;
+			ft_lstdelone(current, free);
+			current = *tokens;
+			continue ;
+		}
+		prev = current;
+		current = current->next;
+	}
+}
+
+char	*ms_parsedunquotes(char *str)
+{
+	int		i;
+	char	*tmp;
+	char	*env;
+
+	tmp = malloc(sizeof(*tmp));
+	if (!tmp)
+		return (NULL);
+	tmp = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_strncmp(&str[i], "$?", 2))
+		{
+			tmp = ft_strexpend(tmp, ft_itoa(g_main->last_exit_code), TRUE);
+			i += 2;
+		}
+		if (str[i] == '$')
+		{
+			env = ms_getfromenvp(&str[++i]);
+			if (env && env[0])
+				tmp = ft_strexpend(tmp, env, TRUE);
+			while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+				i++;
+		}
+		else
+			tmp = ft_strexpend(tmp, ft_substr(&str[i++], 0, 1), TRUE);
+	}
+	if (str)
+		free(str);
 	return (tmp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 10:38:09 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 23:08:20 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:27:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t	i;
 
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (i < n)
 	{
-		if (s1[i] != s2[i])
+		if (s1[i] != s2[i] || !s1[i] || !s2[i])
 			return (s1[i] - s2[i]);
 		i++;
 	}

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 15:43:04 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 13:53:39 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/17 13:51:08 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/17 13:52:57 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
-int	ms_builtin_pwd(int c, char **args, char **env)
-{
-	char	buff[501];
+# include "../core/core.h"
 
-	if (c > 1)
-		ft_printf(1, "%spwd: too many arguments\n%s", \
-			RED, RESETFONT);
-	else
-	{
-		getcwd(buff, 500);
-		ft_putendl_fd(buff, 1);
-		return (0);
-	}
-	args = env;
-	return (1);
-}
+int		ms_builtin_echo(int c, char **args, char **env);
+int		ms_builtin_env(int c, char **args, char **env);
+int		ms_builtin_exit(int c, char **args, char **env);
+int		ms_builtin_pwd(int c, char **args, char **env);
+int		ms_builtin_export(int c, char **args, char **env);
+
+#endif

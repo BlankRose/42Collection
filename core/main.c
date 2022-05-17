@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:12 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 20:38:41 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:19:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ms_printtoken(t_list **token)
 
 int	main(int c, char **args, char **envp)
 {
-	t_list **tokens;
+	t_list	**tokens;
 
 	c++;
 	args = 0;
@@ -76,9 +76,10 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	tokens = ms_tokenize("asdf  $? \"x |    as>> $PATH  x>> . x\"<'x   $abc   |<>>< x'>>< < << ");
+	tokens = ms_tokenize("asdf $abc $? \"x |  $^  as>> $?$PATH'lol' x>> . x$abc\"<'x   $abc   |<>>< x'>>< < << ");
 	ms_tokjoining(*tokens);
 	ms_spacetokdel(tokens);
+	ms_parse_words(tokens);
 	ms_printtoken(tokens);
 	signal(SIGINT, ms_signal_handler);
 	signal(SIGQUIT, ms_signal_handler);

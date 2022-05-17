@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 20:39:28 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:19:07 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "../libft/libft.h"
 # include "../pipexx/pipex.h"
+# include "../builtin/builtin.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
@@ -117,6 +118,7 @@ void	ms_plstdelone(t_plist *lst, void (*del)(void*));
 
 char	*ms_getfromenvp(char *str);
 char	*ms_strjoin(char *s1, char *s2);
+char	*ms_parsedunquotes(char *str);
 char	*ms_parsedbquotes(char *str);
 char	*ms_parsequotes(char *str);
 char	*ms_charjoin(char *str, char c);
@@ -125,6 +127,7 @@ char	**ms_appendtoarr(char **arr, char *str);
 void	ms_tokjoining(t_list *list);
 void	ms_printtoken(t_list **lst);
 void	ms_spacetokdel(t_list **list);
+void	ms_parse_words(t_list **tokens);
 
 char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);
@@ -134,11 +137,6 @@ char	***ms_free_cmd(char ***cmd);
 int		ms_checkquote(char c, int hasquote);
 int		ms_isquote(int c);
 int		ms_isoperator(int c);
-
-int		ms_builtin_echo(int c, char **args, char **env);
-int		ms_builtin_env(int c, char **args, char **env);
-int		ms_builtin_exit(int c, char **args, char **env);
-int		ms_builtin_pwd(int c, char **args, char **env);
 
 t_list	**ms_tokenize(char *line);
 
