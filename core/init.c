@@ -61,7 +61,8 @@ char	*ms_getfromenvp(char *str)
 	res[0] = '\0';
 	lst = g_main -> envplist;
 	i = -1;
-	while (str[++i] && !ft_isset(str[i], "\"\'$") && !ft_isspace(str[i]))
+	// while (str[++i] && !ft_isset(str[i], "\"\'$") && !ft_isspace(str[i]))
+	while (str[++i] && str[i] != '\"' && !ft_isspace(str[i]))
 		tmp = ms_charjoin(tmp, str[i]);
 	while (lst)
 	{

@@ -124,7 +124,7 @@ char	*ms_parseline(char *line);
 char	**ms_appendtoarr(char **arr, char *str);
 void	ms_tokjoining(t_list *list);
 void	ms_printtoken(t_list **lst);
-void ms_spacetokdel(t_list **list);
+void	ms_spacetokdel(t_list **list);
 
 char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);

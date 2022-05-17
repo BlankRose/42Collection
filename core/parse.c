@@ -48,7 +48,7 @@ char	*ms_parsedbquotes(char *str)
 		{
 			//TO-DO  Get the value from ENVP
 			env = ms_getfromenvp(&str[++i]);
-			printf("%s \n", env);
+
 			if (env && env[0])
 			{
 				tmp = ft_strjoin(tmp, env);

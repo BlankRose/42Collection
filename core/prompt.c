@@ -55,13 +55,13 @@ static char	*ms_pre_emptive(char *line)
 	new = 0;
 	while (line && *line)
 	{
-		if (line && *line)
+		new = ms_pre_emptive2(new, &line);
+		if (line && *line && !ft_isset(*line, "$\'"))
 		{
 			new = ft_strexpend(new, ft_substr(line, 0, \
 				ft_strlenlimitset(line, "$\'")), TRUE);
 			line = line + ft_strlenlimitset(line, "$\'");
 		}
-		new = ms_pre_emptive2(new, &line);
 	}
 	return (new);
 }
