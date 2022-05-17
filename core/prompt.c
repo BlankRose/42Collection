@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 18:45:51 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:41:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ static builtin_ft	*ms_is_builtin(char *line)
 		return (ms_builtin_env);
 	if (!ft_strncmp(line, "pwd", 4))
 		return (ms_builtin_pwd);
+	if (!ft_strncmp(line, "export", 8))
+		return (ms_builtin_export);
+	if (!ft_strncmp(line, "unset", 6))
+		return (ms_builtin_unset);
+	if (!ft_strncmp(line, "cd", 3))
+		return (ms_builtin_cd);
 	return (0);
 }
 
@@ -113,7 +119,8 @@ static int	ms_prompt_execute(t_list **tokens)
 	g_main->cmds = ms_tokens2args(tokens);
 	ft = ms_is_builtin(g_main->cmds[0][0]);
 	if (ft)
-		ft(ms_arraylen(g_main->cmds[0]), g_main->cmds[0], g_main->envp);
+		g_main->last_exit_code = ft(ms_arraylen(g_main->cmds[0]), \
+		g_main->cmds[0], g_main->envp);
 	else
 	{
 		target = ft_getbin(g_main->cmds[0][0], g_main->envp);

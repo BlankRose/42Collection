@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 09:35:42 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/16 14:31:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:56:54 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	ft_process(char *command, char **envp)
 	char	**arr;
 
 	arr = ft_split(command, '|');
-	//printf("%s \n", envp[0]);
 	path = ft_getbin(arr[0], envp);
-	//printf("%s\n", path);
 	if (path)
 	{
 		arr[0] = path;

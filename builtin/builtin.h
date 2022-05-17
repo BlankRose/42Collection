@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:51:08 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 13:52:57 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:23:47 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include "../core/core.h"
 
-int		ms_builtin_echo(int c, char **args, char **env);
-int		ms_builtin_env(int c, char **args, char **env);
-int		ms_builtin_exit(int c, char **args, char **env);
-int		ms_builtin_pwd(int c, char **args, char **env);
 int		ms_builtin_export(int c, char **args, char **env);
+int		ms_builtin_unset(int c, char **args, char **env);
+int		ms_builtin_echo(int c, char **args, char **env);
+int		ms_builtin_exit(int c, char **args, char **env);
+int		ms_builtin_env(int c, char **args, char **env);
+int		ms_builtin_pwd(int c, char **args, char **env);
+int		ms_builtin_cd(int c, char **args, char **env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 17:38:31 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:48:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ int		ms_redirdbcheck(t_list *list);
 void	ms_wqjoining(t_list *list);
 void	ms_wordquotesjoining(t_list *list);
 int		ms_pipecheck(t_list *list);
+void	ms_set_prompt_msg(void);
 
 char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);

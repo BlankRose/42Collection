@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 18:13:00 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:24:02 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_list	**ms_tokenize(char *line)
 
 	i = -1;
 	list = malloc(sizeof(*list));
-	if(!list)
+	if (!list)
 		return (NULL);
 	tokens = 0;
 	*list = tokens;
@@ -50,7 +50,6 @@ t_list	**ms_tokenize(char *line)
 		else if (line[i] == '\'')
 		{
 			tmp = ms_parsequotes(&line[++i]);
-			// printf("%s \n", tmp);
 			lst = ft_lstnew(ms_createtoken(4, i, '\0'));
 			free(((t_tok *)(lst->content))->value);
 			((t_tok *)(lst->content))-> value = tmp;
@@ -74,7 +73,6 @@ t_list	**ms_tokenize(char *line)
 		else
 			ft_lstadd_back(list, ft_lstnew(ms_createtoken(1, i, line[i])));
 	}
-	// ms_printtoken(list);
 	return (list);
 }
 
@@ -252,9 +250,10 @@ int	ms_redircheck(t_list *list)
 	{
 		currtok = (t_tok *)list -> content;
 		nexttok = (t_tok *)list -> next ->content;
-		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT
-				|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
-			&& (nexttok -> type != WORD && nexttok -> type != QUOTE && nexttok -> type != DQUOTE))
+		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT \
+			|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
+			&& (nexttok -> type != WORD && nexttok -> type != QUOTE \
+			&& nexttok -> type != DQUOTE))
 			return (-1);
 		if (currtok -> type == REDIR_IN)
 			redirs[0]++;
@@ -310,4 +309,3 @@ void	ms_tokjoining(t_list *list)
 			list = list -> next;
 	}
 }
-
