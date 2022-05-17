@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:48:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:20:11 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:48:35 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,22 @@
 
 static char	*ms_getnextcmd(char *line)
 {
+	int		hasquote;
+	char	prev;
+
+	hasquote = 0;
+	prev = 0;
 	if (!line)
 		return (0);
 	else if (*line && !ms_isoperator(*line))
 	{
-		while (*line && (!ms_isoperator(*line) || ft_isspace(*line)))
+		while (*line && (!ms_isoperator(*line) || ft_isspace(*line) \
+			|| hasquote))
+		{
+			hasquote = ms_checkquote(*line, hasquote);
+			prev = *line;
 			line++;
+		}
 		return (line);
 	}
 	else
@@ -62,9 +72,10 @@ char	***ms_split_cmd(char *line)
 		return (0);
 	while (v.y < v.x)
 	{
+		tmp = 0;
 		tmp = ms_getnextcmd(line);
 		tmp = ft_substr(line, 0, ft_strlen(line) - ft_strlen(tmp));
-		res[v.y] = ft_split(tmp, ' ');
+		res[v.y] = ms_splitadv(tmp, ' ');
 		line = ms_getnextcmd(line);
 		free (tmp);
 		v.y++;
@@ -86,7 +97,7 @@ void	ms_print_cmd(char ***cmd)
 		printf("[CMD %d]==----\n", v.x);
 		while (cmd[v.x][v.y])
 		{
-			printf("%d\t%s\n", v.y, cmd[v.x][v.y]);
+			printf("%d\t[%s]\n", v.y, cmd[v.x][v.y]);
 			v.y++;
 		}
 		v.x++;

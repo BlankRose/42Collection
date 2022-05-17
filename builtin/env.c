@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:02:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 14:19:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:45:42 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ms_builtin_env(int c, char **args, char **env)
 	if (c > 1)
 	{
 		ft_printf(1, "%senv: %s: No such file or directory\n%s", \
-			RED, args[1], FONTLESS);
+			RED, args[1], RESETFONT);
 		return (1);
 	}
 	i = 0;

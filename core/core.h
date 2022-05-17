@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:48:12 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:39:28 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_tok {
 typedef struct s_main {
 	int		exit;
 	int		fds[2];
+	pid_t	running;
+	t_byte	last_exit_code;
 	char	**envp;
 	char	*prompt_msg;
 	t_plist	*envplist;
@@ -55,6 +57,7 @@ typedef struct s_main {
 	int		out_file;
 	int		out_file_app;
 	int		in_file_here;
+	char	***cmds;
 }	t_main;
 
 extern t_main	*g_main;
@@ -85,7 +88,7 @@ typedef int (builtin_ft)(int, char **, char **);
 /*********************************************************/
 
 /* Handles a signal SIG, with its INFO and CONTEXT */
-void	ms_signal_handler(int sig, siginfo_t *info, void *context);
+void	ms_signal_handler(int sig);
 
 /* Duplicates the whole ARRAY of chars
 Return: newly created array */
@@ -99,8 +102,8 @@ int		ms_arraylen(char **arr);
 Return: newly created list */
 t_plist	*ms_envptolist(char **envp);
 
-/* Gets a new prompt ready */
-void	ms_prompt_new(void);
+/* Gets the prompt ready */
+void	ms_prompt_run(void);
 
 t_plist	*ms_lstlocate(t_plist *lst, size_t n);
 t_plist	*ms_lstlast(t_plist *lst);
@@ -123,10 +126,12 @@ void	ms_tokjoining(t_list *list);
 void	ms_printtoken(t_list **lst);
 void ms_spacetokdel(t_list **list);
 
+char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);
 void	ms_print_cmd(char ***cmd);
 char	***ms_free_cmd(char ***cmd);
 
+int		ms_checkquote(char c, int hasquote);
 int		ms_isquote(int c);
 int		ms_isoperator(int c);
 

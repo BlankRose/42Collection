@@ -6,52 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 19:47:11 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:39:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-
-static builtin_ft	*ms_is_builtin(char *line)
-{
-	if (!ft_strncmp(line, "exit", 5))
-		return (ms_builtin_exit);
-	if (!ft_strncmp(line, "echo", 5))
-		return (ms_builtin_echo);
-	if (!ft_strncmp(line, "env", 4))
-		return (ms_builtin_env);
-	if (!ft_strncmp(line, "pwd", 4))
-		return (ms_builtin_pwd);
-	return (0);
-}
-
-void	ms_prompt_new(void)
-{
-	builtin_ft	*ft;
-	char		*line;
-	char		***commands;
-	char		*target;
-
-	line = readline(g_main->prompt_msg);
-	if (line)
-		add_history(line);
-	ft = ms_is_builtin(line);
-	commands = ms_split_cmd(line);
-	ms_print_cmd(commands);
-	//printf("%s \n", envp[0]);
-	//ft_printf(1, "LEN = %d\n", len);
-	//pipex(main -> fds, len, commands, main -> envp);
-	if (ft)
-		ft(1, 0, g_main->envp);
-	else
-	{
-		target = ft_getbin(line, g_main->envp);
-		if (!target)
-			printf("%sMiniShell: command not found: %s\n%s", \
-			RED, line, RESETFONT);
-	}
-	commands = ms_free_cmd(commands);
-}
 
 char	*ms_charjoin(char *str, char c)
 {
@@ -102,7 +61,7 @@ char	*ms_getfromenvp(char *str)
 	res[0] = '\0';
 	lst = g_main -> envplist;
 	i = -1;
-	while (str[++i] && str[i] != '\"' && str[i] != '$' && !ft_isspace(str[i]))
+	while (str[++i] && !ft_isset(str[i], "\"\'$") && !ft_isspace(str[i]))
 		tmp = ms_charjoin(tmp, str[i]);
 	while (lst)
 	{

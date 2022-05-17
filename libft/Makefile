@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/11 17:15:54 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/17 00:09:13 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ DEFINES = -D BUFFER_SIZE=$(BUFFER_SIZE)
 # STRING MANIPULATIONS
 STRING_FOLDER = strings/
 STRING_FILES = is_alphanum.c is_special.c is_set.c set_char.c set_string.c \
-			   duplicate.c split.c compare.c strLength.c applyFunc.c search.c
+			   duplicate.c split.c compare.c strLength.c applyFunc.c search.c \
+			   search2.c
 STRING = $(addprefix $(STRING_FOLDER), $(STRING_FILES))
 
 # MEMORY MANIPULATIONS
