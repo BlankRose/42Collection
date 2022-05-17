@@ -119,6 +119,9 @@ char	*ms_parsequotes(char *str);
 char	*ms_charjoin(char *str, char c);
 char	*ms_parseline(char *line);
 char	**ms_appendtoarr(char **arr, char *str);
+void	ms_tokjoining(t_list *list);
+void	ms_printtoken(t_list **lst);
+void ms_spacetokdel(t_list **list);
 
 char	***ms_split_cmd(char *line);
 void	ms_print_cmd(char ***cmd);
@@ -132,6 +135,6 @@ int		ms_builtin_env(int c, char **args, char **env);
 int		ms_builtin_exit(int c, char **args, char **env);
 int		ms_builtin_pwd(int c, char **args, char **env);
 
-t_list	*ms_tokenize(char *line);
+t_list	**ms_tokenize(char *line);
 
 #endif

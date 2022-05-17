@@ -36,7 +36,7 @@ LIBRARIES = -L$(LIB_FOLDER) -l$(LIB_NAME) \
 
 CORE_FOLDER = ./core/
 CORE_FILES = main.c signals.c utils.c cmds.c lists.c \
-			lexer.c init.c lists2.c
+			lexer.c init.c lists2.c parse.c
 CORE_SRC = $(addprefix $(CORE_FOLDER), $(CORE_FILES))
 CORE_OBJ = $(CORE_SRC:.c=.o)
 

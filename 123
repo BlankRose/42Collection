@@ -1,0 +1,13 @@
+total 160
+drwxr-xr-x  12 cciobanu  2022_mulhouse    408 May 16 12:06 .
+drwxr-xr-x  14 cciobanu  2022_mulhouse    476 May 15 11:27 ..
+drwxr-xr-x  15 cciobanu  2022_mulhouse    510 May 16 09:25 .git
+-rw-r--r--   1 cciobanu  2022_mulhouse     55 May 14 08:41 .gitignore
+-rw-r--r--   1 cciobanu  2022_mulhouse      0 May 16 12:07 123
+-rw-r--r--   1 cciobanu  2022_mulhouse   2808 May 16 09:25 Makefile
+drwxr-xr-x  12 cciobanu  2022_mulhouse    408 May 16 09:53 builtin
+drwxr-xr-x  20 cciobanu  2022_mulhouse    680 May 16 11:23 core
+drwxr-xr-x  14 cciobanu  2022_mulhouse    476 May 16 09:53 libft
+drwxr-xr-x   2 cciobanu  2022_mulhouse     68 May 14 10:19 list
+-rwxr-xr-x   1 cciobanu  2022_mulhouse  72504 May 16 11:50 minishell
+drwxr-xr-x   9 cciobanu  2022_mulhouse    306 May 16 09:53 pipexx

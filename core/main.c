@@ -50,10 +50,12 @@ int	ms_init(char **envp)
 // 	sigaction(SIGQUIT, &sa, 0);
 // }
 
-void	ms_printtoken(t_list *lst)
+void	ms_printtoken(t_list **token)
 {
 	t_tok	*tok;
+	t_list *lst;
 
+	lst = *token;
 	while (lst)
 	{	
 		tok = (t_tok *)(lst -> content);
@@ -64,7 +66,7 @@ void	ms_printtoken(t_list *lst)
 
 int	main(int c, char **args, char **envp)
 {
-	//t_list *tokens;
+	t_list **tokens;
 
 	c++;
 	args = 0;
@@ -78,9 +80,11 @@ int	main(int c, char **args, char **envp)
 	// while(main->envp[++i])
 	// 	printf("%s \n", main->envp[i]);
 	//execve("/bin/echo", test, envp);
-	// tokens = ms_tokenize("asdf    as>><<");
-	// ms_printtoken(tokens);
-	//ms_printlist(main -> envplist);
+	tokens = ms_tokenize("asdf  \"x |    as>> $abc  x>> . x\"<'x   $abc   |<>>< x'>>< < << ");
+	ms_tokjoining(*tokens);
+	ms_spacetokdel(tokens);
+	ms_printtoken(tokens);
+	//ms_printlist(g_main -> envplist);
 	// ms_siginit(main);
 	ms_startshell();
 }
