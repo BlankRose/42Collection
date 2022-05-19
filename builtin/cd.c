@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 20:22:13 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 20:51:39 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/18 00:03:30 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ int	ms_builtin_cd(int c, char **args, char **env)
 	ms_set_prompt_msg();
 	return (0);
 }
-
