@@ -20,7 +20,7 @@ char	*ms_parsequotes(char *str)
 	tmp = malloc(sizeof(*tmp));
 	if (!tmp)
 		return (NULL);
-	tmp = "";
+	tmp[0] = '\0';
 	i = 0;
 	while (str[i] && str[i] != '\'')
 	{

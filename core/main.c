@@ -32,6 +32,7 @@ int	ms_init(char **envp)
 	g_main->exit = 0;
 	g_main->cmds = 0;
 	g_main->running = 0;
+	g_main->pipecount = 0;
 	g_main->last_exit_code = 0;
 	g_main->envp = ms_array_cpy(envp);
 	g_main->envplist = ms_envptolist(envp);

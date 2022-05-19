@@ -3,7 +3,7 @@ RM = rm -f
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = pipex.c pipex-utils.c
+SRC = pipexcpy.c pipex-utils.c
 OBJ = $(SRC:.c=.o)
 
 NAME = libpipex.a
