@@ -56,6 +56,7 @@ static size_t	ms_count_entries(t_list **tokens)
 			i++;
 		current = current->next;
 	}
+	g_main -> pipecount = i;
 	return (i);
 }
 
@@ -109,29 +110,44 @@ static char	***ms_tokens2args(t_list **tokens)
 	return (args);
 }
 
+
+
 static int	ms_prompt_execute(t_list **tokens)
 {
 	builtin_ft	*ft;
-	char		*target;
+	// char		*target;
 
 	if (ms_redircheck(*tokens) || ms_pipecheck(*tokens))
 		return (printf("%sMiniShell: parse error\n%s", RED, RESETFONT));
 	g_main->cmds = ms_tokens2args(tokens);
+
+
 	ft = ms_is_builtin(g_main->cmds[0][0]);
-	if (ft)
-		g_main->last_exit_code = ft(ms_arraylen(g_main->cmds[0]), \
-		g_main->cmds[0], g_main->envp);
-	else
-	{
-		target = ft_getbin(g_main->cmds[0][0], g_main->envp);
-		if (!target)
-			printf("%sMiniShell: command not found: %s\n%s", \
-			RED, g_main->cmds[0][0], RESETFONT);
-		else
-			execve(target, g_main->cmds[0], g_main->envp);
-	}
-	ms_free_cmd(g_main->cmds);
+
+	pipex(g_main -> fds, g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
+	// if (ft)
+	// 	g_main->last_exit_code = ft(ms_arraylen(g_main->cmds[0]), \
+	// 	g_main->cmds[0], g_main->envp);
+	// else
+	// {
+	// 	target = ft_getbin(g_main->cmds[0][0], g_main->envp);
+	// 	if (!target)
+	// 		printf("%sMiniShell: command not found: %s\n%s", \
+	// 		RED, g_main->cmds[0][0], RESETFONT);
+	// 	else
+	// 		execve(target, g_main->cmds[0], g_main->envp);
+	// }
 	return (0);
+}
+
+static void ms_closeallfd(void)
+{
+	int i;
+
+	i = 2;
+	while (++i <= 256)
+		close(i);
+
 }
 
 void	ms_prompt_run(void)
@@ -148,5 +164,8 @@ void	ms_prompt_run(void)
 		add_history(line);
 		ms_prompt_execute(ms_prompt_tokenize(line));
 		free(line);
+		ms_closeallfd();
+		//ms_free_cmd(g_main->cmds);
+		g_main->cmds = 0;
 	}
 }

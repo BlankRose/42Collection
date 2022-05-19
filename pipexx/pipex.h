@@ -13,9 +13,8 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../libft/libft.h"
+# include "../core/core.h"
 # include <unistd.h>
-# include <stdio.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -23,6 +22,6 @@
 int		ft_wordcount(const char *str, char c);
 char	*ft_getbin(char *command, char **envp);
 void	ft_freemem(char **arr);
-int		pipex(int *fds, int argc, char **argv, char **envp);
+int		pipex(int *fds, int argc, char ***argv, char **envp);
 
 #endif

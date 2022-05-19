@@ -20,6 +20,7 @@
 /*                                                       */
 /*********************************************************/
 
+# include <stdio.h>
 # include "../libft/libft.h"
 # include "../pipexx/pipex.h"
 # include "../builtin/builtin.h"
@@ -49,6 +50,7 @@ typedef struct s_tok {
 typedef struct s_main {
 	int		exit;
 	int		fds[2];
+	int		pipecount;
 	pid_t	running;
 	t_byte	last_exit_code;
 	char	**envp;
@@ -149,5 +151,7 @@ int		ms_isquote(int c);
 int		ms_isoperator(int c);
 
 t_list	**ms_tokenize(char *line);
+
+
 
 #endif

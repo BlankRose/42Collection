@@ -17,7 +17,7 @@ void	ft_process(char *command, char **envp)
 	char	*path;
 	char	**arr;
 
-	arr = ft_split(command, '|');
+	arr = ft_split(command, ' ');
 	path = ft_getbin(arr[0], envp);
 	if (path)
 	{
@@ -57,7 +57,9 @@ void	ft_processfirst(char *command, char **envp, int inputfd)
 	}
 }
 
-int	pipex(int *fds, int argc, char **argv, char **envp)
+
+
+int	pipex(int *fds, int argc, char ***argv, char **envp)
 {
 	int	input_file;
 	int	output_file;
