@@ -6,13 +6,13 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:02:44 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 13:53:45 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:29:13 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	ms_builtin_exit(int c, char **args, char **env)
+int	ms_builtin_exit(int c, char **args, char **env, int fd)
 {
 	t_byte	exit_code;
 
@@ -31,7 +31,7 @@ int	ms_builtin_exit(int c, char **args, char **env)
 		exit(exit_code);
 	}
 	else
-		ft_printf(1, "%sexit: too many arguments\n%s", \
+		ft_printf(fd, "%sexit: too many arguments\n%s", \
 			RED, RESETFONT);
 	return (0);
 }
