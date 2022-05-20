@@ -6,22 +6,22 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:44:19 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 20:22:49 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:32:02 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int	ms_isvalid(char *str)
+static int	ms_isvalid(char *str, int fd)
 {
 	if (!ft_isalpha(*str) && *str != '_')
-		return (ft_printf(1, "%sunset: %s: invalid parameter name%s%s\n", \
+		return (ft_printf(fd, "%sunset: %s: invalid parameter name%s%s\n", \
 		RED, str, RESETFONT));
 	str++;
 	while (*str)
 	{
 		if (!ft_isalnum(*str) && *str != '_')
-			return (ft_printf(1, "%sunset: %s: invalid parameter name%s%s\n", \
+			return (ft_printf(fd, "%sunset: %s: invalid parameter name%s%s\n", \
 			RED, str, RESETFONT));
 		str++;
 	}
@@ -51,20 +51,20 @@ static void	ms_destroy_key(char *key)
 	}
 }
 
-int	ms_builtin_unset(int c, char **args, char **env)
+int	ms_builtin_unset(int c, char **args, char **env, int fd)
 {
 	char	*tmp;
 
 	if (c < 2)
 	{
-		ft_printf(1, "%sunset: not enough arguments\n%s", RED, RESETFONT);
+		ft_printf(fd, "%sunset: not enough arguments\n%s", RED, RESETFONT);
 		return (1);
 	}
 	env = args;
 	args++;
 	while (*args)
 	{
-		if (!ms_isvalid(*args))
+		if (!ms_isvalid(*args, fd))
 		{
 			tmp = ms_getfromenvp(*args);
 			if (!tmp)

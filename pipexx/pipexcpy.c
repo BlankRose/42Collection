@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipexcpy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 09:35:42 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/17 18:56:54 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:34:17 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_process(char **command, char **envp)
 	ft = ms_is_builtin(command[0]);
 	
 	if (ft)
-		ft(ms_arraylen(command), command, envp);
+		ft(ms_arraylen(command), command, envp, 1);
 	else 
 	{
 		path = ft_getbin(command[0], envp);
@@ -113,7 +113,7 @@ int	pipex(int argc, char ***argv, char **envp)
 	{
 		ft = ms_is_builtin(argv[0][0]);
 		if (ft)
-			ft(ms_arraylen(argv[0]), argv[0], envp);
+			ft(ms_arraylen(argv[0]), argv[0], envp, output_file);
 		else
 			ft_processone(argv[0], envp, input_file, output_file);
 		return (0);
@@ -128,7 +128,7 @@ int	pipex(int argc, char ***argv, char **envp)
 
 		ft = ms_is_builtin(argv[count][0]);
 		if (ft)
-			ft(ms_arraylen(argv[count]), argv[count], envp);
+			ft(ms_arraylen(argv[count]), argv[count], envp, output_file);
 		else
 			ft_processfirst(argv[count], envp, tmpfd, output_file);
 		return (0);

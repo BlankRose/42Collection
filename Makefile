@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/17 20:41:10 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/20 15:27:33 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@
 #==--------------------------------------==#
 
 NAME = minishell
-FLAGS = -Wall -Werror -Wextra
-DANGER = $(FLAGS) -fsanitize=address -g3
+FLAGS = -Wall -Werror -Wextra -g3
+DANGER = $(FLAGS) -fsanitize=address
 
 #==--------------------------------------==#
 # *                                      * #
@@ -74,14 +74,12 @@ $(NAME): dependency $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
+	@make clean -sC $(LIB_FOLDER)
 
 fclean: clean
 	@rm -f $(NAME)
-
-aclean: fclean
 	@make fclean -sC $(LIB_FOLDER)
-	@make fclean -sC $(PIPEX_FOLDER)
 
-re: aclean all
+re: fclean all
 
-.PHONY: all builtin dependency clean fclean aclean re
+.PHONY: all builtin dependency clean fclean re

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 20:48:18 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:27:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ extern t_main	*g_main;
 # define HEREDOC        7
 # define REDIR_OUT_APP  8
 
-typedef int (builtin_ft)(int, char **, char **);
+typedef int (builtin_ft)(int, char **, char **, int fd);
 
 /*********************************************************/
 /*                                                       */

@@ -6,35 +6,36 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:50:38 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 19:44:12 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:34:40 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int	ms_isvalid(char *str)
+static int	ms_isvalid(char *str, int fd)
 {
 	char	*tmp;
 
 	tmp = str;
 	if (!ft_isalpha(*tmp) && *tmp != '_')
-		return (ft_printf(1, "%sexport: not an identifier: %s%s\n", \
+		return (ft_printf(fd, "%sexport: not an identifier: %s%s\n", \
 		RED, str, RESETFONT));
 	tmp++;
 	while (*tmp)
 	{
 		if (!ft_isalnum(*tmp) && *tmp != '_' && *tmp != '=')
-			return (ft_printf(1, "%sexport: not an identifier: %s%s\n", \
+			return (ft_printf(fd, "%sexport: not an identifier: %s%s\n", \
 			RED, str, RESETFONT));
 		if (*tmp == '=' && tmp[1])
 			return (0);
 		else if (*tmp == '=' && !tmp[1])
-			return (ft_printf(1, "%sexport: missing value for identifier: %s%s\n", \
+			return (ft_printf(fd, "%sexport: missing value for identifier: %s%s\n", \
 			RED, str, RESETFONT));
 		tmp++;
 	}
 	return (1);
 }
+
 static void	ms_changeenv(char *str)
 {
 	char	*key;
@@ -54,25 +55,25 @@ static void	ms_changeenv(char *str)
 	free(key);
 }
 
-int	ms_builtin_export(int c, char **args, char **env)
+int	ms_builtin_export(int c, char **args, char **env, int fd)
 {
 	char	*tmp;
 
 	if (c < 2)
 	{
-		ms_builtin_env(c, args, env);
+		ms_builtin_env(c, args, env, fd);
 		return (0);
 	}
 	args++;
 	while (*args)
 	{
-		if (!ms_isvalid(*args))
+		if (!ms_isvalid(*args, fd))
 		{
 			tmp = ms_getfromenvp(*args);
 			if (!tmp[0])
 				ms_lstadd_back(&g_main->envplist, ms_lstnew(ft_substr(*args, 0, \
-				ft_strlenlimit(*args, '=')), ft_substr(ft_strchr(*args, '='), 1, \
-				ft_strlen(ft_strchr(*args, '=')) - 1)));
+				ft_strlenlimit(*args, '=')), ft_substr(ft_strchr(*args, '='), \
+				1, ft_strlen(ft_strchr(*args, '=')) - 1)));
 			else
 				ms_changeenv(*args);
 			free(tmp);
