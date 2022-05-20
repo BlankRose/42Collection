@@ -274,6 +274,7 @@ int	ms_redircheck(t_list *list)
 	return (0);
 }
 
+
 void	ms_tokjoining(t_list *list)
 {
 	t_tok	*currtok;
