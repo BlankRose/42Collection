@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 21:24:02 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:15:24 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,27 @@ t_tok	*ms_createtoken(int type, int index, char value)
 	tok->value[0] = value;
 	tok->value[1] = '\0';
 	return (tok);
+}
+
+void	ms_createheredoc(char *end)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	line = get_next_line(0);
+	while (line)
+	{
+		if (!ft_strncmp(line, end, ft_min(ft_strlen(line) - 1, ft_strlen(end))))
+		{
+			free(line);
+			break ;
+		}
+		write(fd, line, ft_strlen(line));
+		free(line);
+		line = get_next_line(0);
+	}
+	close(fd);
 }
 
 t_list	**ms_tokenize(char *line)

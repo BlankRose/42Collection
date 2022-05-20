@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 15:27:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:58:08 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ extern t_main	*g_main;
 # define HEREDOC        7
 # define REDIR_OUT_APP  8
 
+# define HEREDOC_FILE	"/tmp/Heredoc"
+
 typedef int (builtin_ft)(int, char **, char **, int fd);
 
 /*********************************************************/
@@ -141,6 +143,7 @@ void	ms_wordquotesjoining(t_list *list);
 int		ms_pipecheck(t_list *list);
 void	ms_set_prompt_msg(void);
 
+void	ms_createheredoc(char *end);
 char	**ms_splitadv(const char *s, char c);
 char	***ms_split_cmd(char *line);
 void	ms_print_cmd(char ***cmd);
