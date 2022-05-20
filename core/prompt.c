@@ -40,9 +40,10 @@ static t_list	**ms_prompt_tokenize(char *line)
 	ms_parse_words(tokens);
 	ms_wordquotesjoining(*tokens);
 	ms_spacetokdel(tokens);
+	
 	ms_redirset(tokens);
+	//ms_printtoken(tokens);
 
-	ms_printtoken(tokens);
 	return (tokens);
 }
 
@@ -158,6 +159,7 @@ void	ms_prompt_run(void)
 
 	while (TRUE)
 	{
+		write(1, "\n", 1);
 		line = readline(g_main->prompt_msg);
 		if (!line)
 			ms_builtin_exit(1, 0, 0, 1);
@@ -167,6 +169,8 @@ void	ms_prompt_run(void)
 		ms_prompt_execute(ms_prompt_tokenize(line));
 		free(line);
 		ms_closeallfd();
+		g_main-> fds[0] = 0;
+		g_main-> fds[1] = 1;
 		//ms_free_cmd(g_main->cmds);
 		g_main->cmds = 0;
 	}

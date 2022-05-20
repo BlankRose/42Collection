@@ -103,10 +103,9 @@ int	pipex(int argc, char ***argv, char **envp)
 	int			count;
 	int			tmpfd;
 
+	
 	input_file = g_main -> fds[0];
-	//output_file = g_main -> fds[1];
-	//input_file = open("tes.txt", O_RDONLY);
-	output_file = open("text1.txt", O_RDWR | O_CREAT | O_TRUNC , 0777);
+	output_file = g_main -> fds[1];
 
 	count = 1;
 	if (argc == 1)
