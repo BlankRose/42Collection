@@ -22,6 +22,6 @@
 int		ft_wordcount(const char *str, char c);
 char	*ft_getbin(char *command, char **envp);
 void	ft_freemem(char **arr);
-int		pipex(int *fds, int argc, char ***argv, char **envp);
+int		pipex(int argc, char ***argv, char **envp);
 
 #endif
