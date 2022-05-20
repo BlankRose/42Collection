@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:36:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 17:03:29 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:15:24 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void	ms_createheredoc(char *end)
 		if (!ft_strncmp(line, end, ft_min(ft_strlen(line) - 1, ft_strlen(end))))
 		{
 			free(line);
-			return ;
+			break ;
 		}
 		write(fd, line, ft_strlen(line));
 		free(line);
 		line = get_next_line(0);
 	}
+	close(fd);
 }
 
 t_list	**ms_tokenize(char *line)
