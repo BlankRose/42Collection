@@ -12,24 +12,29 @@
 
 #include "pipex.h"
 
+
 static void	ft_process(char **command, char **envp)
 {
 	char	*path;
-	// int i = -1;
+	builtin_ft	*ft;
 
-	// while (command[++i])
-	// 	printf("%s ",command[i]);
-	// printf("\n");
-	path = ft_getbin(command[0], envp);
-	if (path)
+	ft = ms_is_builtin(command[0]);
+	
+	if (ft)
+		ft(ms_arraylen(command), command, envp);
+	else 
 	{
-		command[0] = path;
-		execve(command[0], command, envp);
+		path = ft_getbin(command[0], envp);
+		if (path)
+		{
+			command[0] = path;
+			execve(command[0], command, envp);
+		}
+		ft_freemem(command);
+		free(path);
+		perror("Error in command processing ");
+		exit(127);
 	}
-	ft_freemem(command);
-	free(path);
-	perror("Error in command processing ");
-	exit(127);
 }
 
 
@@ -37,102 +42,95 @@ static	void	ft_processfirst(char **command, char **envp, int inputfd, int output
 {
 	pid_t	father;
 	int		fd[2];
-	int		status;
 
 	pipe(fd);
+	//ft_printf(2, "%d %d %d %d \n", fd[0], fd[1], inputfd, outputfd);
+
 	father = fork();
 	if (father == -1)
 		exit(2);
 	if (father)
 	{
 		close(fd[1]);
+		
 		dup2(fd[0], inputfd);	
-		waitpid(father, &status, 0);
+		
+		//printf("INPUT FD et FD[0] %d %d \n", inputfd, fd[0]);
+		
+		waitpid(father, &g_main -> last_exit_code, 0);
 	}
 	else
 	{
 		close(fd[0]);
 		
-		dup2(inputfd, STDIN_FILENO);
+		dup2(inputfd, STDIN_FILENO);		
 		
 		if (outputfd == -1)
-			dup2(fd[1], STDOUT_FILENO);
+			dup2(fd[1], STDOUT_FILENO);		
 		
 		else 
 			dup2(outputfd, STDOUT_FILENO);
+
 		
-		
-		if (inputfd < 0)
-		{
-			exit(0);
-		}
-		else
-			ft_process(command, envp);
+		ft_process(command, envp);
+		exit(0);
 	}
 }
 
-
-
-static	void	ft_processlast(char **command, char **envp, int count , int in, int out, int flag)
+static	void	ft_processone(char **command, char **envp, int in, int out)
 {
 	pid_t	father;
-	int		status;
 
 	father = fork();
-
 	if (father == -1)
 		exit(2);
 	if (father)
-	{
-		waitpid(father, &status, 0);
-	}
+		waitpid(father, &g_main -> last_exit_code, 0);
 	else
 	{
-			if (!flag)
-				dup2(in, STDIN_FILENO);
+			dup2(in, STDIN_FILENO);
 			dup2(out, STDOUT_FILENO);
-
-			if (count > 1)
-				count++;
 			ft_process(command, envp);
+			exit (0);
 	}
 }
 
-
-int	pipex(int *fds, int argc, char ***argv, char **envp)
+int	pipex(int argc, char ***argv, char **envp)
 {
-	int	input_file;
-	int	output_file;
-	int	count;
+	builtin_ft	*ft;
+	int			input_file;
+	int			output_file;
+	int			count;
+	int			tmpfd;
 
-	//int fd;
+	input_file = g_main -> fds[0];
+	//output_file = g_main -> fds[1];
+	//input_file = open("tes.txt", O_RDONLY);
+	output_file = open("text1.txt", O_RDWR | O_CREAT | O_TRUNC , 0777);
 
 	count = 1;
-	//fd = open("test1.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
 	if (argc == 1)
 	{
-		input_file = fds[0];
-		output_file = fds[1];
-
-		ft_processlast(argv[0], envp, argc, input_file, output_file, 0);
-		printf("FDS : %d %d \n", input_file, output_file);
-
+		ft = ms_is_builtin(argv[0][0]);
+		if (ft)
+			ft(ms_arraylen(argv[0]), argv[0], envp);
+		else
+			ft_processone(argv[0], envp, input_file, output_file);
 		return (0);
 	}
 	else if (argc >= 2)
 	{
-		input_file = fds[0];
-		output_file = fds[1];
+		tmpfd = dup(input_file);
 
-		int tmpfd = dup(STDIN_FILENO);
-
-		ft_processfirst(argv[0], envp, tmpfd, -1);
-		
+		ft_processfirst(argv[0], envp, tmpfd, -1);		
 		while (count < argc - 1)
-			ft_processfirst(argv[count++], envp, tmpfd, -1);
-		
-		ft_processfirst(argv[count], envp, tmpfd, output_file);
+			ft_processfirst(argv[count++], envp, tmpfd, -1);	
 
+		ft = ms_is_builtin(argv[count][0]);
+		if (ft)
+			ft(ms_arraylen(argv[count]), argv[count], envp);
+		else
+			ft_processfirst(argv[count], envp, tmpfd, output_file);
 		return (0);
 	}
 	else

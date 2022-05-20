@@ -12,7 +12,7 @@
 
 #include "core.h"
 
-static builtin_ft	*ms_is_builtin(char *line)
+builtin_ft	*ms_is_builtin(char *line)
 {
 	if (!ft_strncmp(line, "exit", 5))
 		return (ms_builtin_exit);
@@ -121,10 +121,9 @@ static int	ms_prompt_execute(t_list **tokens)
 		return (printf("%sMiniShell: parse error\n%s", RED, RESETFONT));
 	g_main->cmds = ms_tokens2args(tokens);
 
-
 	ft = ms_is_builtin(g_main->cmds[0][0]);
 
-	pipex(g_main -> fds, g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
+	pipex(g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
 	// if (ft)
 	// 	g_main->last_exit_code = ft(ms_arraylen(g_main->cmds[0]), \
 	// 	g_main->cmds[0], g_main->envp);

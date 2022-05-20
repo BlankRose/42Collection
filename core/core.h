@@ -52,7 +52,7 @@ typedef struct s_main {
 	int		fds[2];
 	int		pipecount;
 	pid_t	running;
-	t_byte	last_exit_code;
+	int 	last_exit_code;
 	char	**envp;
 	char	*prompt_msg;
 	t_plist	*envplist;
@@ -151,7 +151,7 @@ int		ms_isquote(int c);
 int		ms_isoperator(int c);
 
 t_list	**ms_tokenize(char *line);
-
+builtin_ft	*ms_is_builtin(char *line);
 
 
 #endif
