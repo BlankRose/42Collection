@@ -6,35 +6,40 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 09:35:42 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/20 18:33:43 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:37:44 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_process(char *command, char **envp)
+static void	ft_process(char **command, char **envp, int fdout)
 {
-	char	*path;
-	char	**arr;
+	char		*path;
+	builtin_ft	*ft;
 
-	arr = ft_split(command, ' ');
-	path = ft_getbin(arr[0], envp);
-	if (path)
+	ft = ms_is_builtin(command[0]);
+	if (ft)
+		ft(ms_arraylen(command), command, envp, fdout);
+	else
 	{
-		arr[0] = path;
-		execve(arr[0], arr, envp);
+		path = ft_getbin(command[0], envp);
+		if (path)
+		{
+			command[0] = path;
+			execve(command[0], command, envp);
+		}
+		free(path);
+		ft_freemem(command);
+		perror("Error in command processing ");
+		exit(127);
 	}
-	ft_freemem(arr);
-	free(path);
-	perror("Error in command processing ");
-	exit(127);
 }
 
-void	ft_processfirst(char *command, char **envp, int inputfd)
+static	void	ft_processfirst(char **command, char **envp, \
+	int inputfd, int outputfd)
 {
 	pid_t	father;
 	int		fd[2];
-	int		status;
 
 	pipe(fd);
 	father = fork();
@@ -43,43 +48,87 @@ void	ft_processfirst(char *command, char **envp, int inputfd)
 	if (father)
 	{
 		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
-		waitpid(father, &status, 0);
+		dup2(fd[0], inputfd);
+		waitpid(father, &g_main -> last_exit_code, 0);
 	}
 	else
 	{
 		close(fd[0]);
-		dup2(fd[1], STDOUT_FILENO);
-		if (!inputfd)
-			exit(0);
+		dup2(inputfd, STDIN_FILENO);
+		if (outputfd == -1)
+			dup2(fd[1], STDOUT_FILENO);
 		else
-			ft_process(command, envp);
+			dup2(outputfd, STDOUT_FILENO);
+		ft_process(command, envp, fd[1]);
+		exit(0);
 	}
 }
 
-int	pipex(int *fds, int argc, char ***argv, char **envp)
+static	void	ft_processone(char **command, char **envp, int in, int out)
 {
-	int	input_file;
-	int	output_file;
-	int	count;
+	pid_t	father;
 
-	count = 0;
-	if (argc >= 2)
-	{
-		input_file = fds[0];
-		output_file = fds[1];
-		dup2(input_file, STDIN_FILENO);
-		dup2(output_file, STDOUT_FILENO);
-		ft_processfirst(argv[0], envp, input_file);
-		while (count < (argc - 2))
-			ft_processfirst(argv[count++], envp, 1);
-		ft_process(argv[count], envp);
-		return (0);
-	}
+	father = fork();
+	if (father == -1)
+		exit(2);
+	if (father)
+		waitpid(father, &g_main -> last_exit_code, 0);
 	else
 	{
-		perror("Error : You should give at least 4 atguments!");
+		dup2(in, STDIN_FILENO);
+		dup2(out, STDOUT_FILENO);
+		ft_process(command, envp, STDOUT_FILENO);
+		exit (0);
+	}
+}
+
+static int	pipex_multi(int argc, char ***argv, char **envp)
+{
+	builtin_ft	*ft;
+	int			input_file;
+	int			output_file;
+	int			tmpfd;
+	int			count;
+
+	count = 1;
+	input_file = g_main -> fds[0];
+	output_file = g_main -> fds[1];
+	tmpfd = dup(input_file);
+	ft_processfirst(argv[0], envp, tmpfd, -1);
+	while (count < argc - 1)
+		ft_processfirst(argv[count++], envp, tmpfd, -1);
+	ft = ms_is_builtin(argv[count][0]);
+	if (ft)
+		ft(ms_arraylen(argv[count]), argv[count], envp, output_file);
+	else
+		ft_processfirst(argv[count], envp, tmpfd, output_file);
+	return (0);
+}
+
+int	pipex(int argc, char ***argv, char **envp)
+{
+	builtin_ft	*ft;
+	int			input_file;
+	int			output_file;
+
+	input_file = g_main -> fds[0];
+	output_file = g_main -> fds[1];
+	if (input_file < 0 || output_file < 0)
+	{
+		ft_printf(1, "%sMiniShell: provided redirections couldn't be \
+loaded%s\n", RED, RESETFONT);
 		return (1);
 	}
+	else if (argc == 1)
+	{
+		ft = ms_is_builtin(argv[0][0]);
+		if (ft)
+			ft(ms_arraylen(argv[0]), argv[0], envp, output_file);
+		else
+			ft_processone(argv[0], envp, input_file, output_file);
+		return (0);
+	}
+	else if (argc >= 2)
+		return (pipex_multi(argc, argv, envp));
 	return (0);
 }

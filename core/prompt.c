@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 20:02:18 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:57:45 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,24 @@ static t_list	**ms_prompt_tokenize(char *line)
 	ms_parse_words(tokens);
 	ms_wordquotesjoining(*tokens);
 	ms_spacetokdel(tokens);
+	if (ms_redircheck(*tokens) || ms_pipecheck(*tokens))
+	{
+		printf("%sMiniShell: parse error\n%s", RED, RESETFONT);
+		ft_lstclear(tokens, free);
+		return (0);
+	}
 	ms_redirset(tokens);
 	return (tokens);
 }
 
-static int	ms_prompt_execute(t_list **tokens)
+static int	ms_prompt_execute(char *line)
 {
 	builtin_ft	*ft;
+	t_list		**tokens;
 
-	if (ms_redircheck(*tokens) || ms_pipecheck(*tokens))
-		return (printf("%sMiniShell: parse error\n%s", RED, RESETFONT));
+	tokens = ms_prompt_tokenize(line);
+	if (!tokens)
+		return (1);
 	g_main->cmds = ms_tokens2args(tokens);
 	ft = ms_is_builtin(g_main->cmds[0][0]);
 	pipex(g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
@@ -75,9 +83,12 @@ void	ms_prompt_run(void)
 		if (!line)
 			ms_builtin_exit(1, 0, 0, 1);
 		if (!line[0])
+		{
+			free(line);
 			continue ;
+		}
 		add_history(line);
-		ms_prompt_execute(ms_prompt_tokenize(line));
+		ms_prompt_execute(line);
 		free(line);
 		ms_closeallfd();
 		g_main->fds[0] = 0;

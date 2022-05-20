@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:57:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 15:27:05 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 21:50:24 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,25 @@ void	ms_signal_handler(int sig)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+	}
+}
+
+void	ms_print_cmd(char ***cmd)
+{
+	t_vector2	v;
+
+	v = ft_vector2_new(0, 0);
+	if (!cmd)
+		return ;
+	while (cmd[v.x])
+	{
+		v.y = 0;
+		printf("[CMD %d]==----\n", v.x);
+		while (cmd[v.x][v.y])
+		{
+			printf("%d\t[%s]\n", v.y, cmd[v.x][v.y]);
+			v.y++;
+		}
+		v.x++;
 	}
 }

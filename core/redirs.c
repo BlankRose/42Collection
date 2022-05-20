@@ -6,64 +6,55 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:56:14 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 19:42:13 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 21:21:20 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 
-void	ms_redirtokjoining(t_list *list, int rtype)
+static int	ms_redircheck_extension(int *redirs, t_list **list, int *i)
 {
 	t_tok	*currtok;
 	t_tok	*nexttok;
-	t_list	*tmplst;
-	char	*str;
-	char	*tmp;
 
-	currtok = (t_tok *)(list -> content);
-	nexttok = (t_tok *)(list -> next -> content);
-	tmp = currtok -> value;
-	str = ft_strjoin(currtok -> value, nexttok -> value);
-	free(tmp);
-	currtok -> value = str;
-	currtok -> type = HEREDOC;
-	if (rtype == 6)
-		currtok -> type = REDIR_OUT_APP;
-	tmplst = list -> next;
-	list -> next = list -> next -> next;
-	free(nexttok -> value);
-	free(nexttok);
-	free(tmplst);
+	currtok = (t_tok *)(*list)->content;
+	nexttok = (t_tok *)(*list)->next->content;
+	if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT \
+		|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
+		&& (nexttok -> type != WORD && nexttok -> type != QUOTE \
+		&& nexttok -> type != DQUOTE))
+		return (0);
+	if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT \
+		|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
+		&& !(*list)->next->next && !(*i))
+		return (0);
+	if (currtok -> type == REDIR_IN)
+		redirs[0]++;
+	if (currtok -> type == REDIR_OUT)
+		redirs[1]++;
+	if (currtok -> type == HEREDOC)
+		redirs[2]++;
+	if (currtok -> type == REDIR_OUT_APP)
+		redirs[3]++;
+	*list = (*list)->next;
+	return (1);
 }
 
 int	ms_redircheck(t_list *list)
 {
-	int		redirs[4];	
-	int		i;
 	t_tok	*currtok;
-	t_tok	*nexttok;
+	int		redirs[4];
+	int		i;
 
 	i = -1;
 	while (++i < 4)
 		redirs[i] = 0;
+	i = 0;
 	while (list && list -> next)
 	{
-		currtok = (t_tok *)list -> content;
-		nexttok = (t_tok *)list -> next ->content;
-		if ((currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT \
-			|| currtok -> type == HEREDOC || currtok -> type == REDIR_OUT_APP)
-			&& (nexttok -> type != WORD && nexttok -> type != QUOTE \
-			&& nexttok -> type != DQUOTE))
+		if (!ms_redircheck_extension(redirs, &list, &i))
 			return (-1);
-		if (currtok -> type == REDIR_IN)
-			redirs[0]++;
-		if (currtok -> type == REDIR_OUT)
-			redirs[1]++;
-		if (currtok -> type == HEREDOC)
-			redirs[2]++;
-		if (currtok -> type == REDIR_OUT_APP)
-			redirs[3]++;
-		list = list -> next;
+		i++;
 	}
 	currtok = (t_tok *)list -> content;
 	if (currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT

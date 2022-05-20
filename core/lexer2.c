@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:49:10 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 19:57:11 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:38:48 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,28 @@ void	ms_spacetokdel(t_list **list)
 	}
 	while (lst && lst -> next)
 		ms_spacetokdel_extension(&lst, tmplst);
+}
+
+void	ms_redirtokjoining(t_list *list, int rtype)
+{
+	t_tok	*currtok;
+	t_tok	*nexttok;
+	t_list	*tmplst;
+	char	*str;
+	char	*tmp;
+
+	currtok = (t_tok *)(list -> content);
+	nexttok = (t_tok *)(list -> next -> content);
+	tmp = currtok -> value;
+	str = ft_strjoin(currtok -> value, nexttok -> value);
+	free(tmp);
+	currtok -> value = str;
+	currtok -> type = HEREDOC;
+	if (rtype == 6)
+		currtok -> type = REDIR_OUT_APP;
+	tmplst = list -> next;
+	list -> next = list -> next -> next;
+	free(nexttok -> value);
+	free(nexttok);
+	free(tmplst);
 }
