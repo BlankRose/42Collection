@@ -24,7 +24,7 @@ int	ms_builtin_exit(int c, char **args, char **env, int fd)
 	if (c < 3)
 	{
 		ms_plstclear(&g_main->envplist, free);
-		ms_free_cmd(g_main->cmds);
+		//ms_free_cmd(g_main->cmds);
 		free(g_main->prompt_msg);
 		free(g_main->envp);
 		free(g_main);

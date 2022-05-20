@@ -274,6 +274,66 @@ int	ms_redircheck(t_list *list)
 	return (0);
 }
 
+static void ms_setdirs(t_tok *currtok, t_tok *nexttok)
+{
+	if ((currtok -> type == REDIR_IN || currtok -> type == HEREDOC) && g_main -> fds[0] == 0)
+	{
+		if (currtok -> type == REDIR_IN)
+			g_main -> fds[0] = open(nexttok -> value , O_RDONLY);
+		else
+		{
+			ms_createheredoc(nexttok -> value); // TO DO
+			g_main -> fds[0] = open("/tmp/HEREDOC", O_RDONLY);
+		}
+	}
+	if ((currtok -> type == REDIR_OUT || currtok -> type == REDIR_OUT_APP) && g_main -> fds[1] == 0)
+	{
+		if (currtok -> type == REDIR_OUT)
+			g_main -> fds[1] = open(nexttok -> value, O_RDWR | O_CREAT | O_TRUNC, 0777);
+		else
+			g_main -> fds[1] = open(nexttok -> value, O_RDWR | O_CREAT | O_APPEND, 0777);
+	}
+}
+
+
+void ms_redirset(t_list **list)
+{
+	t_list	*previous;
+	t_list	*lst;
+	t_tok	*currtok;
+	t_tok	*nexttok;
+
+	if (!list)
+		return ;
+	lst = *list;
+	while (lst && lst -> next)
+	{
+		currtok = (t_tok *)(lst -> content);
+		nexttok = (t_tok *)(lst -> next -> content);
+		if (currtok -> type == REDIR_IN || currtok -> type == REDIR_OUT
+			|| currtok -> type == REDIR_OUT_APP || currtok -> type == HEREDOC)
+		{
+			ms_setdirs(currtok, nexttok);
+			if (*list == lst)
+			{
+				*list = lst ->next -> next;
+				ft_lstdelone(lst -> next, free);
+				ft_lstdelone(lst, free);
+				lst = *list;
+			}
+			else
+			{
+				previous -> next = lst -> next -> next;
+				ft_lstdelone(lst -> next, free);
+				ft_lstdelone(lst , free);
+				lst = previous;
+			}
+
+		}
+		previous = lst;
+		lst = lst -> next;
+	}		
+}
 
 void	ms_tokjoining(t_list *list)
 {

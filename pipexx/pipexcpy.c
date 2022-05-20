@@ -13,7 +13,7 @@
 #include "pipex.h"
 
 
-static void	ft_process(char **command, char **envp)
+static void	ft_process(char **command, char **envp, int fdout)
 {
 	char	*path;
 	builtin_ft	*ft;
@@ -21,7 +21,7 @@ static void	ft_process(char **command, char **envp)
 	ft = ms_is_builtin(command[0]);
 	
 	if (ft)
-		ft(ms_arraylen(command), command, envp, 1);
+		ft(ms_arraylen(command), command, envp, fdout);
 	else 
 	{
 		path = ft_getbin(command[0], envp);
@@ -56,7 +56,7 @@ static	void	ft_processfirst(char **command, char **envp, int inputfd, int output
 		dup2(fd[0], inputfd);	
 		
 		//printf("INPUT FD et FD[0] %d %d \n", inputfd, fd[0]);
-		
+		//ft_printf(2, "%d %d %d %d \n", fd[0], fd[1], inputfd, outputfd);
 		waitpid(father, &g_main -> last_exit_code, 0);
 	}
 	else
@@ -72,7 +72,7 @@ static	void	ft_processfirst(char **command, char **envp, int inputfd, int output
 			dup2(outputfd, STDOUT_FILENO);
 
 		
-		ft_process(command, envp);
+		ft_process(command, envp, fd[1]);
 		exit(0);
 	}
 }
@@ -90,7 +90,7 @@ static	void	ft_processone(char **command, char **envp, int in, int out)
 	{
 			dup2(in, STDIN_FILENO);
 			dup2(out, STDOUT_FILENO);
-			ft_process(command, envp);
+			ft_process(command, envp, STDOUT_FILENO);
 			exit (0);
 	}
 }

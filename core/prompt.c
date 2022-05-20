@@ -40,6 +40,9 @@ static t_list	**ms_prompt_tokenize(char *line)
 	ms_parse_words(tokens);
 	ms_wordquotesjoining(*tokens);
 	ms_spacetokdel(tokens);
+	ms_redirset(tokens);
+
+	ms_printtoken(tokens);
 	return (tokens);
 }
 
@@ -157,7 +160,7 @@ void	ms_prompt_run(void)
 	{
 		line = readline(g_main->prompt_msg);
 		if (!line)
-			ms_builtin_exit(1, 0, 0);
+			ms_builtin_exit(1, 0, 0, 1);
 		if (!line[0])
 			continue ;
 		add_history(line);

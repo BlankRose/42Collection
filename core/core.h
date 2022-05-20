@@ -152,6 +152,7 @@ int		ms_isoperator(int c);
 
 t_list	**ms_tokenize(char *line);
 builtin_ft	*ms_is_builtin(char *line);
+void ms_redirset(t_list **list);
 
 
 #endif
