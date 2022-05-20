@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:50:38 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 15:34:40 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 18:33:29 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	ms_isvalid(char *str, int fd)
 		if (*tmp == '=' && tmp[1])
 			return (0);
 		else if (*tmp == '=' && !tmp[1])
-			return (ft_printf(fd, "%sexport: missing value for identifier: %s%s\n", \
-			RED, str, RESETFONT));
+			return (ft_printf(fd, "%sexport: missing value for identifier: %s%s \
+			\n", RED, str, RESETFONT));
 		tmp++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 09:35:42 by cciobanu          #+#    #+#             */
-/*   Updated: 2022/05/17 18:56:54 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 18:33:43 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void	ft_processfirst(char *command, char **envp, int inputfd)
 			ft_process(command, envp);
 	}
 }
-
-
 
 int	pipex(int *fds, int argc, char ***argv, char **envp)
 {

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 16:58:08 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 19:23:35 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_main {
 	int		fds[2];
 	int		pipecount;
 	pid_t	running;
-	int 	last_exit_code;
+	int		last_exit_code;
 	char	**envp;
 	char	*prompt_msg;
 	t_plist	*envplist;
@@ -93,69 +93,71 @@ typedef int (builtin_ft)(int, char **, char **, int fd);
 /*********************************************************/
 
 /* Handles a signal SIG, with its INFO and CONTEXT */
-void	ms_signal_handler(int sig);
+void		ms_signal_handler(int sig);
 
 /* Duplicates the whole ARRAY of chars
 Return: newly created array */
-char	**ms_array_cpy(char **arr);
+char		**ms_array_cpy(char **arr);
 
 /* Finds the length of the ARRAY
 Return: length of ARRAY */
-int		ms_arraylen(char **arr);
+int			ms_arraylen(char **arr);
 
 /* Converts the ENVP ARRAY into a list
 Return: newly created list */
-t_plist	*ms_envptolist(char **envp);
+t_plist		*ms_envptolist(char **envp);
 
 /* Gets the prompt ready */
-void	ms_prompt_run(void);
+void		ms_prompt_run(void);
 
-t_plist	*ms_lstlocate(t_plist *lst, size_t n);
-t_plist	*ms_lstlast(t_plist *lst);
-size_t	ms_lstsize(t_plist *lst);
-t_plist	*ms_lstnew(char *key, char *value);
-void	ms_lstadd_front(t_plist **lst, t_plist *new);
-void	ms_lstadd_back(t_plist **lst, t_plist *new);
-int		ms_printlist(t_plist *lst);
-void	ms_plstclear(t_plist **lst, void (*del)(void*));
-void	ms_plstdelone(t_plist *lst, void (*del)(void*));
+t_plist		*ms_lstlocate(t_plist *lst, size_t n);
+t_plist		*ms_lstlast(t_plist *lst);
+size_t		ms_lstsize(t_plist *lst);
+t_plist		*ms_lstnew(char *key, char *value);
+void		ms_lstadd_front(t_plist **lst, t_plist *new);
+void		ms_lstadd_back(t_plist **lst, t_plist *new);
+int			ms_printlist(t_plist *lst);
+void		ms_plstclear(t_plist **lst, void (*del)(void*));
+void		ms_plstdelone(t_plist *lst, void (*del)(void*));
 
-char	*ms_getfromenvp(char *str);
-char	*ms_strjoin(char *s1, char *s2);
-char	*ms_parsedunquotes(char *str);
-char	*ms_parsedbquotes(char *str);
-char	*ms_parsequotes(char *str);
-char	*ms_charjoin(char *str, char c);
-char	*ms_parseline(char *line);
-char	**ms_appendtoarr(char **arr, char *str);
-void	ms_tokjoining(t_list *list);
-void	ms_printtoken(t_list **lst);
-void	ms_spacetokdel(t_list **list);
-void	ms_parse_words(t_list **tokens);
+char		*ms_getfromenvp(char *str);
+char		*ms_strjoin(char *s1, char *s2);
+char		*ms_parsedunquotes(char *str);
+char		*ms_parsedbquotes(char *str);
+char		*ms_parsequotes(char *str);
+char		*ms_charjoin(char *str, char c);
+char		*ms_parseline(char *line);
+char		**ms_appendtoarr(char **arr, char *str);
+void		ms_tokjoining(t_list *list);
+void		ms_printtoken(t_list **lst);
+void		ms_spacetokdel(t_list **list);
+void		ms_parse_words(t_list **tokens);
 
-int		ms_redircheck(t_list *list);
-int		ms_redirdbcheck(t_list *list);
-void	ms_wqjoining(t_list *list);
-void	ms_wordquotesjoining(t_list *list);
-int		ms_redirdbcheck(t_list *list);
-void	ms_wqjoining(t_list *list);
-void	ms_wordquotesjoining(t_list *list);
-int		ms_pipecheck(t_list *list);
-void	ms_set_prompt_msg(void);
+int			ms_redircheck(t_list *list);
+int			ms_redirdbcheck(t_list *list);
+void		ms_wqjoining(t_list *list);
+void		ms_wordquotesjoining(t_list *list);
+int			ms_redirdbcheck(t_list *list);
+void		ms_wqjoining(t_list *list);
+void		ms_wordquotesjoining(t_list *list);
+int			ms_pipecheck(t_list *list);
+void		ms_set_prompt_msg(void);
 
-void	ms_createheredoc(char *end);
-char	**ms_splitadv(const char *s, char c);
-char	***ms_split_cmd(char *line);
-void	ms_print_cmd(char ***cmd);
-char	***ms_free_cmd(char ***cmd);
+void		ms_createheredoc(char *end);
+char		**ms_splitadv(const char *s, char c);
+char		***ms_tokens2args(t_list **tokens);
+void		ms_print_cmd(char ***cmd);
+char		***ms_free_cmd(char ***cmd);
 
-int		ms_checkquote(char c, int hasquote);
-int		ms_isquote(int c);
-int		ms_isoperator(int c);
+int			ms_checkquote(char c, int hasquote);
+int			ms_isquote(int c);
+int			ms_isoperator(int c);
 
-t_list	**ms_tokenize(char *line);
+t_list		**ms_tokenize(char *line);
 builtin_ft	*ms_is_builtin(char *line);
-void ms_redirset(t_list **list);
-
+void		ms_redirset(t_list **list);
+void		ms_wordtokjoining(t_list *list);
+void		ms_spacetokjoining(t_list *list);
+void		ms_redirtokjoining(t_list *list, int rtype);
 
 #endif

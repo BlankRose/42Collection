@@ -6,82 +6,77 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:48:29 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/16 22:48:35 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:01:20 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core/core.h"
 
-static char	*ms_getnextcmd(char *line)
+static size_t	ms_count_entries(t_list **tokens)
 {
-	int		hasquote;
-	char	prev;
-
-	hasquote = 0;
-	prev = 0;
-	if (!line)
-		return (0);
-	else if (*line && !ms_isoperator(*line))
-	{
-		while (*line && (!ms_isoperator(*line) || ft_isspace(*line) \
-			|| hasquote))
-		{
-			hasquote = ms_checkquote(*line, hasquote);
-			prev = *line;
-			line++;
-		}
-		return (line);
-	}
-	else
-	{
-		while (*line && (ms_isoperator(*line) || ft_isspace(*line)))
-			line++;
-		return (line);
-	}
-}
-
-static size_t	ms_count_cmd(char *line)
-{
+	t_list	*current;
 	size_t	i;
 
 	i = 0;
-	if (!line)
-		return (0);
-	while (*line)
+	current = *tokens;
+	while (current)
 	{
-		while (ft_isspace(*line))
-			line++;
-		line = ms_getnextcmd(line);
-		if (line)
+		if (((t_tok *) current->content)->type == PIPE)
 			i++;
+		current = current->next;
+	}
+	g_main -> pipecount = i;
+	return (i);
+}
+
+static size_t	ms_count_subentries(t_list **tokens)
+{
+	t_list	*current;
+	size_t	i;
+
+	i = 0;
+	current = *tokens;
+	while (current)
+	{
+		if (((t_tok *) current->content)->type != PIPE)
+			i++;
+		current = current->next;
 	}
 	return (i);
 }
 
-char	***ms_split_cmd(char *line)
+char	***ms_tokens2args(t_list **tokens)
 {
-	char		***res;
-	char		*tmp;
+	t_list		*current;
+	t_tok		*token;
+	char		***args;
 	t_vector3	v;
 
-	if (!line)
-		return (0);
-	v = ft_vector3_new(ms_count_cmd(line), 0, 0);
-	res = (char ***) ft_calloc(v.x + 1, sizeof(char **));
-	if (!res)
-		return (0);
-	while (v.y < v.x)
+	v = ft_vector3_new(0, 0, 0);
+	current = *tokens;
+	args = (char ***) malloc(sizeof(char **) * ms_count_entries(tokens) + 2);
+	while (current)
 	{
-		tmp = 0;
-		tmp = ms_getnextcmd(line);
-		tmp = ft_substr(line, 0, ft_strlen(line) - ft_strlen(tmp));
-		res[v.y] = ms_splitadv(tmp, ' ');
-		line = ms_getnextcmd(line);
-		free (tmp);
-		v.y++;
+		v.y = 0;
+		token = (t_tok *) current->content;
+		args[v.x] = (char **) malloc(sizeof(char *) * \
+			ms_count_subentries(&current) + 1);
+		while (current && token && token->type != PIPE)
+		{
+			args[v.x][v.y++] = token->value;
+			current = current->next;
+			if (current)
+				token = (t_tok *) current->content;
+			else
+				token = 0;
+		}
+		if (token && token->type == PIPE)
+			current = current->next;
+		args[v.x][v.y] = 0;
+		v.x++;
 	}
-	res[v.x] = 0;
-	return (res);
+	args[v.x] = 0;
+	return (args);
 }
 
 void	ms_print_cmd(char ***cmd)

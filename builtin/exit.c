@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:02:44 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 15:29:13 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:01:29 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ms_builtin_exit(int c, char **args, char **env, int fd)
 	if (c < 3)
 	{
 		ms_plstclear(&g_main->envplist, free);
-		//ms_free_cmd(g_main->cmds);
+		ms_free_cmd(g_main->cmds);
 		free(g_main->prompt_msg);
 		free(g_main->envp);
 		free(g_main);

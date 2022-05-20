@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:48:49 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 19:24:27 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 18:47:28 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ char	*ms_getfromenvp(char *str)
 	{
 		if (ft_strlen(tmp) == ft_strlen(lst -> key)
 			&& !ft_strncmp(tmp, lst -> key, ft_strlen(tmp)))
-		{
-			res = ft_strjoin(res, lst -> value);
-			break ;
-		}
+			return (ft_strexpend(res, lst -> value, FALSE));
 		lst = lst -> next;
 	}
 	return (res);

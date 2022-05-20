@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/17 20:41:55 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:02:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,117 +40,29 @@ static t_list	**ms_prompt_tokenize(char *line)
 	ms_parse_words(tokens);
 	ms_wordquotesjoining(*tokens);
 	ms_spacetokdel(tokens);
-	
 	ms_redirset(tokens);
-	//ms_printtoken(tokens);
-
 	return (tokens);
 }
-
-static size_t	ms_count_entries(t_list **tokens)
-{
-	t_list	*current;
-	size_t	i;
-
-	i = 0;
-	current = *tokens;
-	while (current)
-	{
-		if (((t_tok *) current->content)->type == PIPE)
-			i++;
-		current = current->next;
-	}
-	g_main -> pipecount = i;
-	return (i);
-}
-
-static size_t	ms_count_subentries(t_list **tokens)
-{
-	t_list	*current;
-	size_t	i;
-
-	i = 0;
-	current = *tokens;
-	while (current)
-	{
-		if (((t_tok *) current->content)->type != PIPE)
-			i++;
-		current = current->next;
-	}
-	return (i);
-}
-
-static char	***ms_tokens2args(t_list **tokens)
-{
-	t_list		*current;
-	t_tok		*token;
-	char		***args;
-	t_vector3	v;
-
-	v = ft_vector3_new(0, 0, 0);
-	current = *tokens;
-	args = (char ***) malloc(sizeof(char **) * ms_count_entries(tokens) + 2);
-	while (current)
-	{
-		v.y = 0;
-		token = (t_tok *) current->content;
-		args[v.x] = (char **) malloc(sizeof(char *) * \
-			ms_count_subentries(&current) + 1);
-		while (current && token && token->type != PIPE)
-		{
-			args[v.x][v.y++] = token->value;
-			current = current->next;
-			if (current)
-				token = (t_tok *) current->content;
-			else
-				token = 0;
-		}
-		if (token && token->type == PIPE)
-			current = current->next;
-		args[v.x][v.y] = 0;
-		v.x++;
-	}
-	args[v.x] = 0;
-	return (args);
-}
-
-
 
 static int	ms_prompt_execute(t_list **tokens)
 {
 	builtin_ft	*ft;
-	// char		*target;
 
 	if (ms_redircheck(*tokens) || ms_pipecheck(*tokens))
 		return (printf("%sMiniShell: parse error\n%s", RED, RESETFONT));
 	g_main->cmds = ms_tokens2args(tokens);
-
 	ft = ms_is_builtin(g_main->cmds[0][0]);
-
 	pipex(g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
-	// if (ft)
-	// 	g_main->last_exit_code = ft(ms_arraylen(g_main->cmds[0]), \
-	// 	g_main->cmds[0], g_main->envp);
-	// else
-	// {
-	// 	target = ft_getbin(g_main->cmds[0][0], g_main->envp);
-	// 	if (!target)
-	// 		printf("%sMiniShell: command not found: %s\n%s", \
-	// 		RED, g_main->cmds[0][0], RESETFONT);
-	// 	else
-	// 		execve(target, g_main->cmds[0], g_main->envp);
-	// }
 	return (0);
 }
 
-static void ms_closeallfd(void)
+static void	ms_closeallfd(void)
 {
-	int i;
+	int	i;
 
 	i = 2;
 	while (++i <= 256)
 		close(i);
-
 }
 
 void	ms_prompt_run(void)
@@ -159,7 +71,6 @@ void	ms_prompt_run(void)
 
 	while (TRUE)
 	{
-		write(1, "\n", 1);
 		line = readline(g_main->prompt_msg);
 		if (!line)
 			ms_builtin_exit(1, 0, 0, 1);
@@ -169,9 +80,10 @@ void	ms_prompt_run(void)
 		ms_prompt_execute(ms_prompt_tokenize(line));
 		free(line);
 		ms_closeallfd();
-		g_main-> fds[0] = 0;
-		g_main-> fds[1] = 1;
-		//ms_free_cmd(g_main->cmds);
+		g_main->fds[0] = 0;
+		g_main->fds[1] = 1;
+		ms_free_cmd(g_main->cmds);
 		g_main->cmds = 0;
+		write(1, "\n", 1);
 	}
 }
