@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 20:57:45 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:45:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	ms_prompt_execute(char *line)
 	pipex(g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
 	ft_lstclear(g_main->tokens, free);
 	ft_freemem(g_main->envp);
+	g_main->envp = 0;
 	return (0);
 }
 
