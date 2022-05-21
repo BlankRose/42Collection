@@ -18,7 +18,7 @@ static char	*ms_parsedq_expension(char *str, char *tmp, int *i)
 
 	if (!ft_strncmp(&str[*i], "$?", 2))
 	{
-		tmp = ft_strexpend(tmp, ft_itoa(g_main->last_exit_code), TRUE);
+		tmp = ft_strexpend(tmp, ft_itoa(g_main->last_exit_code % 255), TRUE);
 		*i += 2;
 	}
 	if (str[*i] == '$')

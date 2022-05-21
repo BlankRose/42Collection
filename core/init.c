@@ -28,23 +28,6 @@ char	*ms_charjoin(char *str, char c)
 	return (res);
 }
 
-char	**ms_appendtoarr(char **arr, char *str)
-{
-	char	**tmp;
-	int		i;
-	int		len;
-
-	len = ms_arraylen(arr);
-	tmp = malloc(sizeof(*tmp) * len + 2);
-	i = -1;
-	while (arr[++i])
-		tmp[i] = arr[i];
-	tmp[i++] = str;
-	tmp[i] = NULL;
-	free(arr);
-	return (tmp);
-}
-
 char	*ms_getfromenvp(char *str)
 {
 	t_plist	*lst;
@@ -71,3 +54,46 @@ char	*ms_getfromenvp(char *str)
 	}
 	return (res);
 }
+
+char	**ms_lsttoarr(t_plist *envplist)
+{
+	int		lstlen;
+	t_plist	*start;
+	char	**result;
+	int		i;
+
+	lstlen = 0;
+	start = envplist;
+	while (envplist)
+	{
+		lstlen++;
+		envplist = envplist -> next;
+	}
+	result = malloc(sizeof(*result) * (lstlen + 1));
+	i = 0;
+	while (start)
+	{
+		result[i++] = ft_strexpend(ft_strdup(start -> key), \
+			ft_strjoin("=", start->value), TRUE);
+		start = start -> next;
+	}
+	result[i] = NULL;
+	return (result);
+}
+
+// char	**ms_appendtoarr(char **arr, char *str)
+// {
+// 	char	**tmp;
+// 	int		i;
+// 	int		len;
+
+// 	len = ms_arraylen(arr);
+// 	tmp = malloc(sizeof(*tmp) * len + 2);
+// 	i = -1;
+// 	while (arr[++i])
+// 		tmp[i] = arr[i];
+// 	tmp[i++] = str;
+// 	tmp[i] = NULL;
+// 	free(arr);
+// 	return (tmp);
+// }

@@ -22,15 +22,17 @@ static void	ft_process(char **command, char **envp, int fdout)
 		ft(ms_arraylen(command), command, envp, fdout);
 	else
 	{
-		path = ft_getbin(command[0], envp);
+		path = ft_testbin(command[0]);
+		if (!path)
+			path = ft_getbin(command[0], envp);
 		if (path)
 		{
 			command[0] = path;
 			execve(command[0], command, envp);
 		}
 		free(path);
-		ft_freemem(command);
-		perror("Error in command processing ");
+		perror("\033[31mMiniShell: error in command processing");
+		ft_printf(2, "\033[0m");
 		exit(127);
 	}
 }
@@ -49,7 +51,7 @@ static	void	ft_processfirst(char **command, char **envp, \
 	{
 		close(fd[1]);
 		dup2(fd[0], inputfd);
-		waitpid(father, &g_main -> last_exit_code, 0);
+		waitpid(father, &g_main->last_exit_code, 0);
 	}
 	else
 	{
@@ -72,7 +74,7 @@ static	void	ft_processone(char **command, char **envp, int in, int out)
 	if (father == -1)
 		exit(2);
 	if (father)
-		waitpid(father, &g_main -> last_exit_code, 0);
+		waitpid(father, &g_main->last_exit_code, 0);
 	else
 	{
 		dup2(in, STDIN_FILENO);
@@ -99,7 +101,8 @@ static int	pipex_multi(int argc, char ***argv, char **envp)
 		ft_processfirst(argv[count++], envp, tmpfd, -1);
 	ft = ms_is_builtin(argv[count][0]);
 	if (ft)
-		ft(ms_arraylen(argv[count]), argv[count], envp, output_file);
+		g_main->last_exit_code = ft(ms_arraylen(argv[count]), \
+			argv[count], envp, output_file);
 	else
 		ft_processfirst(argv[count], envp, tmpfd, output_file);
 	return (0);
@@ -123,7 +126,8 @@ loaded%s\n", RED, RESETFONT);
 	{
 		ft = ms_is_builtin(argv[0][0]);
 		if (ft)
-			ft(ms_arraylen(argv[0]), argv[0], envp, output_file);
+			g_main->last_exit_code = ft(ms_arraylen(argv[0]), argv[0], \
+				envp, output_file);
 		else
 			ft_processone(argv[0], envp, input_file, output_file);
 		return (0);

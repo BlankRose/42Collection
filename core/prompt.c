@@ -52,15 +52,14 @@ static t_list	**ms_prompt_tokenize(char *line)
 
 static int	ms_prompt_execute(char *line)
 {
-	builtin_ft	*ft;
-	t_list		**tokens;
-
-	tokens = ms_prompt_tokenize(line);
-	if (!tokens)
+	g_main->tokens = ms_prompt_tokenize(line);
+	if (!g_main->tokens)
 		return (1);
-	g_main->cmds = ms_tokens2args(tokens);
-	ft = ms_is_builtin(g_main->cmds[0][0]);
+	g_main->envp = ms_lsttoarr(g_main->envplist);
+	g_main->cmds = ms_tokens2args(g_main->tokens);
 	pipex(g_main -> pipecount + 1, g_main -> cmds, g_main -> envp);
+	ft_lstclear(g_main->tokens, free);
+	ft_freemem(g_main->envp);
 	return (0);
 }
 
@@ -75,21 +74,21 @@ static void	ms_closeallfd(void)
 
 void	ms_prompt_run(void)
 {
-	char		*line;
-
+	g_main->last_exit_code = 0;
 	while (TRUE)
 	{
-		line = readline(g_main->prompt_msg);
-		if (!line)
+		g_main->line = readline(g_main->prompt_msg);
+		if (!g_main->line)
 			ms_builtin_exit(1, 0, 0, 1);
-		if (!line[0])
+		if (!g_main->line[0] || ft_strnchr(g_main->line, ' ') + \
+			ft_strnchr(g_main->line, '\t') == ft_strlen(g_main->line))
 		{
-			free(line);
+			free(g_main->line);
 			continue ;
 		}
-		add_history(line);
-		ms_prompt_execute(line);
-		free(line);
+		add_history(g_main->line);
+		ms_prompt_execute(g_main->line);
+		free(g_main->line);
 		ms_closeallfd();
 		g_main->fds[0] = 0;
 		g_main->fds[1] = 1;

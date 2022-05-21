@@ -89,3 +89,12 @@ t_list	**ms_tokenize(char *line)
 	}
 	return (list);
 }
+
+void	ms_deltoken(void *content)
+{
+	t_tok	*temp;
+
+	temp = (t_tok *)content;
+	free(temp -> value);
+	free(temp);
+}

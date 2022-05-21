@@ -50,6 +50,16 @@ static char	*ft_commandjoin(char *path, char *command)
 	return (path);
 }
 
+char	*ft_testbin(char *command)
+{
+	char	*path;
+
+	path = 0;
+	if (!access(command, F_OK))
+		path = ft_strdup(command);
+	return (path);
+}
+
 char	*ft_getbin(char *command, char **envp)
 {
 	char	*path;
@@ -83,6 +93,8 @@ void	ft_freemem(char **arr)
 {
 	int	i;
 
+	if (!arr)
+		return ;
 	i = -1;
 	while (arr[++i])
 		free(arr[i]);

@@ -22,9 +22,6 @@ void	ms_signal_handler(int sig)
 			return ;
 		}
 		rl_on_new_line();
-		rl_replace_line("  ", 2);
-		rl_redisplay();
-		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 	if (sig == SIGINT)

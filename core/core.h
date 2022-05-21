@@ -48,7 +48,6 @@ typedef struct s_tok {
 }	t_tok;
 
 typedef struct s_main {
-	int		exit;
 	int		fds[2];
 	int		pipecount;
 	pid_t	running;
@@ -56,11 +55,9 @@ typedef struct s_main {
 	char	**envp;
 	char	*prompt_msg;
 	t_plist	*envplist;
-	int		in_file;
-	int		out_file;
-	int		out_file_app;
-	int		in_file_here;
+	t_list	**tokens;
 	char	***cmds;
+	char	*line;
 }	t_main;
 
 extern t_main	*g_main;
@@ -128,10 +125,12 @@ char		*ms_parsequotes(char *str);
 char		*ms_charjoin(char *str, char c);
 char		*ms_parseline(char *line);
 char		**ms_appendtoarr(char **arr, char *str);
+char		**ms_lsttoarr(t_plist *envplist);
 void		ms_tokjoining(t_list *list);
 void		ms_printtoken(t_list **lst);
 void		ms_spacetokdel(t_list **list);
 void		ms_parse_words(t_list **tokens);
+char		*ft_testbin(char *command);
 
 int			ms_redircheck(t_list *list);
 int			ms_redirdbcheck(t_list *list);
@@ -148,6 +147,7 @@ char		**ms_splitadv(const char *s, char c);
 char		***ms_tokens2args(t_list **tokens);
 void		ms_print_cmd(char ***cmd);
 char		***ms_free_cmd(char ***cmd);
+void		ms_deltoken(void *content);
 
 int			ms_checkquote(char c, int hasquote);
 int			ms_isquote(int c);
