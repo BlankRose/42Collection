@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/20 20:14:12 by flcollar         ###   ########.fr        #
+#    Updated: 2022/09/27 20:59:20 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ DANGER = $(FLAGS) -fsanitize=address
 LIB_FOLDER = ./libft/
 LIB_NAME = ft
 LIBRARIES = -L$(LIB_FOLDER) -l$(LIB_NAME) \
-			-I .brew/opt/readline/include \
+			-L/Users/$(USER)/.brew/opt/readline/lib \
 			-lreadline
 
 CORE_FOLDER = ./core/

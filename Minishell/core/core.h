@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:16:35 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/20 19:23:35 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:57:01 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,7 @@ void		ms_redirset(t_list **list);
 void		ms_wordtokjoining(t_list *list);
 void		ms_spacetokjoining(t_list *list);
 void		ms_redirtokjoining(t_list *list, int rtype);
+
+void		rl_replace_line(const char *str, int n);
 
 #endif
