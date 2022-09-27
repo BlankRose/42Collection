@@ -1,0 +1,15 @@
+NO ./assets/wall.png
+SO ./assets/wall.png
+WE ./assets/wall.png
+EA ./assets/wall.png
+
+F 220,100,0
+C 225,30,0
+
+1111111
+1000001
+1000001
+100N001
+1000001
+1000001
+1111111

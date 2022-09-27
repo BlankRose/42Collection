@@ -1,0 +1,6 @@
+[submodule "libft"]
+	path = libft
+	url = git@github.com:BlankRose/libft.git
+[submodule "ft_irc"]
+	path = ft_irc
+	url = git@github.com:dhaliti/IRC.git
