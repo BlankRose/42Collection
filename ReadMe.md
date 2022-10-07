@@ -26,14 +26,14 @@ specialities projects in the futur once I'll get there.
 	Rank 2 :
 	<br></b>
 	<img alt="push_swap" src="https://img.shields.io/static/v1?label=Push+Swap&message=84+/+100&color=success&style=plastic"/>
-	<img alt="minitalk" src="https://img.shields.io/static/v1?label=Push+Swap&message=125+/+100&color=yellow&style=plastic"/>
+	<img alt="minitalk" src="https://img.shields.io/static/v1?label=Minitalk&message=125+/+100&color=yellow&style=plastic"/>
 	<img alt="so_long" src="https://img.shields.io/static/v1?label=So+Long&message=101+/+100&color=success&style=plastic"/>
 	<img alt="exam_2" src="https://img.shields.io/static/v1?label=Exam+Rank+02&message=Validated&color=yellow&style=plastic"/>
 	<br><b>
 	Rank 3 :
 	<br></b>
 	<img alt="minishell" src="https://img.shields.io/static/v1?label=Minishell&message=97+/+100&color=success&style=plastic"/>
-	<img alt="philosophers" src="https://img.shields.io/static/v1?label=Minishell&message=100+/+100&color=success&style=plastic"/>
+	<img alt="philosophers" src="https://img.shields.io/static/v1?label=Philosophers&message=100+/+100&color=success&style=plastic"/>
 	<img alt="exam_3" src="https://img.shields.io/static/v1?label=Exam+Rank+03&message=Validated&color=yellow&style=plastic"/>
 	<br><b>
 	Rank 4 :
