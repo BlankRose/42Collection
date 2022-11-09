@@ -40,18 +40,8 @@ specialities projects in the futur once I'll get there.
 	<br></b>
 	<img alt="cub3d" src="https://img.shields.io/static/v1?label=Cub3d&message=115+/+100&color=success&style=plastic"/>
 	<img alt="netPractice" src="https://img.shields.io/static/v1?label=NetPractice&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="cppmodules" src="https://img.shields.io/static/v1?label=CPP+Modules&message=Below&color=success&style=plastic"/>
+	<img alt="cppmodules" src="https://img.shields.io/static/v1?label=CPP+Modules+01+to+08&message=100+/+100&color=yellow&style=plastic"/>
 	<img alt="exam_4" src="https://img.shields.io/static/v1?label=Exam+Rank+04&message=Validated&color=yellow&style=plastic"/>
-	<br>
-	<img alt="00" src="https://img.shields.io/static/v1?label=00&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="01" src="https://img.shields.io/static/v1?label=01&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="02" src="https://img.shields.io/static/v1?label=02&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="03" src="https://img.shields.io/static/v1?label=03&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="04" src="https://img.shields.io/static/v1?label=04&message=80+/+100&color=success&style=plastic"/>
-	<img alt="05" src="https://img.shields.io/static/v1?label=05&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="06" src="https://img.shields.io/static/v1?label=06&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="07" src="https://img.shields.io/static/v1?label=07&message=100+/+100&color=yellow&style=plastic"/>
-	<img alt="08" src="https://img.shields.io/static/v1?label=08&message=100+/+100&color=yellow&style=plastic"/>
 	<br><b>
 	Rank 5 :
 	<br></b>
