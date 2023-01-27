@@ -1,0 +1,51 @@
+############
+#  ACCESS  #
+############
+
+# View list of containers
+docker ps
+
+# Access a container
+docker exec -it <id> <cmd: /bin/bash>
+
+# Get prompt
+mysql
+mysql -u <user> -p
+
+# Access a specific base of table
+USE <base>;
+
+##########
+#  VIEW  #
+##########
+
+# View list of tables
+SHOW TABLES;
+
+# Get the whole content of a table
+DESCRIBE <table>;
+SELECT * FROM <table>;
+
+# Get a specific value in a table
+SELECT * FROM <table> WHERE <key>=<value>;
+
+##############
+#  CREATION  #
+##############
+
+# Create a new database
+CREATE DATABASE <name> ...;
+
+# Create a new user
+CREATE USER <name>@<host> ...;
+
+#################
+#  PERMISSIONS  #
+#################
+
+# Give specifics privileges
+GRANT <perm> ON <database> TO <user: <name>@<host>>;
+GRANT ALL PRIVILEGES ON <database> TO <user>;
+
+# Update privileges
+FLUSH PRIVILEGES;

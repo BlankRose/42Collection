@@ -1,0 +1,94 @@
+# ********************************************************************* #
+#          .-.                                                          #
+#    __   /   \   __                                                    #
+#   (  `'.\   /.'`  )   Inception - docker_compose.yml                  #
+#    '-._.(;;;)._.-'                                                    #
+#    .-'  ,`"`,  '-.                                                    #
+#   (__.-'/   \'-.__)   BY: Rosie (https://github.com/BlankRose)        #
+#       //\   /         Last Updated: Wed Jan 25 16:10:18 CET 2023      #
+#      ||  '-'                                                          #
+# ********************************************************************* #
+
+version: '3'
+
+###  SERVICES  ###
+# The core functionalities
+
+services:
+
+  nginx:
+    image: nginx:1.10.2
+    container_name: nginx
+    build: ./core
+    restart: always
+    volumes:
+      - logs:/var/log/nginx
+      - website:/var/www/html/wordpress
+    ports:
+      - "443:443"
+    networks:
+      - internal
+    depends_on:
+      - wordpress
+
+  wordpress:
+    image: wordpress:6.1.1
+    container_name: wordpress
+    build: ./website
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - logs:/var/log
+      - website:/var/www/html/wordpress
+    networks:
+      - internal
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.10.2
+    container_name: mariadb
+    build: ./database
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - internal
+
+###  NETWORKS  ###
+# Used as connection between services
+
+networks:
+  internal:
+
+###  VOLUMES  ###
+# Used as storage for services
+
+volumes:
+
+  database:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rosie/data/data
+      o: bind
+
+  website:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rosie/data/web
+      o: bind
+
+  # Used for debugging purpose
+  # rather than constantly going inside
+  # the containers
+  logs:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rosie/data/log
+      o: bind
