@@ -1,12 +1,12 @@
-[submodule "libft"]
+[submodule "libft/src"]
 	path = libft/src
 	url = git@github.com:BlankRose/libft.git
-[submodule "ft_printf"]
-	path = ft_printf/src
-	url = git@github.com:BlankRose/libft.git
-[submodule "gnl"]
+[submodule "Get_Next_Line/src"]
 	path = Get_Next_Line/src
 	url = git@github.com:BlankRose/libft.git
-[submodule "ft_irc"]
-	path = ft_irc
+[submodule "ft_printf/src"]
+	path = ft_printf/src
+	url = git@github.com:BlankRose/libft.git
+[submodule "ft_irc/src"]
+	path = ft_irc/src
 	url = git@github.com:dhaliti/IRC.git
