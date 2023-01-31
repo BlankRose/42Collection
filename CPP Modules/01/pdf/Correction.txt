@@ -1,0 +1,224 @@
+##############################
+#                            #
+#       CPP Module 01        #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Prerequisites
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+Any of these means you must not grade the exercise in question:
+
+    A function is implemented in a header file (except for template functions).
+    A Makefile compiles without the required flags and/or another compiler than c++.
+
+Any of these means that you must flag the project with "Forbidden
+Function":
+
+    Use of a "C" function (*alloc, *printf, free).
+    Use of a function not allowed in the exercise guidelines.
+    Use of "using namespace <ns_name>" or the "friend" keyword.
+    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercise 00: BraiiiiiiinnnzzzZ  ===
+
+The goal of this exercise is to understand how to allocate memory in C++.
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . Zombie Class
+[ Yes / No ]
+
+	There is a Zombie Class.
+	It has a private name attribute.
+	It has at least a constructor.
+	It has a member function announce( void ) that prints: "<name>: BraiiiiiiinnnzzzZ..."
+	The destructor prints a debug message that includes the name of the zombie.
+
+3 . newZombie
+[ Yes / No ]
+
+	There is a newZombie() function prototyped as: [ Zombie* newZombie( std::string name ); ]
+	It should allocate a Zombie on the heap and return it.
+	Ideally, it should call the constructor that takes a string and initializes
+	the name.
+	The exercise should be marked as correct if the Zombie can announce itself
+	with the name passed to the function.
+	There are tests to prove everything works.
+	The zombie is deleted correctly before the end of the program.
+
+4 . randomChump
+[ Yes / No ]
+
+	There is a randomChump() function prototyped as: [ void randomChump( std::string name ); ]
+	It should create a Zombie on the stack, and make it announce itself.
+	Ideally the zombie should be allocated on the stack (so implicitly deleted
+	at the end of the function). It can also be allocated on the heap and then
+	explicitly deleted.
+	The student must justify their choices.
+	There are tests to prove everything works.
+
+
+
+===  Exercise 01: Moar brainz!  ===
+
+The goal of this exercise is to allocate a number of objects at the same time using new[], initialize them, and to properly delete them.
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . zombieHorde
+[ Yes / No ]
+
+	The Zombie Class has a default constructor.
+	There is a zombieHorde() function prototyped as: [ Zombie* zombieHorde( int N, std::string name ); ]
+	It allocates N zombies on the heap explicitly using new[].
+	After the allocation, there is an initialization of the objects to set their name.
+	It returns a pointer to the first zombie.
+	There are enough tests in the main to prove the previous points.
+	Like: calling announce() on all the zombies.
+	Last, all the zombies should be deleted at the same time in the main.
+
+
+
+===  Exercise 02: HI THIS IS BRAIN  ===
+
+Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references! Demystify references!
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . HI THIS IS BRAIN
+[ Yes / No ]
+
+	There is a string containing "HI THIS IS BRAIN".
+	stringPTR is a pointer to the string.
+	stringREF is a reference to the string.
+	The address of the string is displayed using the string variable, the
+	stringPTR and the stringREF.
+	The variable content is displayed using the stringPTR and the stringREF.
+
+
+
+===  Exercise 03: Unnecessary violence  ===
+
+The objective of this exercise is to understand that pointers and references present some small differences that make them less or more appropriate depending on the use and the lifecycle of the object used.
+
+1 . Makefile and tests
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . Weapon
+[ Yes / No ]
+
+	There is a Weapon class that has a type string, a getType() and a setType().
+	The getType() function returns a const reference to the type string.
+
+3 . HumanA and HumanB
+[ Yes / No ]
+
+	HumanA can have a reference or a pointer to the Weapon.
+	Ideally, it should be implemented as a reference, since the Weapon exists
+	from creation until destruction, and never changes.
+	HumanB must have a pointer to a Weapon since the field is not set at
+	creation time, and the weapon can be NULL.
+
+
+
+===  Exercise 04: Sed is for losers  ===
+
+Thanks to this exercise, the student should have gotten familiar with ifstream and ofstream.
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . Exercise 04
+[ Yes / No ]
+
+	There is a function replace (or other name) that works as specified in the
+	subject.
+	
+	The error management is efficient: try to pass a file that does not exist,
+	change the permissions, pass it empty, etc.
+	
+	If you can find an error that isn't handled, and isn't completely esoteric,
+	no points for this exercise.
+	
+	The program must read from the file using an ifstream or equivalent,
+	and write using an ofstream or equivalent.
+	
+	The implementation of the function should be done using functions from
+	std::string, no by reading the string character by character.
+	This is not C anymore!
+
+
+
+===  Exercise 05: Harl 2.0  ===
+
+The goal of this exercise is to use pointers to class member functions. Also, this is the opportunity to discover the different log levels.
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . Our beloved Harl
+[ Yes / No ]
+
+	There is a class Harl with at least the 5 functions required in the subject.
+	The function complain() executes the other functions using a pointer to them.
+	Ideally, the student should have implemented a way of matching the different
+	strings corresponding to the log level to the pointers of the corresponding
+	member function.
+
+	If the implementation is different but the exercise works, you should mark
+	it as valid. The only thing that is not allowed is using a ugly if/elseif/else.
+	The student could have chosen to change the message Harl displays or to
+	display the examples given in the subject, both are valid.
+
+
+
+===  Exercise 06: Harl filter  ===
+
+Now that you are experienced coders, you should use new instruction types, statements, loops, etc. The goal of this last exercise is to make you discover the switch statement.
+
+1 . Makefile and tests
+[ Yes / No ]
+
+	There is a Makefile that compiles using the appropriate flags.
+	There is at least a main to test the exercise.
+
+2 . Switching Harl Off
+[ Yes / No ]
+
+	The program harlFilter takes as argument any of the log levels ("DEBUG",
+	"INFO", "WARNING" or "ERROR"). It should then display just the messages
+	that are at the same level or above (DEBUG < INFO < WARNING < ERROR). This
+	must be implemented using a switch statement with a default case.
+	Once again, no if/elseif/else anymore please.
