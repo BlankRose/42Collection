@@ -1,0 +1,49 @@
+##############################
+#                            #
+#         FT PRINTF          #
+#                            #
+##############################
+
+
+
+===  Mandatory Part  ===
+
+1 . Simple Conversion Management
+[ Yes / No ]
+
+    Simply check each conversion without any flags 'cspdiuxX%'
+    Try special cases like 0, or smallest int, or empty string, or NULL pointer.
+    Test multiple arguments/conversions.
+    Test various conversions in the middle of a sentence (put other characters before and/or after).
+
+2 . Get Crazy
+[ Yes / No ]
+
+    Redo every previous test but this time verify that the return value matches the one of the original printf.
+    Try any combination of conversions.
+    Check what happens with a series of identical conversions following each other.
+
+
+
+===  Bonus part  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Simple flags management
+[ Score 0 to 5 ]
+
+    Check the flags '.', '-' and 0.
+    Check the %-d with INT_MIN
+    Check the - flag with any value.
+    Check the 0 flag like %04d.
+    Check the '.' with multiple precisions.
+    For every test, verify the return value matches the original one.
+    For each working flag, give 1 point.
+    If all the flags work, give 2 bonus points.
+
+2 . # + space
+[ Score 0 to 5 ]
+
+    Check all the conversions with the flags '#', '+' and space with all the other flag combinations.
+    For each working flag, give 1 point.
+    If all the flags work, give 2 bonus points.
