@@ -1,0 +1,133 @@
+##############################
+#                            #
+#          SO LONG           #
+#                            #
+##############################
+
+
+
+===  Mandatory part  ===
+
+1 . Executable name
+[ Yes / No ]
+
+	Execute the make command. The project should compile as expected (the
+	Makefile should not re-link). Verify that the executable name is so_long.
+	Otherwise, use the "invalid compilation" flag at the end of the scale.
+
+2 . Parsing
+[ Yes / No ]
+
+	Use different maps.
+	Test different sizes.
+	Test different line sizes.
+
+	Also, check that the program returns an error and exits properly when the
+	configuration file is misconfigured (e.g., an unknown character,
+	duplicates, an invalid file path, and so forth).
+
+	Otherwise, the defense is over. Use the appropriate flag: incomplete work,
+	crash...
+
+3 . Technical elements of the display
+[ Yes / No ]
+
+	Time to evaluate the technical elements of the display.
+	Check that the level is an accurate representation of the map used as parameter.
+
+		A window must open at the launch of the program.
+		It must remain open during the whole execution.
+
+		Hide all or parts of the window either by using another window
+		or by using the screen's borders. Then, minimize the window
+		and maximize it back. In all cases, the content of the window
+		must remain consistent.
+
+4 . Basic user events
+[ Yes / No ]
+
+	In this section, let's evaluate the program's user events. Execute the 3
+	following tests. If at least one of them fails, this means that no points
+	must be awarded for this section and you have to move to the next one.
+
+		Click the cross at the top of the window. The window must close and
+		the program must exit cleanly.
+
+		Press the ESC key. The window must close and the program must exit
+		cleanly. In the case of this test, you can accept that another key
+		exits the program, for example, Q.
+
+		Press the four arrow keys (it is acceptable to use the WASD or ZQSD keys instead)
+		in the order of your choice. Each key press must render a visible result on the
+		window (player's movement).
+
+5 . Movements
+[ Yes / No ]
+
+	In this section, let's evaluate the implementation of the player's movement.
+	Execute the 5 following tests. If at least one of them fails, this means
+	that no points must be awarded for this section and you have to move to the
+	next one.
+
+		The player's spawning position must be in accordance
+		with the map file.
+
+		Press the arrows keys (it is acceptable to use the WASD or ZQSD keys instead)
+		to move in every direction on the map.
+
+		Is the game "playable"?
+
+6 . Walls & Sprites
+[ Yes / No ]
+
+	In this section, let's evaluate the map representation. Execute the
+	following tests. If at least one of them fails, this means that no points
+	must be awarded for this section and you have to move to the next one.
+
+		The wall's texture is correctly placed and the player cannot go through it.
+
+		The collectible's texture is correctly placed and the player can pick
+		it by walking on it.
+
+		The Exit texture is correctly placed and the player can finish the game
+		by walking on it but only after picking every collectible.
+
+		The player texture is correctly placed and can move in every direction
+		except into the walls.
+
+7 . Counter
+[ Yes / No ]
+
+	In this section, let's evaluate the gameplay elements. Execute the
+	following tests. If at least one of them fails, this means that no points
+	must be awarded for this section and you have to move to the next one.
+
+		There's a small counter displayed on the shell that counts how many movements the player does.
+		The counter can be displayed directly on the game screen (see Bonus part).
+
+8 . MiniLibX images
+[ Yes / No ]
+
+	Take a look at the code and check whether the student uses the images from
+	the MLX to draw the image instead of putting pixels one by one. ;)
+
+
+
+===  Bonus  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Enemies
+[ Score 0 to 5 ]
+
+	The enemy patrols cause the player to lose if they touch them.
+
+2 . Sprite animation
+[ Score 0 to 5 ]
+
+	There's some sprite animation. The evaluated student has to explain
+	what it is and how they did it.
+	Counter on screen
+
+	The counter of movements is rendered on the screen using texture or
+	mlx_string_put().
