@@ -1,0 +1,159 @@
+##############################
+#                            #
+#       CPP MODULES 04       #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+	Any of these means you must not grade the exercise in question:
+
+	    A function is implemented in a header file (except for template functions).
+	    A Makefile compiles without the required flags and/or another compiler than c++.
+
+	Any of these means that you must flag the project with "Forbidden
+	Function":
+
+	    Use of a "C" function (*alloc, *printf, free).
+	    Use of a function not allowed in the exercise guidelines.
+	    Use of "using namespace <ns_name>" or the "friend" keyword.
+	    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercise 00: Polymorphism  ===
+
+As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
+
+1 . First check
+
+	There is an Animal class that has one attribute:
+	One string called type.
+	You must be able to instantiate and use this class.
+
+2 . Inheritance
+
+	They are at least two classes that inherit from Animal: Cat and Dog.
+	The constructor and destructor outputs must be clear.
+	Ask the student about constructor and destructor orders.
+
+3 . Easy derived class
+
+	The attribute type is set to the appropriate value at creation for
+	every animal. Cat must have "Cat" and Dog must have "Dog".
+
+4 . Animal
+
+	Using makeSound() function always called the appropriate makeSound()
+	function. makeSound() should be virtual! Verify it in the code.
+	virtual void makeSound() const;
+	The return value is not important but virtual keyword is mandatory.
+
+	There should be an example with a WrongAnimal and WrongCat that don't
+	use the virtual keyword (see subject).
+	The WrongCat must output the WrongCat makeSound() only when used as a
+	wrongCat.
+
+
+
+===  Exercise 01: I do not want to set the world on fire  ===
+
+As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
+
+1 . Concrete Animal
+
+	There is a new class called Brain.
+	Cat and Dog have the required private Brain attribute.
+	The Brain attribute should not be inside the Animal class.
+	The Brain class has specific outputs upon creation and deletion.
+
+2 . Concrete Brain
+
+	The copy a Cat or a Dog should be a deep copy.
+	Test something like:
+
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
+
+	If the copy is shallow, tmp and basic will use the same Brain and
+	the Brain will get deleted with tmp at the end of the scope.
+	The copy constructor should do a deep copy too.
+	That's why a clean implementation in orthodox canonical form will
+	save you from hours of pain.
+
+3 . Destruction chaining
+
+	The destructors in Animal must be virtual.
+	Ask an explanation of what will happen without the virtual keyword over Animal destructor.
+	Test it.
+
+4 . Assignment and copy
+
+	The copy and assignment behaviors of the Cat and Dog are like the
+	subject requires.
+	Deep copy means you need to create a new Brain for the Cat or Dog.
+	Check that the canonical form is really implemented (i.e. no empty
+	copy assignment operators and so forth). Nothing should be public for no
+	reason. Moreover, this code is very simple so it needs to be clean!
+
+
+
+===  Exercise 02: Abstract class  ===
+
+As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
+
+1 . Abstract class
+
+	There is an Animal class exactly like the one in the subject.
+	The Animal::makeSound is a pure virtual function.
+	It should look like : virtual void makeSound() const = 0;
+	The "= 0" part is mandatory.
+	You should not be able to instantiate an Animal.
+
+	Animal test; //should give you a compile error about the class being abstract
+
+2 . Concrete Animal
+
+	Class Cat and Dog are still present and work exactly like in ex01.
+
+
+
+===  Exercise 03: Interface and recap  ===
+
+As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
+
+1 . Interfaces
+
+	There are ICharacter and IMateriaSource interfaces that are exactly like
+	required in the subject.
+
+2 . MateriaSource
+
+	The MateriaSource class is present and implements IMateriaSource. The
+	member functions work as intended.
+
+3 . Concrete Materia
+
+	There are concrete Ice and Cure classes that inherit from AMateria. Their
+	clone() method is correctly implemented. Their outputs are correct.
+	The AMateria class is still abstract (clone() is a pure function).
+	virtual ~AMateria() is present.
+	AMateria contains a protected string attribute to store the type.
+
+4 . Character
+
+	The Character class is present and implements ICharacter. It has
+	an inventory of 4 Materias maximum.
+	The member functions are implemented as the subject requires.
+	The copy and assignment of a Character are implemented as required
+	(deep copy).
