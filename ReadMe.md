@@ -33,7 +33,7 @@
 				<li><img alt="Red badges" src="https://img.shields.io/static/v1?label=&message=Red+badges&color=critical&style=plastic"/> are projects not finished or in progress</li>
 				<li><img alt="Lime badges" src="https://img.shields.io/static/v1?label=&message=Lime+badges&color=success&style=plastic"/> are grades which are validated</li>
 				<li><img alt="Gold badges" src="https://img.shields.io/static/v1?label=&message=Gold+badges&color=yellow&style=plastic"/> are grades which are maxed out! (Usually being 125 if there's any bonuses)</li>
-				<li><img alt="Star icons" src="https://img.shields.io/static/v1?label=★&message=Star+icons&color=gray&style=plastic"/> represents how much outstanding flags were given (Total: 2)</li>
+				<li><img alt="Star icons" src="https://img.shields.io/static/v1?label=%E2%98%85&message=Star+icons&color=gray&style=plastic"/> represents how much outstanding flags were given (Total: 2)</li>
 			</ul>
 			<br><b>Includes files:</b>
 			<ul>
@@ -84,12 +84,12 @@
 		<br></b>
 			<img alt="cub3d" src="https://img.shields.io/static/v1?label=Cub3d&message=115+/+100&color=success&style=plastic"/>
 			<img alt="netPractice" src="https://img.shields.io/static/v1?label=NetPractice&message=100+/+100&color=yellow&style=plastic"/>
-			<img alt="cppmodules" src="https://img.shields.io/static/v1?label=CPP+Modules+01+to+08+★&message=100+/+100&color=yellow&style=plastic"/>
+			<img alt="cppmodules" src="https://img.shields.io/static/v1?label=CPP+Modules+01+to+08+%E2%98%85&message=100+/+100&color=yellow&style=plastic"/>
 			<img alt="exam_4" src="https://img.shields.io/static/v1?label=Exam+Rank+04&message=Validated&color=yellow&style=plastic"/>
 		<br><b>
 			Rank 5 :
 		<br></b>
-			<img alt="ft_irc" src="https://img.shields.io/static/v1?label=IRC+★&message=125+/+100&color=yellow&style=plastic"/>
+			<img alt="ft_irc" src="https://img.shields.io/static/v1?label=IRC+%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
 			<img alt="ft_containers" src="https://img.shields.io/static/v1?label=Containers&message=100+/+100&color=success&style=plastic"/>
 			<img alt="inception" src="https://img.shields.io/static/v1?label=Inception&message=100+/+100&color=success&style=plastic"/>
 			<img alt="exam_5" src="https://img.shields.io/static/v1?label=Exam+Rank+05&message=Validated&color=yellow&style=plastic"/>
