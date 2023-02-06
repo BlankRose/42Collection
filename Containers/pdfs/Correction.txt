@@ -1,0 +1,130 @@
+##############################
+#                            #
+#       FT CONTAINERS        #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Prerequisites
+
+The code must compile with c++ and the flags -Wall -Wextra -Werror.
+
+There is a Makefile, the project compiles correctly with the required
+options, is written in C++.
+
+The code should also compile with the flag -std=c++98
+
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+Any of these means you must not grade the exercise in question:
+
+    A function is implemented in a header file (except for template functions).
+    A Makefile compiles without the required flags and/or another compiler than c++.
+
+Any of these means that you must flag the project with "Forbidden
+Function":
+
+    Use of a "C" function (*alloc, *printf, free).
+    Use of a function not allowed in the exercise guidelines.
+    Use of "using namespace <ns_name>" or the "friend" keyword (in this project, the "friend" keyword is allowed for specific uses, you'll see).
+    Use of an external library, or features from versions other than C++98.
+    Use of a STL container to implement another container.
+
+
+
+===  Mandatory part  ===
+
+Verify that each mandatory container is correctly implemented. If the vector or the map is missing, check the 'Incomplete work' flag. But note the project can be passed without the stack. Do not hesitate to ask to the evaluated student what is the reference they used. A main.cpp is available to download on this page. It should compile with the student's containers. The evaluated student has also to turn in their own tests.
+
+1 . Vector - Basics
+[ Yes / No ]
+
+Make sure that every member function, non-member function and overload is
+present and works as expected. Same thing for iterators.
+Use the STL container to check that everything works the same way.
+
+2 . Vector - Advance
+[ Yes / No ]
+
+    The inner data structure should be a dynamic array.
+    const_iterator and iterators should be comparable.
+    Check the dynamic reallocation system.
+    Test the swap() function: After swap, all the iterators, pointers and references pointing to elements in both containers remain valid and are now pointing to the same elements than before the call but in the other container (where they now iterate).
+    Check that the friend keyword is used only for the relational operators.
+
+3 . Vector - Performance
+[ Yes / No ]
+
+Make sure that the speed is reasonable compared to the STL container!
+For example, a deep copy should allocate all the memory in one call.
+
+4 . Map - Basics
+[ Yes / No ]
+
+Make sure that every member function, non-member function and overload is
+present and works as expected. Same thing for iterators.
+Use the STL container to check that everything works the same way.
+
+5 . Map - Advance
+[ Yes / No ]
+
+    Check the inner structure. It should be an ordered tree (AVL tree, Red-Black tree, and so forth). For example, a simple array is not ok.
+    Verify that pair<> is recoded and used.
+    Verify that ft::make_pair() behaves as expected.
+    There mustn't be several identical keys. Each key must be unique in map.
+    Check that the keys are sorted using the comparison function (see Compare).
+    Check std::allocator and allocator::rebind are used and there's no direct usage of new (rebind could be used in the tree).
+    Check that insertion and deletion (erase) do not invalidate iterators.
+    The swap() function should not move data but only pointers.
+    Check that the friend keyword is used only for the relational operators and map::value_compare.
+    There's no memory leak.
+
+6 . Map - Performance
+[ Yes / No ]
+
+Make sure that the speed is reasonable compared to the STL container!
+
+Slower than the STL map is ok.
+A complete timeout is not.
+If it's more than 20 times slower than the map STL, count it false.
+
+7 . Stack - Basics
+[ Yes / No ]
+
+Make sure that every member function, non-member function and overload is
+present and works as expected.
+Use the STL container to check that everything works the same way.
+
+8 . Stack - Advance
+[ Yes / No ]
+
+    The default underlying container must be the vector of the student.
+    The underlying container must be protected and not private!
+    The standard containers vector, deque and list are compatible as underlying containers.
+    The stack cannot be iterate.
+
+
+
+===  Bonus part  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Set
+[ Yes / No ]
+
+Make sure that every member function, non-member function and overload is
+present and works as expected. Same thing for iterators.
+Use the STL container to check that everything works the same way.
+
+The inner data structure must be a Red-Black tree.
+
+Ask the evaluated student for details. How does it work? If you have any
+doubt, don't validate this bonus as the set is easier than the map.
+
+The only bonus here is for the Red-Black tree!

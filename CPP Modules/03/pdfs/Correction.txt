@@ -1,0 +1,144 @@
+##############################
+#                            #
+#       CPP MODULES 03       #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Prerequisites
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+Any of these means you must not grade the exercise in question:
+
+    A function is implemented in a header file (except for template functions).
+    A Makefile compiles without the required flags and/or another compiler than c++.
+
+Any of these means that you must flag the project with "Forbidden
+Function":
+
+    Use of a "C" function (*alloc, *printf, free).
+    Use of a function not allowed in the exercise guidelines.
+    Use of "using namespace <ns_name>" or the "friend" keyword.
+    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercise 00: Aaaaand... OPEN!  ===
+
+As usual, there has to be enough tests to prove the program works as required. If there isn't, do not grade this exercise.
+
+1 . Class and attributes
+[ Yes / No ]
+
+	There is a ClapTrap class.
+	It has all the following private attributes:
+
+	    name
+	    hit points
+	    energy points
+	    attack damage The attributes are initialized to the required values.
+
+2 . Member functions
+[ Yes / No ]
+
+	The class has following member functions and they work as specified:
+
+	    attack()
+	    takeDamage()
+	    beRepaired()
+
+
+
+===  Exercise 01: Serena, my love!  ===
+
+As usual, there has to be enough tests to prove the program works as required. If there isn't, do not grade this exercise.
+
+1 . Class and attributes
+[ Yes / No ]
+
+	There is a ScavTrap class.
+	The ScavTrap publicly inherits from the ClapTrap class.
+	It does not re-declare any attributes.
+	The ClapTrap attributes are now protected instead of private.
+	The attributes are initialized to the required values.
+
+2 . Member functions
+[ Yes / No ]
+
+	The class has following member functions and they work as specified:
+
+	    attack()
+	    takeDamage() (inherited)
+	    beRepaired() (inherited) The outputs of the constructor, destructor, and the attack() function must be different from the ClapTrap's.
+
+3 . Construction and destruction
+[ Yes / No ]
+
+	There must be a constructor and a destructor for the ScavTrap displaying
+	specific messages. They must be implemented so that they are called in the
+	correct order when used. This means if you create a ScavTrap, it must first
+	display the ClapTrap's message then the ScavTrap's. If you delete a ScavTrap,
+	it must display the ScavTrap's message first, then the ClapTrap's.
+
+4 . Special feature
+[ Yes / No ]
+
+	ScavTrap has a guardGate() function that displays a message on the
+	standard output. It has also an attack() function that displays a short
+	message on the standard output, which must be different from the original
+	ClapTrap message.
+
+
+
+===  Exercise 02: Repetitive work  ===
+
+As usual, there has to be enough tests to prove the program works as required. If there isn't, do not grade this exercise.
+
+1 . Class and attributes
+[ Yes / No ]
+
+	There is a FragTrap class that publicly inherits from ClapTrap.
+	Attributes must not be re-declared without reasons.
+
+2 . Construction and destruction
+[ Yes / No ]
+
+	There must be a constructor and a destructor for the FragTrap displaying
+	specific messages. They must be implemented so that they are called in the
+	correct order when used. This means if you create a FragTrap, it must first
+	display the ClapTrap's message then the FragTrap's. If you delete a FragTrap,
+	it must display the FragTrap's message first, then the ClapTrap's.
+
+3 . Special feature
+[ Yes / No ]
+
+	There is a highFivesGuys() function that displays a message on the
+	standard output.
+
+===  Exercise 03: Now it is weird!  ===
+
+As usual, there has to be enough tests to prove the program works as required. If there isn't, do not grade this exercise.
+
+1 . Ultimate C++ weird feature
+[ Yes / No ]
+
+	There is a DiamondTrap class.
+	It inherits from both the FragTrap and the ScavTrap.
+	The attributes are set to the appropriate values.
+	It uses virtual inheritance to avoid the pitfalls of diamond inheritance.
+
+2 . Choose wisely...
+[ Yes / No ]
+
+	The DiamondTrap uses the attack() method of the Scavtrap.
+	It has the special functions of both its parents.
+	The DiamondTrap has a private std::string name member.
+	The function whoAmI() can display both name and clapTrap::name.
