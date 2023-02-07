@@ -1,3 +1,10 @@
+##############################
+#                            #
+#           LIBFT            #
+#                            #
+##############################
+
+
 
 ===  Mandatory part  ===
 
@@ -6,67 +13,84 @@ You must test each of the functions of the libft with your own tests.
 1 . Libc Functions #1
 [ Yes / No ]
 
-Test every function and make sure they work properly:
+	Test every function and make sure they work properly:
 
-    ft_strlen
-    ft_memcpy
-    ft_memset
-    ft_bzero
-    ft_memmove
-    ft_memcmp
-    ft_memchr Is everything working?
+	    ft_strlen
+	    ft_memcpy
+	    ft_memset
+	    ft_bzero
+	    ft_memmove
+	    ft_memcmp
+	    ft_memchr
 
-Libc Functions #2
+	Is everything working?
 
-Test every function and make sure they work properly:
+2 . Libc Functions #2
+[ Yes / No ]
 
-    ft_isalpha
-    ft_isdigit
-    ft_isalnum
-    ft_isascii
-    ft_isprint Is everything working?
+	Test every function and make sure they work properly:
 
-LibC functions #3
+	    ft_isalpha
+	    ft_isdigit
+	    ft_isalnum
+	    ft_isascii
+	    ft_isprint
 
-Test every function and make sure they work properly:
+	Is everything working?
 
-    ft_toupper
-    ft_tolower
-    ft_strchr
-    ft_strrchr Is everything working?
+3 . LibC functions #3
+[ Yes / No ]
 
-LibC functions #4
+	Test every function and make sure they work properly:
 
-Test every function and make sure they work properly:
+	    ft_toupper
+	    ft_tolower
+	    ft_strchr
+	    ft_strrchr
 
-    ft_strlcat
-    ft_strlcpy
-    ft_atoi
-    ft_strnstr
-    ft_strncmp
-    ft_calloc
-    ft_strdup Is everything working?
+	Is everything working?
 
-Additional functions #1
+4 . LibC functions #4
+[ Yes / No ]
 
-Test every function and make sure they work properly:
+	Test every function and make sure they work properly:
 
-    ft_substr
-    ft_strjoin
-    ft_putchar_fd
-    ft_putstr_fd
-    ft_putendl_fd
-    ft_putnbr_fd Is everything working?
+	    ft_strlcat
+	    ft_strlcpy
+	    ft_atoi
+	    ft_strnstr
+	    ft_strncmp
+	    ft_calloc
+	    ft_strdup
 
-Additional functions #2
+	Is everything working?
 
-Test every function and make sure they work properly:
+5 . Additional functions #1
+[ Yes / No ]
 
-    ft_strmapi
-    ft_striteri
-    ft_strtrim
-    ft_split
-    ft_itoa Is everything working?
+	Test every function and make sure they work properly:
+
+	    ft_substr
+	    ft_strjoin
+	    ft_putchar_fd
+	    ft_putstr_fd
+	    ft_putendl_fd
+	    ft_putnbr_fd
+
+	Is everything working?
+
+6 . Additional functions #2
+[ Yes / No ]
+
+	Test every function and make sure they work properly:
+
+	    ft_strmapi
+	    ft_striteri
+	    ft_strtrim
+	    ft_split
+	    ft_itoa
+
+	Is everything working?
 
 
 
@@ -74,38 +98,47 @@ Test every function and make sure they work properly:
 
 Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
 
-ft_lstnew
+1 . ft_lstnew
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstdelone
+2 . ft_lstdelone
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstclear
+3 . ft_lstclear
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstadd_front
+4 . ft_lstadd_front
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstadd_back
+5 . ft_lstadd_back
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstsize
+6 . ft_lstsize
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstlast
+7 . ft_lstlast
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstiter
+8 . ft_lstiter
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
 
-ft_lstmap
+9 . ft_lstmap
+[ Yes / No ]
 
-Is everything working?
+	Is everything working?
