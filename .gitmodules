@@ -1,5 +1,5 @@
-[submodule "Libft/src"]
-	path = Libft/src
+[submodule "libft/src"]
+	path = libft/src
 	url = git@github.com:BlankRose/libft.git
 [submodule "Get_Next_Line/src"]
 	path = Get_Next_Line/src
