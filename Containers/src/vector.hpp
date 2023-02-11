@@ -5,7 +5,7 @@
 /*    '-._.(;;;)._.-'                                                    */
 /*    .-'  ,`"`,  '-.                                                    */
 /*   (__.-'/   \'-.__)   BY: Rosie (https://github.com/BlankRose)        */
-/*       //\   /         Last Updated: Wed Nov  9 12:29:45 CET 2022      */
+/*       //\   /         Last Updated: Tue Feb  7 15:17:05 CET 2023      */
 /*      ||  '-'                                                          */
 /* ********************************************************************* */
 
@@ -134,28 +134,30 @@ namespace ft {
 
 			Allocator				get_allocator(void) const { return _alloc; }
 
-			iterator				begin(void) { return iterator(_array); }
-			iterator				end(void) { return iterator(&_array[_size]); }
-			reverse_iterator		rbegin(void) { return reverse_iterator(end()); }
-			reverse_iterator		rend(void) { return reverse_iterator(begin()); }
-			reference				front() { return _array[0]; }
-			reference				back() { return _array[_size - 1]; }
-			pointer					data(void) { return _array; }
+			iterator				begin(void)			{ return iterator(_array); }
+			iterator				end(void)			{ return iterator(&_array[_size]); }
+			reverse_iterator		rbegin(void)		{ return reverse_iterator(end()); }
+			reverse_iterator		rend(void)			{ return reverse_iterator(begin()); }
+			reference				front()				{ return _array[0]; }
+			reference				back()				{ return _array[_size - 1]; }
+			pointer					data(void)			{ return _array; }
 
-			const_iterator			begin(void) const { return const_iterator(_array); }
-			const_iterator			end(void) const { return const_iterator(&_array[_size]); }
-			const_reverse_iterator	rbegin(void) const { return const_reverse_iterator(end()); }
-			const_reverse_iterator	rend(void) const { return const_reverse_iterator(begin()); }
-			const_reference			front() const { return _array[0]; }
-			const_reference			back() const { return _array[_size - 1]; }
-			const_pointer			data(void) const { return _array; }
+			const_iterator			begin(void) const	{ return const_iterator(_array); }
+			const_iterator			end(void) const		{ return const_iterator(&_array[_size]); }
+			const_reverse_iterator	rbegin(void) const	{ return const_reverse_iterator(end()); }
+			const_reverse_iterator	rend(void) const	{ return const_reverse_iterator(begin()); }
+			const_reference			front() const		{ return _array[0]; }
+			const_reference			back() const		{ return _array[_size - 1]; }
+			const_pointer			data(void) const	{ return _array; }
 
-			const_reference			at(size_type pos) const {
+			const_reference			at(size_type pos) const
+			{
 				if (pos >= _size) throw
 					std::out_of_range("Out of vector's range!");
 				return this->_array[pos];
 			}
-			reference				at(size_type pos) {
+			reference				at(size_type pos)
+			{
 				if (pos >= _size) throw
 					std::out_of_range("Out of vector's range!");
 				return this->_array[pos];
@@ -168,9 +170,10 @@ namespace ft {
 			bool			empty(void) const { return this->_size == 0; }
 
 			size_type		max_size(void) const
-			{ return std::min((size_type) std::numeric_limits<difference_type>::max(), std::numeric_limits<size_type>::max() / sizeof(value_type)); }
+				{ return std::min((size_type) std::numeric_limits<difference_type>::max(), std::numeric_limits<size_type>::max() / sizeof(value_type)); }
 
-			void			reserve(size_type n) {
+			void			reserve(size_type n)
+			{
 				if (n >= this->max_size())
 					throw std::length_error("Reserve argument goes beyond max size of vector!");
 				if (n <= _capacity) return;
@@ -179,13 +182,15 @@ namespace ft {
 
 			// MODIFIERS
 
-			void			clear(void) {
+			void			clear(void)
+			{
 				for (size_type i = 0; i < _size; i++)
 					_alloc.destroy(&_array[i]);
 				_size = 0;
 			}
 
-			void			push_back(const Type &value) {
+			void			push_back(const Type &value)
+			{
 				if (_capacity == 0){
 					_capacity = 1;
 					_array = _alloc.allocate(_capacity);
@@ -213,12 +218,14 @@ namespace ft {
 				return;
 			}
 
-			void			pop_back(void) {
+			void			pop_back(void)
+			{
 				if (!_size) return;
 				_alloc.destroy(&_array[--_size]);
 			}
 
-			void			resize(size_type count, Type value = Type()) {
+			void			resize(size_type count, Type value = Type())
+			{
 				this->realloc(count);
 				for (size_type i = _size; i < count; i++) {
 					_alloc.construct(&_array[i], value);
@@ -226,20 +233,23 @@ namespace ft {
 				}
 			}
 
-			void			swap(vector &other) {
+			void			swap(vector &other)
+			{
 				this->quick_swap(this->_array, other._array);
 				this->quick_swap(this->_size, other._size);
 				this->quick_swap(this->_alloc, other._alloc);
 				this->quick_swap(this->_capacity, other._capacity);
 			}
 
-			iterator	insert(iterator pos, const Type &value) {
+			iterator	insert(iterator pos, const Type &value)
+			{
 				difference_type		newPos = pos - this->begin();
 				this->insert(pos, (size_type) 1, value);
 				return (this->begin() + newPos);
 			}
 
-			void		insert(iterator pos, size_type count, const Type &value) {
+			void		insert(iterator pos, size_type count, const Type &value)
+			{
 				if (!count) return ;
 
 				iterator		it = this->end();
@@ -275,14 +285,16 @@ namespace ft {
 					this->push_back(*it);
 			}
 
-			iterator	erase(iterator pos) {
+			iterator	erase(iterator pos)
+			{
 				size_type		i = pos - this->begin();
 				_alloc.destroy(&_array[i]);
 				std::move(&_array[i + 1], &_array[_size--], &_array[i]);
 				return pos;
 			}
 
-			iterator	erase(iterator first, iterator last) {
+			iterator	erase(iterator first, iterator last)
+			{
 				size_type	n = last - first;
 				size_type	i = first - this->begin();
 				_alloc.destroy(&_array[i]);
@@ -322,6 +334,10 @@ namespace ft {
 	template < class T, class Alloc >
 	bool		operator<=(const vector<T, Alloc> &l, const vector<T, Alloc> &r)
 		{ return !(r < l); }
+
+	template < class T, class Alloc >
+	void		swap(const vector<T, Alloc> &l, const vector<T, Alloc> &r)
+		{ l.swap(r); }
 
 }
 

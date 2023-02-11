@@ -5,7 +5,7 @@
 /*    '-._.(;;;)._.-'                                                    */
 /*    .-'  ,`"`,  '-.                                                    */
 /*   (__.-'/   \'-.__)   BY: Rosie (https://github.com/BlankRose)        */
-/*       //\   /         Last Updated: Sat Nov 12 13:41:28 CET 2022      */
+/*       //\   /         Last Updated: Tue Feb  7 17:48:17 CET 2023      */
 /*      ||  '-'                                                          */
 /* ********************************************************************* */
 
@@ -15,7 +15,11 @@
 #include "tools.hpp"
 namespace ft {
 
-	template < typename Key, typename Type, typename Value, typename Compare, typename Allocator = std::allocator<Type> >
+	template <
+		typename Key, typename Type, typename Value,
+		typename Iterator, typename Const_Iterator,
+		typename Compare, typename Allocator = std::allocator<Type>
+	>
 	class BTree
 	{
 		private:
@@ -39,8 +43,8 @@ namespace ft {
 			typedef BTree_Node const *						const_node_pointer;
 			typedef std::size_t								size_type;
 			typedef std::ptrdiff_t							difference_type;
-			typedef BTree_Iterator<value_type>				iterator;
-			typedef BTree_Const_Iterator<value_type>		const_iterator;
+			typedef Iterator								iterator;
+			typedef Const_Iterator							const_iterator;
 			typedef std::reverse_iterator<iterator>			reverse_iterator;
 			typedef std::reverse_iterator<const_iterator>	const_reverse_iterator;
 
@@ -446,33 +450,33 @@ namespace ft {
 			static Key const &			_node_key(const_node_pointer node) { return Value()(_node_value(node)); }
 	};
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	inline void		swap(BTree<T, U, V, Cmp, Alloc> &lhs, BTree<T, U, V, Cmp, Alloc> &rhs)
-		{ lhs.swap(rhs); }
-
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator==(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator==(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()); }
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator<(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator<(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()); }
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator!=(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator!=(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return !(lhs == rhs); }
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator>(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator>(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return rhs < lhs; }
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator<=(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator<=(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return !(rhs < lhs); }
 
-	template <typename T, typename U, typename V, typename Cmp, typename Alloc>
-	bool			operator>=(BTree<T, U, V, Cmp, Alloc> const &lhs, BTree<T, U, V, Cmp, Alloc> const &rhs)
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	bool			operator>=(BTree<T, U, V, It, CIt, Cmp, Alloc> const &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> const &rhs)
 		{ return !(lhs < rhs); }
+
+	template <typename T, typename U, typename V, typename It, typename CIt, typename Cmp, typename Alloc>
+	inline void		swap(BTree<T, U, V, It, CIt, Cmp, Alloc> &lhs, BTree<T, U, V, It, CIt, Cmp, Alloc> &rhs)
+		{ lhs.swap(rhs); }
 
 }
 

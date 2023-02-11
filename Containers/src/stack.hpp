@@ -5,7 +5,7 @@
 /*    '-._.(;;;)._.-'                                                    */
 /*    .-'  ,`"`,  '-.                                                    */
 /*   (__.-'/   \'-.__)   BY: Rosie (https://github.com/BlankRose)        */
-/*       //\   /         Last Updated: Mon Nov  7 15:30:31 CET 2022      */
+/*       //\   /         Last Updated: Tue Feb  7 15:40:46 CET 2023      */
 /*      ||  '-'                                                          */
 /* ********************************************************************* */
 
@@ -48,16 +48,13 @@ namespace ft {
 			////////////// OPERATORS ///////////////
 
 			template < class T, class C >
-			friend bool			operator==(const stack<T, C> &ref, const stack<T, C> &cmp);
-			template < class T, class C >
 			friend bool			operator<(const stack<T, C> &ref, const stack<T, C> &cmp);
-	};
 
-	////////////// OPERATORS ///////////////
+	};
 
 	template < class Type, class Container >
 	bool		operator==(const stack<Type, Container> &l, const stack<Type, Container> &r)
-		{ return l.c == r.c; }
+		{ return !(l < r || r < l); }
 
 	template < class Type, class Container >
 	bool		operator!=(const stack<Type, Container> &l, const stack<Type, Container> &r)

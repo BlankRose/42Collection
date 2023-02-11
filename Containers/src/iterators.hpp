@@ -5,7 +5,7 @@
 /*    '-._.(;;;)._.-'                                                    */
 /*    .-'  ,`"`,  '-.                                                    */
 /*   (__.-'/   \'-.__)   BY: Rosie (https://github.com/BlankRose)        */
-/*       //\   /         Last Updated: Sat Nov 12 15:23:34 CET 2022      */
+/*       //\   /         Last Updated: Tue Feb  7 18:11:53 CET 2023      */
 /*      ||  '-'                                                          */
 /* ********************************************************************* */
 
@@ -206,15 +206,14 @@ namespace ft {
 
 
 
-
-
-
-
 /* ********************************* */
 /*                                   */
 /*      BIDIRECTIONAL ITERATOR       */
 /*                                   */
 /* ********************************* */
+
+	template < typename T >
+	struct BTree_Const_Iterator;
 
 	template < typename T >
 	struct BTree_Iterator
@@ -228,6 +227,7 @@ namespace ft {
 		typedef T *									pointer;
 
 		typedef BTree_Iterator<T>					iterator;
+		typedef BTree_Const_Iterator<T>				const_iterator;
 		typedef BTree_RB::base_pointer				base_pointer;
 		typedef BTree_Node<T> *						node_pointer;
 
@@ -273,35 +273,21 @@ namespace ft {
 
 	};
 
-	////////////// CONDITIONS //////////////
-
 	template < typename T >
-	bool	operator==(const BTree_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
-		{ return lhs.node == rhs.node; }
-
-	template < typename T >
-	bool	operator!=(const BTree_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
-		{ return lhs.node != rhs.node; }
-
-
-
-
-
-	template <typename T>
 	struct BTree_Const_Iterator
 	{
 		/////////////// TYPEDEF ////////////////
 
 		typedef std::bidirectional_iterator_tag		iterator_category;
 		typedef std::ptrdiff_t						difference_type;
-		typedef T									value_type;
-		typedef T const &							reference;
-		typedef T const *							pointer;
+		typedef const T								value_type;
+		typedef const T &							reference;
+		typedef const T *							pointer;
 
 		typedef BTree_Iterator<T>					iterator;
 		typedef BTree_Const_Iterator<T>				const_iterator;
 		typedef BTree_RB::const_base_pointer		base_pointer;
-		typedef BTree_Node<T> const *				node_pointer;
+		typedef const BTree_Node<T> *				node_pointer;
 
 		////////////// VARIABLES ///////////////
 
@@ -344,17 +330,189 @@ namespace ft {
 		reference			operator*() const { return static_cast<node_pointer>(node)->_value; }
 		pointer				operator->() const { return &static_cast<node_pointer>(node)->_value; }
 
-		////////////// CONDITIONS //////////////
+	};
 
-		friend bool operator==(const_iterator const &lhs, const_iterator const &rhs)
-			{ return lhs.node == rhs.node; }
+	////////////// CONDITIONS //////////////
 
-		friend bool operator!=(const_iterator const &lhs, const_iterator const &rhs)
-			{ return lhs.node != rhs.node; }
+	template < typename T >
+	bool	operator==(const BTree_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T >
+	bool	operator!=(const BTree_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
+		{ return lhs.node != rhs.node; }
+
+	template < typename T >
+	bool		operator==(const BTree_Const_Iterator<T> &lhs, const BTree_Const_Iterator<T> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T >
+	bool		operator!=(const BTree_Const_Iterator<T> &lhs, const BTree_Const_Iterator<T> &rhs)
+		{ return !(lhs == rhs); }
+
+	template < typename T >
+	bool		operator==(const BTree_Const_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T >
+	bool		operator!=(const BTree_Const_Iterator<T> &lhs, const BTree_Iterator<T> &rhs)
+		{ return !(lhs == rhs); }
+
+
+
+/* ********************************* */
+/*                                   */
+/*           SET ITERATOR            */
+/*                                   */
+/* ********************************* */
+
+	template < typename T, typename V >
+	struct Set_Const_Iterator;
+
+	template < typename T, typename V >
+	struct Set_Iterator
+	{
+		/////////////// TYPEDEF ////////////////
+
+		typedef std::bidirectional_iterator_tag		iterator_category;
+		typedef std::ptrdiff_t						difference_type;
+		typedef const V								value_type;
+		typedef const V &							reference;
+		typedef const V *							pointer;
+
+		typedef Set_Iterator<T, V>					iterator;
+		typedef Set_Const_Iterator<T, V>			const_iterator;
+		typedef BTree_RB::base_pointer				base_pointer;
+		typedef BTree_Node<T> *						node_pointer;
+
+		////////////// VARIABLES ///////////////
+
+		base_pointer node;
+
+		///////////// CONSTRUCTORS /////////////
+
+		Set_Iterator() : node() {}
+		Set_Iterator(node_pointer x) : node(x) {}
+		Set_Iterator(const Set_Const_Iterator<T, V> &it)
+			{ node = (node_pointer) it.node; (void) it; }
+
+		/////////////// FORWARD ////////////////
+
+		iterator 		&operator++() {
+			node = BTree_Handler::BTree_Forward(node);
+			return *this;
+		}
+
+		iterator 		operator++(int) {
+			iterator tmp = *this;
+			node = BTree_Handler::BTree_Forward(node);
+			return tmp;
+		}
+
+		/////////////// BACKWARD ///////////////
+
+		iterator 		&operator--() {
+			node = BTree_Handler::BTree_Backward(node);
+			return *this;
+		}
+
+		iterator 		operator--(int) {
+			iterator tmp = *this;
+			node = BTree_Handler::BTree_Backward(node);
+			return tmp;
+		}
+
+		/////////////// SPECIALS ///////////////
+
+		reference		operator*() const { return static_cast<node_pointer>(node)->_value.second; }
+		pointer			operator->() const { return &static_cast<node_pointer>(node)->_value.second; }
 
 	};
 
+	template < typename T, typename V >
+	struct Set_Const_Iterator
+	{
+		/////////////// TYPEDEF ////////////////
 
+		typedef std::bidirectional_iterator_tag		iterator_category;
+		typedef std::ptrdiff_t						difference_type;
+		typedef const V								value_type;
+		typedef const V &							reference;
+		typedef const V *							pointer;
+
+		typedef Set_Iterator<T, V>					iterator;
+		typedef Set_Const_Iterator<T, V>			const_iterator;
+		typedef BTree_RB::const_base_pointer		base_pointer;
+		typedef const BTree_Node<T> *				node_pointer;
+
+		////////////// VARIABLES ///////////////
+
+		base_pointer								node;
+
+		///////////// CONSTRUCTORS /////////////
+
+		Set_Const_Iterator() : node() {}
+		Set_Const_Iterator(node_pointer x) : node(x) {}
+		Set_Const_Iterator(iterator const &it) : node(it.node) {}
+
+		/////////////// FORWARD ////////////////
+
+		const_iterator		&operator++() {
+			node = BTree_Handler::BTree_Forward(node);
+			return *this;
+		}
+
+		const_iterator		operator++(int) {
+			const_iterator tmp = *this;
+			node = BTree_Handler::BTree_Forward(node);
+			return tmp;
+		}
+
+		/////////////// BACKWARD ///////////////
+
+		const_iterator		&operator--() {
+			node = BTree_Handler::BTree_Backward(node);
+			return *this;
+		}
+
+		const_iterator		operator--(int) {
+			const_iterator tmp = *this;
+			node = BTree_Handler::BTree_Backward(node);
+			return tmp;
+		}
+
+		/////////////// SPECIALS ///////////////
+
+		reference			operator*() const { return static_cast<node_pointer>(node)->_value.second; }
+		pointer				operator->() const { return &static_cast<node_pointer>(node)->_value.second; }
+
+	};
+
+	////////////// CONDITIONS //////////////
+
+	template < typename T, typename V >
+	bool	operator==(const Set_Iterator<T, V> &lhs, const Set_Iterator<T, V> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T, typename V >
+	bool	operator!=(const Set_Iterator<T, V> &lhs, const Set_Iterator<T, V> &rhs)
+		{ return lhs.node != rhs.node; }
+
+	template < typename T, typename V >
+	bool		operator==(const Set_Const_Iterator<T, V> &lhs, const Set_Const_Iterator<T, V> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T, typename V >
+	bool		operator!=(const Set_Const_Iterator<T, V> &lhs, const Set_Const_Iterator<T, V> &rhs)
+		{ return !(lhs == rhs); }
+
+	template < typename T, typename V >
+	bool		operator==(const Set_Const_Iterator<T, V> &lhs, const Set_Iterator<T, V> &rhs)
+		{ return lhs.node == rhs.node; }
+
+	template < typename T, typename V >
+	bool		operator!=(const Set_Const_Iterator<T, V> &lhs, const Set_Iterator<T, V> &rhs)
+		{ return !(lhs == rhs); }
 
 
 
