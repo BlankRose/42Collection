@@ -1,0 +1,81 @@
+
+Preliminary tests
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Prerequisites
+
+The code must compile with c++ and the flags -Wall -Wextra -Werror
+Don't forget this project has to follow the C++98 standard. Thus,
+C++11 (and later) functions or containers are NOT expected.
+
+Any of these means you must not grade the exercise in question:
+
+    A function is implemented in a header file (except for template functions).
+    A Makefile compiles without the required flags and/or another compiler than c++.
+
+Any of these means that you must flag the project with "Forbidden
+Function":
+
+    Use of a "C" function (*alloc, *printf, free).
+    Use of a function not allowed in the exercise guidelines.
+    Use of "using namespace <ns_name>" or the "friend" keyword.
+    Use of an external library, or features from versions other than C++98.
+
+Exercise 00: Megaphone
+
+This exercise is a warm-up to discover basic C++ I/O streams.
+Is it working?
+
+This exercise is about developing a to_upper program with a specific
+behavior when run without any parameter. This has to be solved in a C++
+approach (strings/upper).
+
+Exercise 01: My Awesome Phonebook
+
+This exercise is about writing simple classes and a small interactive program that uses them. If the exercise is not fully functional, grade what can be graded.
+Error handling
+
+This exercise requires a few error handling but there are no expected behaviors in the subject. Quitting or other handling is fine. Segfault is not! :D
+
+Rate it from 0 (failed) through 5 (excellent)
+The EXIT command
+
+Rate the EXIT command as described in the subject.
+
+Visibility
+
+The attributes of the class Contact should be private. The class should
+expose the corresponding accessors.\r\nAlso, check that anything that will
+always be used inside a class (not only in the Contact class) is private,
+and that anything that can be used outside a class is public. Beginners
+tend to put everything in public, that's not what you want here!
+
+Rate it from 0 (failed) through 5 (excellent)
+The Contact and the Phonebook classes
+
+The code must have a Contact class (or whatever name the student gave).
+This class must have attributes for each contact fields. There also must
+be a Phonebook class containing an array of Contacts.
+
+Read/Eval loop
+
+The program must have a kind of read/eval loop: reading the input,
+processing it, then wait again for another command until an EXIT
+command is entered. This loop should be done in a C++ manner (std::cin)!
+
+The ADD command
+
+Rate the ADD command as described in the subject.
+
+Rate it from 0 (failed) through 5 (excellent)
+The SEARCH command
+
+Rate the SEARCH command as described in the subject. The formatting of the output can be different, it doesn't matter. This part is about using C++ iomanips and that's what you should focus on.
+
+Rate it from 0 (failed) through 5 (excellent)
+Exercise 02: The Job Of Your Dreams
+
+This exercise intends to extract information and directions from useless noise, and to insert new code into an existing context.
+Did you save the day?
+
+This exercise is pretty straightforward. Either Account.cpp works, either it does not. Compare the program's output and the provided logs. Any difference (except for the timestamps or the order of the destructors) means the exercise is incorrect.
