@@ -1,0 +1,48 @@
+##############################
+#                            #
+#        NETPRACTICE         #
+#                            #
+##############################
+
+
+===  Preliminaries  ===
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag of the scale. Please do this calmly, wisely and use this button with caution.
+
+1 . Simple preliminaries
+[ Yes / No ]
+
+    Defense can only happen if the student being evaluated is present. This way everybody improves: by exchanging ideas and sharing knowledge with each other.
+    Nothing submitted (or wrong file or directory) means 0, and the evaluation process ends.
+    In order to grade your peer, you have to clone their Git repository on your machine.
+
+
+
+===  General instructions  ===
+[ Yes / No ]
+
+Ensure that 10 files (1 per level) are present at the root of the repository. Ensure that they are not empty.
+
+
+
+===  Mandatory part  ====
+
+- This project is about configuring small-scale networks that have issues to make them run. You have to download the file attached to the project's page (the evaluated student can show you where it is). Then, run the index.html file. A page will open in your web browser. Leave the login field empty to start the 'correction' mode. The evaluated student must solve correctly all of the levels in 15 minutes maximum. Using internet or any external resource to find answers is, of course, forbidden. The use of a simple calculator such as "bc" is tolerated but it will be the limit. You can ask questions about the different levels to the evaluated student.
+
+1 . Level 1
+[ Yes / No ]
+
+If something does not work as expected or is not clearly explained, the
+evaluation process ends now.
+
+2 . Level 2
+[ Yes / No ]
+
+If something does not work as expected or is not clearly explained, the
+evaluation process ends now.
+
+3 . Level 3
+[ Yes / No ]
+
+If something does not work as expected or is not clearly explained, the
+evaluation process ends now.
