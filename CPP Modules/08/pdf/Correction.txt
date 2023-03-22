@@ -1,0 +1,90 @@
+##############################
+#                            #
+#       CPP MODULES 08       #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+	Any of these means you must not grade the exercise in question:
+
+	    A function is implemented in a header file (except for template functions).
+	    A Makefile compiles without the required flags and/or another compiler than c++.
+
+	Any of these means that you must flag the project with "Forbidden
+	Function":
+
+	    Use of a "C" function (*alloc, *printf, free).
+	    Use of a function not allowed in the exercise guidelines.
+	    Use of "using namespace <ns_name>" or the "friend" keyword.
+	    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercise 00: Easy find  ===
+
+As usual, there has to be the main function that contains enough tests to prove the program works as expected. If
+there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade
+this exercise.
+
+1 . Template function
+[ Yes / No ]
+
+	There is a templated function easyFind(T, int) that does what the
+	subject requires.
+	It HAS to use STL algorithms.
+	If it does not (like manual search using iterators for example), count
+	it as wrong.
+
+
+
+===  Exercise 01: Span  ===
+
+As usual, there has to be the main function that contains enough tests to prove the program works as expected. If
+there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade
+this exercise.
+
+1 . Class and member functions
+[ Yes / No ]
+
+	There is a class that complies with the constraints of the subject.
+	Its member functions use STL algorithms to find their result as much as
+	possible. Finding the shortest span can't be done only by subtracting
+	the two lowest numbers (take a closer look at the subject example).
+
+2 . Improved addNumber function
+[ Yes / No ]
+
+	There's a way to add numbers that's more practical than calling the
+	addNumber() function repeatedly.
+
+
+
+===  Exercise 02: Mutated abomination  ===
+
+As usual, there has to be the main function that contains enough tests to prove the program works as expected. If
+there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade
+this exercise.
+
+1 . MutantStack class
+[ Yes / No ]
+
+	There is a MutantStack class that inherits from std::stack and offers
+	all of its member functions.
+	It has an iterator. Also, it is possible to do at least the operations
+	shown in the subject's examples using iterators.
+
+2 . Better tests
+[ Yes / No ]
+
+	There is a at least a main() function that has more tests than the ones
+	from the subject.

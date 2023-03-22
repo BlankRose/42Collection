@@ -1,0 +1,148 @@
+##############################
+#                            #
+#       CPP MODULES 07       #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+	Any of these means you must not grade the exercise in question:
+
+	    A function is implemented in a header file (except for template functions).
+	    A Makefile compiles without the required flags and/or another compiler than c++.
+
+	Any of these means that you must flag the project with "Forbidden
+	Function":
+
+	    Use of a "C" function (*alloc, *printf, free).
+	    Use of a function not allowed in the exercise guidelines.
+	    Use of "using namespace <ns_name>" or the "friend" keyword.
+	    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercice 00: Start with a few functions  ===
+
+This exercise is about writing 3 simple function templates: swap(), min() and max().
+
+1 . Simple types
+[ Yes / No ]
+
+	Refer to the subject for the expected output with simple types, such
+	as int.
+
+2 . Complex types
+[ Yes / No ]
+
+	Do the functions also work with complex types such as: ?
+
+	```main.cpp
+	class Awesome
+	{
+		public:
+			Awesome(void) : _n(0) {}
+			Awesome( int n ) : _n( n ) {}
+			Awesome & operator= (Awesome & a) { _n = a._n; return *this; }
+			bool operator==( Awesome const & rhs ) const { return (this->_n == rhs._n); }
+			bool operator!=( Awesome const & rhs ) const{ return (this->_n != rhs._n); }
+			bool operator>( Awesome const & rhs ) const { return (this->_n > rhs._n); }
+			bool operator<( Awesome const & rhs ) const { return (this->_n < rhs._n); }
+			bool operator>=( Awesome const & rhs ) const { return (this->_n >= rhs._n); }
+			bool operator<=( Awesome const & rhs ) const { return (this->_n <= rhs._n); }
+			int get_n() const { return _n; }
+		private:
+			int _n;
+	};
+
+	std::ostream & operator<<(std::ostream & o, const Awesome &a) { o << a.get_n(); return o; }
+
+	int main(void)
+	{
+		Awesome a(2), b(4);
+		swap(a, b);
+		std::cout << a << " " << b << std::endl;
+		std::cout << max(a, b) << std::endl;
+		std::cout << min(a, b) << std::endl;
+		return (0);
+	}
+	```
+
+
+
+===  Exercice 01: Iter  ===
+
+This exercise is about writing a generic function to iterate through arrays.
+
+1 . Does it work?
+[ Yes / No ]
+
+	Test the following code with the evaluated student's iter:
+
+	```main.cpp
+	class Awesome
+	{
+		public:
+			Awesome( void ) : _n( 42 ) { return; }
+			int get( void ) const { return this->_n; }
+		private:
+			int _n;
+	};
+
+	std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+	
+	template< typename T >
+	void print( T const & x ) { std::cout << x << std::endl; return; }
+
+	int main()
+	{
+		int tab[] = { 0, 1, 2, 3, 4 }; // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
+		Awesome tab2[5];
+		iter( tab, 5, print );
+		iter( tab2, 5, print );
+		return 0;
+	}
+	```
+
+	If everything went well, it should display:
+
+	```output
+	0
+	1
+	2
+	3
+	4
+	42
+	42
+	42
+	42
+	42
+	```
+
+
+
+===  Exercice 02: Array  ===
+
+This exercise is about writing a class template that behaves like an array. If the inner allocation of the actual array
+does not come from a use of new[], don't grade this exercise. Ask the evaluated student to prove the class template
+works with arrays of both simple and complex types before grading the exercise.
+
+1 . Constructors
+[ Yes / No ]
+
+	Is it possible to create an empty array and an array of a specific size?
+
+2 . Access
+[ Yes / No ]
+
+	Elements must be accessible for reading and writing through the operator[]
+	(or reading only if the instance is const). Access to an element which is
+	out of range must throw an std::exception.

@@ -1,0 +1,74 @@
+##############################
+#                            #
+#        PHILOSOPHERS        #
+#                            #
+##############################
+
+(?) Testing Tips:
+  A philo should die if: time_eat + time_sleep > time_to_die
+  A philo can also die if: time_to_die is close to the total of time_eat + time_sleep
+    (due to latency caused by: program's lack of optimizations and/or system's ressources)
+
+
+
+===  Mandatory Part  ===
+
+1 . Error Handling
+[ Yes / No ]
+
+	This project is to be coded in C, following the Norm.
+	Any crash, undefined behavior, memory leak, or norm error means 0 to the project.
+	On some slow hardware, the project might not work properly.
+	If some tests don't work on your machine try to discuss it honestly before counting it as false.
+
+2 . Philo code
+[ Yes / No ]
+
+	- Check the code of Philo for the following things and ask for an explanation.
+	- Check if there is one thread per philosopher.
+	- Check there's only one fork per philosopher.
+	- Check if there is a mutex per fork and that it's used to check the fork value and/or change it.
+	- Check the output should never produce a scrambled view.
+	- Check how the death of a philosopher is checked and if there is a mutex to protect that a philosopher dies and start
+	eating at the same time.
+
+3 . Philo test
+[ Yes / No ]
+
+	- Do not test with more than 200 philosophers
+	- Do not test with time_to_die or time_to_eat or time_to_sleep under 60 ms
+	- Test with 1 800 200 200, the philosopher should not eat and should die!
+	- Test with 5 800 200 200, no one should die!
+	- Test with 5 800 200 200 7, no one should die and the simulation should stop when all the philosopher has eaten at
+	least 7 times each.
+	- Test with 4 410 200 200, no one should die!
+	- Test with 4 310 200 100, a philosopher should die!
+	- Test with 2 philosophers and check the different times (a death delayed by more than 10 ms is unacceptable).
+	- Test with your values to check all the rules. Check if a philosopher dies at the right time if they don't steal forks, etc.
+
+
+
+===  Bonus Part  ===
+
+1 . Philo_bonus code
+[ Yes / No ]
+
+	- Check the code of philo_bonus for the following things and ask for an explanation.
+	- Check if there will be one process per philosopher and that the first process waits for all of them.
+	- Check if there is a single semaphore that represents the number of forks.
+	- Check if the output is protected against multiple access. To avoid a scrambled view.
+	- Check how the death of a philosopher is checked and if there is a semaphore to protect that a philosopher dies and
+	starts eating at the same time.
+
+2 . Philo_bonus test
+[ Yes / No ]
+
+	- Do not test with more than 200 philosophers
+	- Do not test with time_to_die or time_to_eat or time_to_sleep under 60 ms
+	- Test with 5 800 200 200, no one should die!
+	- Test with 5 800 200 200 7, no one should die and the simulation should stop when all the philosopher has eaten at
+	least 7 times each.
+	- Test with 4 410 200 200, no one should die!
+	- Test with 4 310 200 100, a philosopher should die!
+	- Test with 2 philosophers and check the different times (a death delayed by more than 10 ms is unacceptable).
+	- Test with your values to check all the rules. Check if a philosopher dies at the right time if they don't steal forks, etc.

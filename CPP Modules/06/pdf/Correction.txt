@@ -1,0 +1,80 @@
+##############################
+#                            #
+#       CPP MODULES 06       #
+#                            #
+##############################
+
+
+
+===  Preliminary tests  ===
+[ Yes / No ]
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+
+	The code must compile with c++ and the flags -Wall -Wextra -Werror
+	Don't forget this project has to follow the C++98 standard. Thus,
+	C++11 (and later) functions or containers are NOT expected.
+
+	Any of these means you must not grade the exercise in question:
+
+	    A function is implemented in a header file (except for template functions).
+	    A Makefile compiles without the required flags and/or another compiler than c++.
+
+	Any of these means that you must flag the project with "Forbidden
+	Function":
+
+	    Use of a "C" function (*alloc, *printf, free).
+	    Use of a function not allowed in the exercise guidelines.
+	    Use of "using namespace <ns_name>" or the "friend" keyword.
+	    Use of an external library, or features from versions other than C++98.
+
+
+
+===  Exercice 00: Conversion of scalar types  ===
+
+This exercise is about using the static_cast.
+
+1 . Scalar conversion
+[ Yes / No ]
+
+	Does the program work as required? Did the student use the static_cast
+	to convert values? We'll accept the use of implicit casts for promotion
+	casts only.
+
+	Anyway, please don't be too uncompromising towards the exercise's outputs
+	if the spirit of the exercise is respected.
+	Even if this exercise is wrong, continue the evaluation process.
+
+
+
+===  Exercice 01: Serialization  ===
+
+This exercise is about using the reinterpret_cast.
+
+1 . Retyping of raw data
+[ Yes / No ]
+
+	Does the program work as required?
+	The reinterpret_cast<> should be used twice.
+	First from data* to uintptr_t.
+	Then, from uintptr_t to data*.
+	And the final data struct should be usable.
+
+
+
+===  Exercice 02: Identify real type  ===
+
+This exercise is about using the dynamic_cast.
+
+1 . Real type identification
+[ Yes / No ]
+
+	Does the program work as required?
+	Check the code. Did the student use the dynamic_cast to identify the real
+	type?
+
+	void identify(Base* p) should check if the cast return is NULL.
+	void identify(Base\& p) should use a try and catch block to check if the cast failed.
+
+	(In case you're wondering, the header must not appear
+	anywhere.)
