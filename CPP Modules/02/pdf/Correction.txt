@@ -10,6 +10,7 @@
 [ Yes / No ]
 
 If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Prerequisites
 
 	The code must compile with c++ and the flags -Wall -Wextra -Werror
 	Don't forget this project has to follow the C++98 standard. Thus,
@@ -30,7 +31,8 @@ If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to rep
 
 
 
-===  Exercice 00: My First Class in Orthodox Canonical Form  ===
+===  Exercise 00: My First Class in Orthodox Canonical Form  ===
+
 This exercise introduces the notion of canonical class with a simple arithmetic example: the fixed-point numbers.
 
 1 . Makefile
@@ -43,26 +45,25 @@ This exercise introduces the notion of canonical class with a simple arithmetic 
 
 	The Fixed class (or whatever its name) must provide accessors to
 	the raw value:
-	- int getRawBits( void ) const;
-	- void setRawBits(
-	int const raw );
-	Are these member functions present and functional?
+
+	    int getRawBits( void ) const;
+	    void setRawBits( int const raw ); Are these member functions present and functional?
 
 3 . Canonical
 [ Yes / No ]
 
 	A canonical class must provide at least:
-	- A default constructor
-	- A destructor
-	- A copy constructor
-	- An copy assignment operator
-	Are these elements present and functional?
+
+	    A default constructor
+	    A destructor
+	    A copy constructor
+	    An copy assignment operator Are these elements present and functional?
 
 
 
-===  Exercice 01: Towards a more useful fixed-point number class  ===
+===  Exercise 01: Towards a more useful fixed-point number class  ===
 
-Ex00 was a good start, but our class is still pretty useless since it is only able to represent the fixed-point value 0.0.
+The previous exercise was a good start, but the class was still pretty useless since it was only able to represent the fixed-point value 0.0.
 
 1 . Makefile
 [ Yes / No ]
@@ -98,9 +99,9 @@ Ex00 was a good start, but our class is still pretty useless since it is only ab
 
 
 
-===  Exercice 02: Now we are talking  ===
+===  Exercise 02: Now we are talking  ===
 
-This exercise add comparison and arithmetic features to the class.
+This exercise adds comparison and arithmetic features to the class.
 
 1 . Makefile
 [ Yes / No ]
@@ -110,18 +111,18 @@ This exercise add comparison and arithmetic features to the class.
 2 . Comparison operators
 [ Yes / No ]
 
-	Are the six comparison operators (>, <, >=, <=, == and !=) implemented and working properly?
+	Are the 6 comparison operators (>, <, >=, <=, == and !=) implemented and working properly?
 
 3 . Arithmetic operators
 [ Yes / No ]
 
-	Are the six arithmetic operators (+, -, * and /) implemented and working properly?
+	Are the 4 arithmetic operators (+, -, * and /) implemented and working properly?
 
 4 . Other operators
 [ Yes / No ]
 
-	The pre-increment, post-increment, pre-decrement and post-decrement operators
-	are implemented and working properly?
+	Are the pre-increment, post-increment, pre-decrement and post-decrement
+	operators implemented and working properly?
 
 5 . Static member functions overloads
 [ Yes / No ]
@@ -131,10 +132,9 @@ This exercise add comparison and arithmetic features to the class.
 
 
 
-===  Exercice 03: BSP  ===
+===  Exercise 03: BSP  ===
 
-This exercise should have make you realize how easy it is to implement complex algorithms once the basics work as
-intended.
+This exercise should have make you realize how easy it is to implement complex algorithms once the basics work as intended.
 
 1 . Makefile
 [ Yes / No ]
@@ -144,16 +144,17 @@ intended.
 2 . Class Point
 [ Yes / No ]
 
-	There is a class Point which has two attributes (x and y) of type Fixed const.
-	It also has a constructor that takes two floats and initialize x and y with
-	those values.
+	There is a class Point which has two attributes (x and y) of type Fixed
+	const. It also has a constructor that takes two floats and initialize x
+	and y with those values.
 
 3 . Function bsp
 [ Yes / No ]
 
 	There is a function bsp() which prototype is
 	"bool bsp( Point const a, Point const b, Point const c, Point const point)".
-	The function returns True if the point is inside of the triangle described by the vertices a, b, and c.
+	The function returns True if the point is inside the triangle described by
+	the vertices a, b, and c.
 	It returns False otherwise.
 
 4 . Main and tests
