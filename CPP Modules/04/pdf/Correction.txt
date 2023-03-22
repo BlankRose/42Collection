@@ -7,6 +7,7 @@
 
 
 ===  Preliminary tests  ===
+[ Yes / No ]
 
 If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
 
@@ -34,23 +35,27 @@ If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to rep
 As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 1 . First check
+[ Yes / No ]
 
 	There is an Animal class that has one attribute:
 	One string called type.
 	You must be able to instantiate and use this class.
 
 2 . Inheritance
+[ Yes / No ]
 
 	They are at least two classes that inherit from Animal: Cat and Dog.
 	The constructor and destructor outputs must be clear.
 	Ask the student about constructor and destructor orders.
 
 3 . Easy derived class
+[ Yes / No ]
 
 	The attribute type is set to the appropriate value at creation for
 	every animal. Cat must have "Cat" and Dog must have "Dog".
 
 4 . Animal
+[ Yes / No ]
 
 	Using makeSound() function always called the appropriate makeSound()
 	function. makeSound() should be virtual! Verify it in the code.
@@ -69,6 +74,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 1 . Concrete Animal
+[ Yes / No ]
 
 	There is a new class called Brain.
 	Cat and Dog have the required private Brain attribute.
@@ -76,6 +82,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	The Brain class has specific outputs upon creation and deletion.
 
 2 . Concrete Brain
+[ Yes / No ]
 
 	The copy a Cat or a Dog should be a deep copy.
 	Test something like:
@@ -92,12 +99,14 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	save you from hours of pain.
 
 3 . Destruction chaining
+[ Yes / No ]
 
 	The destructors in Animal must be virtual.
 	Ask an explanation of what will happen without the virtual keyword over Animal destructor.
 	Test it.
 
 4 . Assignment and copy
+[ Yes / No ]
 
 	The copy and assignment behaviors of the Cat and Dog are like the
 	subject requires.
@@ -113,6 +122,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 1 . Abstract class
+[ Yes / No ]
 
 	There is an Animal class exactly like the one in the subject.
 	The Animal::makeSound is a pure virtual function.
@@ -123,6 +133,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	Animal test; //should give you a compile error about the class being abstract
 
 2 . Concrete Animal
+[ Yes / No ]
 
 	Class Cat and Dog are still present and work exactly like in ex01.
 
@@ -133,16 +144,19 @@ As usual, there has to be enough tests to prove the program works as expected. I
 As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 1 . Interfaces
+[ Yes / No ]
 
 	There are ICharacter and IMateriaSource interfaces that are exactly like
 	required in the subject.
 
 2 . MateriaSource
+[ Yes / No ]
 
 	The MateriaSource class is present and implements IMateriaSource. The
 	member functions work as intended.
 
 3 . Concrete Materia
+[ Yes / No ]
 
 	There are concrete Ice and Cure classes that inherit from AMateria. Their
 	clone() method is correctly implemented. Their outputs are correct.
@@ -151,6 +165,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	AMateria contains a protected string attribute to store the type.
 
 4 . Character
+[ Yes / No ]
 
 	The Character class is present and implements ICharacter. It has
 	an inventory of 4 Materias maximum.
