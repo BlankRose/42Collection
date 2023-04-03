@@ -1,0 +1,5 @@
+Prompt:
+	What is considered the best joke? (Give an awser shorter than 500 characters)
+
+ChatGPT:
+	In a 2002 study, the winning joke was: "Two hunters are in the woods when one collapses. The other calls emergency services and says, 'My friend is dead! What can I do?' The operator says 'Calm down, I can help. First, let's make sure he's dead.' A gunshot is heard. The hunter says 'OK, now what?'" The joke relies on shock value and a surprise twist.

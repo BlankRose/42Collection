@@ -1,0 +1,120 @@
+##############################
+#                            #
+#      APRIL FOOLS 2023      #
+#                            #
+##############################
+
+
+
+===  Starting  ===
+
+1 . Yes
+[ Yes / No ]
+
+	Checkout if there is a bash script called yes.sh that print
+	yes an infinite number of time.
+
+2 . Touch me
+[ Yes / No ]
+
+	ls -l * | cat -e
+	Check if the file is the same as written in the subject.
+
+3 . Joke contest
+[ Yes / No ]
+
+	If the joke made you laugh press yes, if it didn't press yes also.
+
+4 . Never gonna
+[ Yes / No ]
+
+	Check if the file lyrics.txt contains the lyrics of
+	the song Never gonna give you up. If it doesn't... well... press yes also.
+
+5 . What is a car or a cat I saw?
+[ Yes / No ]
+
+	Did you saw that the title of this exercice is a palindrome? Anyways...
+	Launch the perl script and test different palindrome.
+
+6 . Rock-paper-scissor
+[ Yes / No ]
+
+	Play rock-paper-scissor with the computer (it must be a PHP script!).
+	There is no particular error handling to do. common evaluator
+	it's a fun project.
+
+7 . Can you win?
+[ Yes / No ]
+
+	Compile the file as the evaluated want and Verify is the program behave correctly as asked in the subject.
+	Also, did you did it better than the staff?
+
+8 . Blackjack
+[ Yes / No ]
+
+	Why did the computer go to the casino? To play binary blackjack!
+	Hum... try to play blackjack with the program. Obviously if there
+	is a segfault you can... ignore it this time.
+
+9 . Frame Master
+[ Yes / No ]
+
+	Straight forward no...?
+	Can you frame the following argument "The only way to do great work is to love what you do."?
+
+10 . Symbolum
+[ Yes / No ]
+
+	Check if the file symbolum.txt contains "kh2JFM"
+	The following encryption are used:
+
+	    rot42
+	    Base64
+	    Atbash
+	    Javascript Keycode
+	    Nato phonetic
+	    leet
+	    Playfair with the key PLAYFAIR
+
+11 . Pokemon
+[ Yes / No ]
+
+	Check the abilities of the pokemon of your choice using the
+	script written in python..
+
+12 . Girgle of hippolyta
+[ Yes / No ]
+
+	Send an email with an attachment to the evaluator using the
+	program / script. (!no Bash).
+
+13 . Choices
+[ Yes / No ]
+
+	Check if the password is "coconut".
+	The evaluated must explain how he found it.
+
+14 . Old friend
+[ Yes / No ]
+
+	Rembember? Check if the output is similar to the reference binary
+	in attachment.
+
+15. Now you see me
+[ Yes / No ]
+
+	There is a string hidden in the image that say flag: XXXXXX
+	Check if the evaluated can explain and show where it is!
+
+16 . ChatGPT stand-up comedy
+[ Yes / No ]
+
+	Does that joke is good...? you can maybe post it on slack...
+	anyways if the file is not empty, press yes.
+
+17 . Where is norminet?
+[ Yes / No ]
+
+	Norminet is kidnapped by Charly, can the evaluated explain how
+	he found out?

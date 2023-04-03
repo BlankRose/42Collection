@@ -40,7 +40,7 @@
 				<li>PDFs of Correction and Subject (in english)</li>
 				<li>Sources files (might not reflect final push to get the mark)</li>
 			</ul>
-			Please note there might not has every correction files as I have started getting them at the very end of my cursus and there also might be some modifications in the subject since the elapsed time
+			Please note there might not has every correction files and there also might be some modifications in the subject since the elapsed time. If you wish to help out, feel free to contact me or pull requests to update the subjects and corrections.
 		</p>
 	</div>
 	<br>
@@ -96,8 +96,8 @@
 		<br><b>
 			Rank 6 :
 		<br></b>
-			<img alt="ft_transcendence" src="https://img.shields.io/static/v1?label=Transcendence&message=Waiting+Team&color=critical&style=plastic"/>
-			<img alt="exam_6" src="https://img.shields.io/static/v1?label=Exam+Rank+06&message=In+Progress&color=important&style=plastic"/>
+			<img alt="ft_transcendence" src="https://img.shields.io/static/v1?label=Transcendence&message=In+Progres&color=red&style=plastic"/>
+			<img alt="exam_6" src="https://img.shields.io/static/v1?label=Exam+Rank+06&message=In+Progress&color=red&style=plastic"/>
 	</p>
 	<br>
 </div>
@@ -112,7 +112,22 @@
 		🔭	Specialities
 	</h1>
 	<p>
-		<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM&message=In+Progress&color=important&style=plastic"/>
+		<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM&message=In+Progress&color=red&style=plastic"/>
+	</p>
+	<br>
+</div>
+
+<!--
+	THIRD SECTION:
+	Events
+-->
+
+<div>
+	<h1 style='font-size:160%; font-family:impact'>
+		🎖	Special Events
+	</h1>
+	<p>
+		<img alt="April Fool 2023" src="https://img.shields.io/static/v1?label=April+Fool+2023&message=100+/+100&color=yellow&style=plastic"/>
 	</p>
 	<br>
 </div>

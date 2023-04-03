@@ -1,0 +1,1 @@
+printf();main(c,a)char**a;{return c^3?0:(printf("%s %s\n",a[1],a[2]),2);}

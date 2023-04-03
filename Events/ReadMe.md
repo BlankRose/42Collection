@@ -1,0 +1,1 @@
+This section includes all special events done by both campus and in whole 42 I attempted.
