@@ -7,6 +7,9 @@
 [submodule "Common/Printf/src"]
 	path = Common/Printf/src
 	url = git@github.com:BlankRose/libft.git
+[submodule "Common/So Long/lib"]
+	path = Common/So Long/lib
+	url = git@github.com:BlankRose/libft.git
 [submodule "Common/IRC/src"]
 	path = Common/IRC/src
 	url = git@github.com:dhaliti/IRC.git
