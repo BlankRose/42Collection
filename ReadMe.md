@@ -71,7 +71,7 @@
 		<br></b>
 			<img alt="push_swap" src="https://img.shields.io/static/v1?label=Push+Swap&message=84+/+100&color=success&style=plastic"/>
 			<img alt="minitalk" src="https://img.shields.io/static/v1?label=Minitalk&message=125+/+100&color=yellow&style=plastic"/>
-			<img alt="so_long" src="https://img.shields.io/static/v1?label=So+Long&message=101+/+100&color=success&style=plastic"/>
+			<img alt="so_long" src="https://img.shields.io/static/v1?label=So+Long+%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
 			<img alt="exam_2" src="https://img.shields.io/static/v1?label=Exam+Rank+02&message=Validated&color=yellow&style=plastic"/>
 		<br><b>
 			Rank 3 :
