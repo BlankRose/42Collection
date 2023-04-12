@@ -4,9 +4,6 @@
 #                            #
 ##############################
 
-/!\ Incomplete correction (Exercice 01)
-/!\ This is a new module and might change alot the upcomming weeks
-
 
 
 ===  Preliminary tests  ===
@@ -16,111 +13,153 @@ If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to rep
 
 	The code must compile with c++ and the flags -Wall -Wextra -Werror
 	Don't forget this project has to follow the C++98 standard. Thus,
-	C++11 (and later) functions or containers are NOT expected.
+	C++11 (and later) are NOT expected.
+
+	The purpose of this module is to use the STL. Then, using the
+	containers is authorized.
 
 	Any of these means you must not grade the exercise in question:
 
-	    A function is implemented in a header file (except for template functions).
-	    A Makefile compiles without the required flags and/or another compiler than c++.
+		A function is implemented in a header file (except for template functions).
+		A Makefile compiles without the required flags and/or another compiler than c++.
 
 	Any of these means that you must flag the project with "Forbidden
 	Function":
 
-	    Use of a "C" function (*alloc, *printf, free).
-	    Use of a function not allowed in the exercise guidelines.
-	    Use of "using namespace <ns_name>" or the "friend" keyword.
-	    Use of an external library, or features from versions other than C++98.
+		Use of a "C" function (*alloc, *printf, free).
+		Use of a function not allowed in the exercise guidelines.
+		Use of an external library, or features from versions other than C++98.
 
+===  Exercise 00: Bitcoin Exchange  ===
 
-
-===  Exercise 00: Bitcoin Exchange ===
-
-For this frst exercise, you have to find a makefile with the usual compilation rules and subject
+For this first exercise, you have to find a makefile with the usual compilation rules and the files requested in the subject.
 
 1 . Code review
 [ Yes / No ]
 
 	Check that a makefile is present with the usual compilation rules.
-	Check in the code that the program Uses at least one container.
+
+	Check in the code that the program uses at least one container.
+
 	The person being evaluated must explain why they chose to use this
 	container and not another?
+
 	If not, the evaluation stops here.
 
 2 . Error handle
 [ Yes / No ]
 
 	You must be able to use an empty file or a file with errors
-	(a basic example exists in the subject). Ihe program must not stop
-	its execution before having pertormed the operations on the whole
+	(a basic example exists in the subject). The program must not stop
+	its execution before having performed the operations on the whole
 	file passed as argument.
-	You can Use a wrong date.
-	You can enter a value greater than 1000 or less than 0.
-	IF there is any problem during the execution then the evaluation stops here.
+
+		You can use a wrong date.
+		You can enter a value greater than 1000 or less than 0.
+
+	If there is any problem during the execution then the evaluation stops here.
 
 3 . Main usage
 [ Yes / No ]
 
-	You must now use the input.csv tile located at the top ot this page.
-	You can modity this ftile with the values you want.
-	You have to run the program with the input.csv tile as parameter
-	Please compare some dates manually with the specitied value.
-	It the date does not exist in the database, the program will have to use the
+	You must now use the "input.csv" file located at the top of this page.
+	You can modify this file with the values you want.
+	You have to run the program with the input.csv file as parameter.
+
+	Please compare some dates manually with the specified value.
+
+	If the date does not exist in the database, the program will have to use the
 	nearest lower date.
-
-
 
 ===  Exercise 01: Reverse Polish Notation  ===
 
-For this second exercise, you have to find a makefile with the usual compilation rules an subject
+For this second exercise, you have to find a makefile with the usual compilation rules and the files requested in the subject.
 
 1 . Code review
 [ Yes / No ]
 
 	Check that a makefile is present with the usual compilation rules.
-	Check in the code that the program Uses at least one container.
-	The person being evaluated must explain why they chose to use this
-	container and not another?
+
+	Check in the code that the program uses at least one container.
+
+	The person being evaluated must explain why they chose to
+	use this container and not another?
+
 	If not, the evaluation stops here.
+
+	If the container chosen here is present in the first exercise
+	then the evaluation stops here.
 
 2 . Main usage
 [ Yes / No ]
 
+	Check that the program runs correctly using different formulas of your choice.
 
+	The program is not required to handle expressions with parenthesis or decimals
+	number.
+
+	If there is any problem during the execution then the evaluation stops here.
+
+3 . Usage advanced
+[ Yes / No ]
+
+	Check that the program runs correctly using different formulas of your choice.
+	Here is some tests:
+
+	8 9 * 9 - 9 - 9 - 4 - 1 +
+	> Result: 42
+
+	9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -
+	> Result: 42
+
+	1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 / 
+	> Result: 15
+
+	You can use the examples in the topic if you don't know which formula to use.
+	If there is any problem during the execution then the evaluation stops here.
 
 ===  Exercise 02: PmergeMe  ===
 
-As Usual, there has to be enough tests to prove the program works as expected. IF there isnt,
-exercise. If any non-intertace class is not in orthodox canonical class form, do not grade this
+As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 1 . Code review
 [ Yes / No ]
 
 	Check that a makefile is included with the usual compilation rules rules.
+
 	Check in the code that the program uses at least two containers.
+
 	If not, the evaluation stops here.
-	The person being evaluated must explain why they chose fo use these containers
+
+	The person being evaluated must explain why they chose to use these containers
 	and not another?
+
 	Check in the code that the merge-insert sort algorithm is present and
 	is used for each container.
-	If one of the containers chosen here is included in one ot the previous
+
+	If one of the containers chosen here is included in one of the previous
 	exercises then the evaluation stops here.
 
 2 . Main usage
 [ Yes / No ]
 
 	You can now manually check that the program works correctly by using between
-	5 and 10 ditferent positive integers of your choice as program arguments.
-	It this first test works and gives a sorted sequence of numbers you can continue.
+	5 and 10 different positive integers of your choice as program arguments.
+
+	If this first test works and gives a sorted sequence of numbers you can continue.
 	If not, the evaluation stops now.
+
 	Now you have to check this operation by using the following command as an
 	argument to the program:
-	
-	For linux:
-		shuf -i 1-1000 -n 3000 tr "\n""
-	For OSX:
-		jot -r 3000 1 1000 | tr '\n'
 
-	It the command works correctly, the person being evaluated should be able to
+	For linux:
+	`shuf -i 1-1000 -n 3000 | tr "\n" " " `
+
+	For OSX:
+	`jot -r 3000 1 1000 | tr '\n' ' '`
+
+	If the command works correctly, the person being evaluated should be able to
 	explain the difference in time used for each container selected.
+
 	If there are any problems during the execution and/or explanation then the
 	evaluation stops here.
