@@ -1,0 +1,95 @@
+##############################
+#                            #
+#           LIBASM           #
+#                            #
+##############################
+
+
+
+===  Mandatory Part  ===
+
+1 . Check the library
+[ Yes / No ]
+
+	The library should consist of only .s files
+	The makefile should not relink if not necessary
+	Use the main.c and link it to the library with -L. -lasm
+	For each function, you must check with errno (#include ) that the syscalls errors
+	are properly reported from the asm code
+
+2 . ft_strlen
+[ Yes / No ]
+
+	Try ft_strlen with an empty string
+	Try ft_strlen with a very long string
+
+3 . ft_strcpy
+[ Yes / No ]
+
+	Try ft_strcpy with an empty string
+	Try ft_strcpy with a very long string
+
+4 . ft_strcmp
+[ Yes / No ]
+
+	Try ft_strcmp with 2 empty strings
+	Try ft_strcmp with 1 empty string as first argument
+	Try ft_strcmp with 1 empty string as second argument
+	Try ft_strcmp with multiple strings, equal or not, think about switching them
+
+5 . ft_write
+[ Yes / No ]
+
+	Try ft_write with the stdout
+	Try ft_write with an open file descriptor
+	Try ft_write with a wrong file descriptor
+	Check the return value
+
+6 . ft_read
+[ Yes / No ]
+
+	Try ft_read with the stdin
+	Try ft_read with an open file descriptor
+	Try ft_read with a wrong file descriptor
+	Check the return value
+
+7 . ft_strdup
+[ Yes / No ]
+
+	Try ft_strdup with an empty string
+	Try ft_strdup with a very long string
+
+
+
+===  Bonus  ===
+
+We will look at your bonuses if and only if your mandatory part is excellent. This means that you must complete the
+mandatory part, beginning to end, and your error management must be flawless, even in cases of twisted or bad
+usage. So if you didn't score all the points on the mandatory part during this defence bonuses will be totally ignored.
+
+1 . ft_atoi_base
+[ Yes / No ]
+
+	Check if ft_atoi_base is working as expected
+	Try with a base 2 and a base 314
+
+2 . ft_list_push
+[ Yes / No ]
+
+	Check if ft_list_push is working as expected
+
+3 . ft_list_size
+[ Yes / No ]
+
+	Check if ft_list_size is working as expected
+
+4 . ft_list_sort
+[ Yes / No ]
+
+	Check if ft_list_sort is working as expected
+
+5 . ft_list_remove_if
+[ Yes / No ]
+
+	Check if ft_list_remove_if is working as expected
+	You can use ft_strcmp in it for example

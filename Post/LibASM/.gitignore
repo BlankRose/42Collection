@@ -1,0 +1,10 @@
+# Compiled Files
+*.[oa]
+*.out
+*.exe
+
+# Configurations Files
+.DS_Store
+.header
+.vscode
+tester

@@ -112,7 +112,7 @@
 		🔭	Specialities
 	</h1>
 	<p>
-		<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM&message=In+Progress&color=red&style=plastic"/>
+		<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM&message=Waiting+Correction&color=red&style=plastic"/>
 	</p>
 	<br>
 </div>
