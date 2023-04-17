@@ -97,7 +97,7 @@
 			Rank 6 :
 		<br></b>
 			<img alt="ft_transcendence" src="https://img.shields.io/static/v1?label=Transcendence&message=In+Progres&color=red&style=plastic"/>
-			<img alt="exam_6" src="https://img.shields.io/static/v1?label=Exam+Rank+06&message=In+Progress&color=red&style=plastic"/>
+			<img alt="exam_6" src="https://img.shields.io/static/v1?label=Exam+Rank+06&message=Validated&color=yellow&style=plastic"/>
 	</p>
 	<br>
 </div>
@@ -113,6 +113,8 @@
 	</h1>
 	<p>
 		<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM+%E2%98%85%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
+		<img alt="dr-quine" src="https://img.shields.io/static/v1?label=Dr+Quine&message=In+Progres&color=red&style=plastic"/>
+		<img alt="woody-woodpacker" src="https://img.shields.io/static/v1?label=Woody+Woodpacker&message=In+Progres&color=red&style=plastic"/>
 	</p>
 	<br>
 </div>
