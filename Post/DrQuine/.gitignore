@@ -1,0 +1,50 @@
+# Unwanted
+.DS_Store
+.vscode/
+.header
+*.log
+*.dat
+*.dSYM/
+/build/
+tmp/
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Project Specific
+Grace_*
+Sully_*
+Grace
+Colleen
+Sully
+out
