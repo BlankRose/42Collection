@@ -99,7 +99,7 @@ ret                                    ; Simply returns
 		value will be stored within `rax` (which is the same registry as the one to define which system call will be called for system calls).
 <pre>
 rax                          ; Target system calls
-rdi, rsi, rdx, r10, r8, r9   ; Variables (in order)
+rdi, rsi, rdx, rcx, r8, r9   ; Variables (in order)
 rax                          ; Return value
 <br>
 syscall                      ; Calls the system (kernel) using the stored variable
