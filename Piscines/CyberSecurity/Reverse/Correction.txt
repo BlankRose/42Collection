@@ -1,0 +1,86 @@
+##############################
+#                            #
+#       CYBER - REVERSE      #
+#                            #
+##############################
+
+
+
+
+===  Mandatory part  ===
+
+1 . First level
+[ Yes / No ]
+
+	You must check that a source.c file exists and that a password file exists too.
+	You must now download the binaries from the project page.
+	You must run the level1 program and use the password located in the password file.
+	You should have a message indicating the validation of the level.
+
+	Now that you are sure that the level is passed you should inspect the code located in the source.c file.
+
+	With the help of the evaluator, you should understand how he made this code. Then you can compile it and check that it works
+	exactly like the original program.
+
+	For this first level there is no particular constraint.
+	However, a check with the strcmp function is expected
+
+2 . Second level
+[ Yes / No ]
+
+	You must check that a source.c file exists and that a password file exists too.
+	You must run the level2 program and use the password located in the password file.
+	You should have a message indicating the validation of the level.
+
+	Now that you are sure that the level is passed you should inspect the code located in the source.c file.
+
+	With the help of the evaluator, you should understand how he made this code. Then you can compile it and check that it works
+	exactly like the original program.
+
+	For this second level there is a small algorithm used. An explanation of this is expected as well as the use of the different
+	important functions found in the original binary.
+
+3 . Third level
+[ Yes / No ]
+
+	You must check that a source.c file exists and that a password file exists too.
+	You must run the level3 program and use the password located in the password file.
+	You should have a message indicating the validation of the level.
+
+	Now that you are sure that the level is passed you should inspect the code located in the source.c file.
+
+	With the help of the evaluator, you should understand how he made this code. Then you can compile it and check that it works
+	exactly like the original program.
+
+	For this last level there is an algorithm used. An explanation of this is expected as well as
+	the use of the different important functions found in the original binary.
+
+
+
+===  Bonus part  ===
+
+	Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . First level
+[ Yes / No ]
+
+	You must find a dedicated patch for the first level.
+	With the help of the person being evaluated you should apply this patch to the
+	original program. Then you have to check that all the passwords we will
+	enter validate this level.
+
+2 . Second level
+[ Yes / No ]
+
+	You must find a dedicated patch for the second level.
+	With the help of the person being evaluated you should apply this patch to the
+	original program. Then you have to check that all the passwords we will
+	enter validate this level.
+
+3 . Third level
+[ Yes / No ]
+
+	You must find a dedicated patch for the last level.
+	With the help of the person being evaluated you should apply this patch to the
+	original program. Then you have to check that all the passwords we will
+	enter validate this level.
