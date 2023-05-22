@@ -1,0 +1,43 @@
+##############################
+#                            #
+#      CYBER - ARACHNIDA     #
+#                            #
+##############################
+
+
+
+===  Mandatory part  ===
+
+1 . Spider
+[ Yes / No ]
+
+	The program can use the following parameter: r, l and p.
+	The program works with an HTTP link and successfully extracts the files.
+	The program must download the following file extensions: .jpg/jpeg, .png, .gif and .bmp.
+
+2 . Scorpion
+[ Yes / No ]
+
+	The program correctly displays basic metadata such as the date
+	of creation and modification.
+	The program shows the EXIF data of images of these extensions:
+	jpg, png, bmp and gif.
+
+
+
+===  Bonus part  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done,
+and the error management handles unexpected or bad usage.
+In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Metadata deletion and modification
+[ Yes / No ]
+
+	The program correctly deletes metadata from images.
+	The program correctly modifies metadata of images.
+
+2 . Graphical interface
+[ Yes / No ]
+
+	The program correctly displays a graphical interface.

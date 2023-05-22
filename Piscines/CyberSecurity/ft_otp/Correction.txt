@@ -13,23 +13,23 @@
 
 The program complies with the following sections:
 
-    The algorithm uses HOTP (RFC4226) as the key building block.
-    The algorithm generates keys randomly.
-    There is at least 2 flags (-g -k).
-    All exceptions are handled. If there is an error, you must stop the evaluation.
+	The algorithm uses HOTP (RFC4226) as the key building block.
+	The algorithm generates keys randomly.
+	There is at least 2 flags (-g -k).
+	All exceptions are handled. If there is an error, you must stop the evaluation.
 
 2 . Usage
 [ Yes / No ]
 
 According to the example on the subject you have to check that:
 
-    Use an incorrect key size with the -g option. You should get an error.
-    Use the correct key size with the -g option. You should have a new file generated you can check that this file is different from the basic one used.
-    Use the new file generated with the -k flag. You must have a value that changes in time. This generate key is a usable password.
+	Use an incorrect key size with the -g option. You should get an error.
+	Use the correct key size with the -g option. You should have a new file generated you can check that this file is different from the basic one used.
+	Use the new file generated with the -k flag. You must have a value that changes in time. This generate key is a usable password.
 
-With the help of the person being evaluated you can compare the result with the reference tool
-used to complete this project.
-If there is a problem, you must stop the evaluation.
+	With the help of the person being evaluated you can compare the result with the reference tool
+	used to complete this project.
+	If there is a problem, you must stop the evaluation.
 
 
 
@@ -43,9 +43,9 @@ no points will be counted in the extra part.
 1 . QR generation
 [ Yes / No ]
 
-Does the server display a QR code with seed generation?
+	Does the server display a QR code with seed generation?
 
 2 . Graphical interface
 [ Yes / No ]
 
-Does the application have a graphical interface?
+	Does the application have a graphical interface?

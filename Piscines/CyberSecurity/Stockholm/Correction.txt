@@ -1,0 +1,55 @@
+##############################
+#                            #
+#      CYBER - STOCKHOLM     #
+#                            #
+##############################
+
+
+
+===  Mandatory part  ===
+
+1 . Deposit
+[ Yes / No ]
+
+In the deposit of the evaluated person we must have:
+
+    A README.md file in the root. Inspect the contents quickly to see that it is not empty.
+    A Makefile in the root. Inspect the contents quickly to see that it is not empty.
+    The source code of the program.
+
+With the help of the evaluator it should be possible to compile (if needed) and run the
+generated program.
+Use the --version option to check that it runs correctly.
+
+If there is an error, you must stop the evaluation.
+
+2 . Encryption of files
+[ Yes / No ]
+
+Now you need to add test files to the folder to be infected by this program.
+The person being evaluated must help you.
+
+Run the program and make a comparison with an uninfected file to see that stockholm works properly.
+You have to check that these files are really modified and that they are not readable/usable anymore.
+
+This is the time to discuss the algorithm chosen in order to encrypt these files.
+You can also discuss how to generate the key used.
+
+You can use anything you want to validate the quality of the program. You can add files already encrypted or other.
+
+If there is an error, you must stop the evaluation.
+
+3 . Decryption of files
+[ Yes / No ]
+
+You must now use the key generated on the previously encrypted files to reverse the process
+and thus have the original files usable. The program must:
+
+    Displays a list of files that are encrypted.
+    It performs the decryption and in case of error it notifies the file that cannot be decrypted.
+    All exceptions are handled.
+
+You can use anything you want to validate the quality of the program by using another key to
+decrypt or by adding unencrypted files with a specific extension.
+
+If there is an error, you must stop the evaluation.
