@@ -1,0 +1,43 @@
+##############################
+#                            #
+#      CYBER - IRON DOME     #
+#                            #
+##############################
+
+
+
+===  Mandatory part  ===
+
+1 . Directory and File protection
+[ Yes / No ]
+
+	With the help of the person being evaluated you should attempt to use
+	the verification of this program on a given test case.
+
+	You can try to make changes to the monitor folders/file and verify that a message
+	is visible in the logs located in /var/log/irondome/irondome.log.
+
+	All exceptions must be controlled.
+	If there is an error, you must stop the evaluation.
+
+2 . Ransomware detection
+[ Yes / No ]
+
+	To comply with ransomware detection, the application has the following points:
+
+		It generates a critical content zone that is constantly monitored.
+		It detects disk reading abuse.
+		Detects the use of cryptoapis.
+		Detects changes in file entropy.
+		All exceptions are controlled. If there is an error, you must stop the evaluation.
+
+
+
+===  Bonus  ===
+
+The extra part will only be looked at if your mandatory part is flawless. This means that you will have to complete the mandatory part part from start to finish and that your error handling must be perfect, even in your error management must be perfect, even in the face of twisted situations. If during the evaluation not all points have been attributed, no points will be counted in the extra part.
+
+1 . Incremental backups
+[ Yes / No ]
+
+	Does it support the creation of incremental backups?

@@ -1,0 +1,53 @@
+##############################
+#                            #
+#     CYBER - INQUISITOR     #
+#                            #
+##############################
+
+
+
+===  Mandatory part  ===
+
+1 . ARP Poisoning
+[ Yes / No ]
+
+	With the help of the person evaluating you should check that the program
+	is working properly. You must check that:
+
+		It performs the poisoning in both directions (full duplex).
+		Traffic redirection is enabled.
+		When stopping the attack, it restores the ARP tables.
+		All exceptions are controlled.
+
+	To help you, the evaluator has set up tests that simplify this step.
+	You can use anything you like to check the program.
+
+	Attention it is asked only to manage an IPv4.
+	If there is an error, you must stop the evaluation.
+
+2 . Content sniffing
+[ Yes / No ]
+
+	With the help of the evaluator you have to check that the program allows to sniff the traffic on port 21 partially:
+
+		It detects the traffic on port 21.
+		It detects the files that are being uploaded or downloaded from FTP..
+		All the exceptions are controlled. To help you, the evaluator has set up tests that simplify this step. Make sure you use a basic FTP server. We do not require certificate management and all encrypted traffic management. If there is an error, you must stop the evaluation.
+
+
+
+===  Bonus part  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Verbose
+[ Yes / No ]
+
+	Check that the verbose (-v) option exists and works correctly in this program.
+	With the help of the person being evaluated you should verify that the program
+	is retrieving FTP traffic in real time.
+	You should see the connection to the server as well as the login and password in clear text.
+	You should also see the commands used by the client on the server to navigate in the folders.
+
+	Make sure you use a basic FTP server. We do not require certificate
+	management and all encrypted traffic management.
