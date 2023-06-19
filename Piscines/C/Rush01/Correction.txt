@@ -1,0 +1,72 @@
+##############################
+#                            #
+#         C - RUSH 01        #
+#                            #
+##############################
+
+
+
+===  Preliminaries  ===
+
+1 . Simple preliminaries
+[ Yes / No ]
+
+	Nothing submitted (or wrong file or directory) : 0, evaluation is over.
+	Norm error: evaluation stops.
+	As soon as you come across an exercise that isn't fully functional, evaluation stops. The following exercises won't be evaluated.
+	Make sure that there are no garbage files in the repository, such as unused, hidden, or tmp files.
+
+2 . Eliminatory tests
+[ Yes / No ]
+
+	First, run some elementary error handling tests. If you encounter any problem, discuss it with the students you're grading, but don't give them any points.
+
+	Carry out the following series of tests :
+
+		Poorly shaped arguments: $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2 3" $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2" $> ./rush-01 "4 3 2 1 1 2 2 2 6 3 2 1 1 2 2 2" $> ./rush-01 "4321122243211222" $> ./rush-01 "Bonjours" Each of these (along with the others you're gonna try) should output an error
+		A wrong grid: $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 4"
+
+	=> This test is the perfect opportunity to check and discuss the control algorithm.
+
+
+
+===  Features  ===
+
+1 . Features testing
+[ Score 0 to 5 ]
+
+	Create your own maps or use the map generator given in reference to generate maps. Try them and check for errors.
+	Keep in mind that some maps have multiple solutions so check by yourself if the offered solution is correct.
+
+2 . Explanation
+[ Yes / No ]
+
+	Ask the shyest team member to explain how the code works.
+
+	If the student can't explain it, no matter how other team members reply, leave No in the scale and carry on with the evaluation.
+
+	Proceed to asking a series of questions (try grilling the student who seems the most confused):
+
+		Ask them about the algorithm they've used, without them being able to look at their code.
+		Look for lines with bits transfers (<< and >>) and ask what they are.
+		Look for complex lines and ask what it does.
+		Ask them to explain recursivity.
+		Which data structures ? And why ?
+		Ask them what the return value is when the grid has been filled? What happens in the case of an impossible grid?
+
+		Check malloc returns and break their program if possible => if it breaks, select Crash.
+
+		Any other question that comes to mind, be creative ! :)
+
+	If any student cannot answer a question at any given time, it's considered cheating, select Cheat.
+
+	If explanations are satisfactory, tick Yes.
+
+	If even one student cannot answer a question, tick No.
+
+
+
+===  Bonus  ===
+[ Score 0 to 5 ]
+
+	This part can be filled ONLY for those who've collected all points for features and explanation. Can you work with a bigger grid? Up to which? (5? 9?), give points accordingly, with a 9x9 grid being the highest.
