@@ -135,7 +135,8 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	and not another?
 
 	Check in the code that the merge-insert sort algorithm is present and
-	is used for each container.
+	is used for each container. The Ford-Johnson algorithm must be used.
+	A brief explanation is expected. In case of doubt, the evaluation stops here.
 
 	If one of the containers chosen here is included in one of the previous
 	exercises then the evaluation stops here.
@@ -153,7 +154,7 @@ As usual, there has to be enough tests to prove the program works as expected. I
 	argument to the program:
 
 	For linux:
-	`shuf -i 1-1000 -n 3000 | tr "\n" " " `
+	`shuf -i 1-1000 -n 3000 | tr "\n" " "`
 
 	For OSX:
 	`jot -r 3000 1 1000 | tr '\n' ' '`

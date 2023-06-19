@@ -116,6 +116,7 @@
 			Other :
 		</b><br>
 			<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM+%E2%98%85%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
+			<img alt="ajav-launcher" src="https://img.shields.io/static/v1?label=AjavLauncher&message=Waiting+Corrections&color=red&style=plastic"/>
 		<br><b>
 			Security :
 		</b><br>
