@@ -1,0 +1,67 @@
+##############################
+#                            #
+#         C - RUSH 02        #
+#                            #
+##############################
+
+
+
+===  Features  ===
+
+Check the Norm for each exercise before running tests. A Norm error means the student isn't rigorous enough. And like any error, it means 0. Norminette prevails when it comes to files or headers evaluation in C and only in C (that excludes makefile and shell script).
+
+1 . Makefile
+[ Yes / No ]
+
+	The Makefile musn't relink.
+
+	If the Makefile recompiles when doing two successive 'make', tick No.
+	If the Makefile doesn't recompile the second time, tick Yes.
+
+2 . Error handling
+[ Yes / No ]
+
+	Make sure there are no unnecessary files in the repository (hidden files, temporary files...)
+	You have to check the program for potential problems. How does it react when you give an
+	empty string? Some letters which aren't numbers? A negative number? A number too big
+	for an unsigned int ?
+	How do the program behaves when sending a dictionnary argument? and without it?
+	During the whole evaluation, make sure that there are no leaks in the program.
+
+3 . Features testing
+[ Score 0 to 5 ]
+
+	Play with the program to check for everything.
+	You should try cases like 0, 000000, 10, 10000, 99999999 to check if the program works for everything.
+	Reminder : The expected way for the program to work is to use only the keys given in the initial dictionnary. Keys defining
+	other values can often have unexpected behaviors, which should not be eliminatory.
+
+4 . Full test
+[ Score 0 to 5 ]
+
+	Try to find out how the program handles large numbers. Test with very large numbers - thousands, millions, billions...
+	Give points accordingly.
+
+		Expected display up to the thousands. => 2 points
+		Expected display up to the millions. => 1 point
+		Expected display up to the billions (less than a maximum positive unsigned integer).. => 1 point
+		Expected display of the maximum unsigned positive integer. => 1 point
+
+
+
+===  Bonus  ===
+
+1 . Read
+[ Yes / No ]
+
+	Does the program handle the read syscall when no argument is given?
+
+2 . Correct syntax
+[ Yes / No ]
+
+	Does the program give correct answers with the right syntax (eg. 142 -> one hundred and forty-two)
+
+3 . Another language
+[ Yes / No ]
+
+	Is there a second language available (through an option for instance) fully working?

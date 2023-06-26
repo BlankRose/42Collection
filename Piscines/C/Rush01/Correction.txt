@@ -23,7 +23,13 @@
 
 	Carry out the following series of tests :
 
-		Poorly shaped arguments: $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2 3" $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2" $> ./rush-01 "4 3 2 1 1 2 2 2 6 3 2 1 1 2 2 2" $> ./rush-01 "4321122243211222" $> ./rush-01 "Bonjours" Each of these (along with the others you're gonna try) should output an error
+		Poorly shaped arguments:
+			$> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2 3"
+			$> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2"
+			$> ./rush-01 "4 3 2 1 1 2 2 2 6 3 2 1 1 2 2 2"
+			$> ./rush-01 "4321122243211222"
+			$> ./rush-01 "Bonjours"
+		Each of these (along with the others you're gonna try) should output an error
 		A wrong grid: $> ./rush-01 "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 4"
 
 	=> This test is the perfect opportunity to check and discuss the control algorithm.
