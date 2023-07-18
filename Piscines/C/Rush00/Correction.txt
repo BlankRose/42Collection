@@ -1,0 +1,144 @@
+##############################
+#                            #
+#         C - RUSH 00        #
+#                            #
+##############################
+
+
+
+===  How are you doing?  ===
+[ Yes / No ]
+
+	Ask the candidates how is the piscine going so far.
+	Are they progressing on their modules?
+	Are they blocked at a certain point?
+	Do they meet interesting people?
+	Are they having the time of their life?
+
+
+
+===  Let's go!  ===
+
+1 . Simple preliminaries I - Submission
+[ Yes / No ]
+
+		Is there something on the repo?
+		Are the files submitted in the correct directory?
+		Is there a main.c file containing the main function?
+		Is there a ft_putchar.c file containing the ft_putchar function?
+		Is there a rush0X.c file containing the functions needed for the algorithm?
+		If there are more files than the ones mentioned above which are used for bonuses,
+			they can be located wherever as long as the file name is correct: rush0X.c.
+		If there this step is not correct the evaluation stops here.
+		You should keep going and discuss the implementation of the code, but it will not be graded.
+
+2 . Simple preliminaries II - Compilation
+[ Yes / No ]
+
+	You can compile the program using the appropriate flags: -Wall -Wextra -Werror.
+	It should not print any error.
+	If there is an error the evaluation stops here, use the appropiate flag.
+	You should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+3 . Simple preliminaries III - Norminette
+[ Yes / No ]
+
+	Run the norminette on all the submitted C files.
+	Norminette prevails when it comes to files and headers evaluation in C
+	and only in C (that excludes makefile and shell scripts).
+
+	A Norm error means the candidate isn't rigorous enough and
+	the evaluation stops here. You should keep going and discuss the
+	implementation of the code, but it will not be graded.
+
+4 . Basic test
+[ Yes / No ]
+
+	Run the program testing the examples given on the subject.
+	Grade the exercise if it works as the subject shows.
+	To do so, you may have to modify the main and compile again.
+	If this is the case, make sure the candidates understand why you are doing so.
+
+	Any unexpected behavior is considered a crash (segfault, bus error,
+	infinite loop, or any other kind of crash). If this happens,
+	you should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+5 . Next step
+[ Yes / No ]
+
+	Test the program with other simple combinations of small positive integers
+	(different from 0).
+
+	Any unexpected behavior is considered a crash (segfault, bus error,
+	infinite loop, or any other kind of crash crash). If this happens,
+	you should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+6 . Specific cases
+[ Yes / No ]
+
+	Test the program with the values 1 and 2.
+	The program must always return the expected values.
+
+	Any unexpected behavior is considered a crash (segfault, bus error,
+	infinite loop, or any other kind of crash crash). If this happens,
+	you should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+7 . Generic cases
+[ Yes / No ]
+
+	Here is the main part of the evaluation. Be imaginative,
+	take your time to test multiple values and make sure that
+	the program is always responding as expected.
+
+	Any unexpected behavior is considered a crash (segfault, bus error,
+	infinite loop, or any other kind of crash crash). If this happens,
+	you should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+8 . Error handling
+[ Yes / No ]
+
+	Test here using different combinations to make sure that error handling
+	is done correctly. The program should not crash when given a 0 or a negative number.
+	Try with one negative value, then swap, try with 2 negative values...
+	It is accepted:
+
+		The program returns an error message
+		The program prints nothing and gives back control
+
+	Any unexpected behavior is considered a crash (segfault, bus error,
+	infinite loop, or any other kind of crash crash). If this happens,
+	you should keep going and discuss the implementation of the code,
+	but it will not be graded.
+
+9 . Discussion
+[ Yes / No ]
+
+	Take the time to interact with the group. Make sure that each person
+	of the group talks about the code, and check that everyone understands
+	and can explain it. Help them identify and talk about the problems they
+	encountered during the rush.
+
+	How did they organize the work?
+	Did they develop the algorithm together?
+	Did they learn new concepts by working with each other?
+
+
+
+===  Bonus  ===
+[ Score 0 to 5 ]
+
+	This part can be filled ONLY for those who've collected all points for
+	features and explanations. At the examiner's own discretion.
+
+	Example de bonus:
+
+		Fulfillment of an extra subject => 1 grade (so up to 4 max)
+		Handling of Argc / Argv => 1 grade
+
+	If the candidates do not know what Argc / Argv are, take the time to
+	explain to them what it is, and what it is used for.
