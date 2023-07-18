@@ -37,7 +37,7 @@
 			</ul>
 			<br><b>Includes files:</b>
 			<ul>
-				<li>PDFs of Correction and Subject (in english)</li>
+				<li>PDFs and Correction and Subject (in english)</li>
 				<li>Sources files (might not reflect final push to get the mark)</li>
 			</ul>
 			Please note there might not has every correction files and there also might be some modifications in the subject since the elapsed time. If you wish to help out, feel free to contact me or pull requests to update the subjects and corrections.
