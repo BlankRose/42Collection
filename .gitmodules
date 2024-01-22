@@ -13,3 +13,6 @@
 [submodule "Common/IRC/src"]
 	path = Common/IRC/src
 	url = git@github.com:dhaliti/IRC.git
+[submodule "Common/Transcendence/src"]
+	path = Common/Transcendence/src
+	url = git@github.com:BlankRose/Pong-Arcade.git

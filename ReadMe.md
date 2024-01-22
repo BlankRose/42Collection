@@ -33,7 +33,7 @@
 				<li><img alt="Red badges" src="https://img.shields.io/static/v1?label=&message=Red+badges&color=critical&style=plastic"/> are projects not finished or in progress</li>
 				<li><img alt="Lime badges" src="https://img.shields.io/static/v1?label=&message=Lime+badges&color=success&style=plastic"/> are grades which are validated</li>
 				<li><img alt="Gold badges" src="https://img.shields.io/static/v1?label=&message=Gold+badges&color=yellow&style=plastic"/> are grades which are maxed out! (Usually being 125 if there's any bonuses)</li>
-				<li><img alt="Star icons" src="https://img.shields.io/static/v1?label=%E2%98%85&message=Star+icons&color=gray&style=plastic"/> represents how much outstanding flags were given (Total: 6)</li>
+				<li><img alt="Star icons" src="https://img.shields.io/static/v1?label=%E2%98%85&message=Star+icons&color=gray&style=plastic"/> represents how much outstanding flags were given</li>
 			</ul>
 			<br><b>Includes files:</b>
 			<ul>
@@ -96,7 +96,7 @@
 		<br><b>
 			Rank 6 :
 		<br></b>
-			<img alt="ft_transcendence" src="https://img.shields.io/static/v1?label=Transcendence&message=In+Progres&color=red&style=plastic"/>
+			<img alt="ft_transcendence" src="https://img.shields.io/static/v1?label=Transcendence+%E2%98%85%E2%98%85%E2%98%85&message=100+/+100&color=yellow&style=plastic"/>
 			<img alt="exam_6" src="https://img.shields.io/static/v1?label=Exam+Rank+06&message=Validated&color=yellow&style=plastic"/>
 	</p>
 	<br>
