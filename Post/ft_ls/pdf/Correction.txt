@@ -1,0 +1,107 @@
+##############################
+#							#
+#		   FT_LS			#
+#							#
+##############################
+
+
+
+===  Preliminaries  ===
+
+1 . Basic requirements
+[ Yes / No ]
+
+	Verify the following points :
+
+		There's no forbidden functions in the reviewed source code.
+		The Makefile must be present and must contain the following rules : all, clean, fclean and re. They must be fully functionnal and correctly implemented.
+		No memory leaks.
+
+	If one of those points is not respected, this evaluation is over. Set the
+	correct flag, and finish the evaluation.
+
+	Nonetheless, you can continue it, for pedagogical purpose, but no points
+	should be counted.
+
+
+
+===  Tests  ===
+
+For this evaluation: no particular management of the locals is required i.e. LC_ALL=C.'
+
+1 . Basic Tests
+[ Score 0 to 5 ]
+
+	As explained in the subject, an identical display is expected,
+	except for ACL, extended attributes, and row formatting
+	display (considered as bonuses). Perform the following tests:
+
+		ls [+1pts]
+		ls -a [+1pts]
+		ls -l [+2pts]
+		Check that symbolic link display is accurate. [+1pts]
+
+	We will accept different padding for "-l" option but all
+	the relevant Information must be displayed. You must first
+	perform the test with no arguments, then with a file and
+	finally with a folder.
+
+2 . Basic Tests ++
+[ Score 0 to 5 ]
+
+Perform the following tests:
+
+	ls -r [+1pts]
+	ls -t [+1pts]
+	test ls -r with several files/folders/... as parameter. [+1pts]
+	test ls -t with several files/folders/... as parameter. [+1pts]
+	test setuid/setgid/stickybit [+1pts]
+
+3 . Middle Tests
+[ Score 0 to 5 ]
+
+Perform the following tests:
+
+	ls -R [+2pts]
+	multiple option management: parsing and form ("-l -t" for en. as well as "-lt") [+2pts]
+	multiple option management: accurate display. [+1pts]
+
+4 . Error Management
+[ Score 0 to 5 ]
+
+	nonexistant file/folder [+1pts]
+	inaccessible file/folder [+1pts]
+	unmanaged or nonexistant option [+3pts]
+
+
+
+===  Bonus part  ===
+
+This part should be graded only if the mandatory part is complete and flawless.
+
+1 . ACL/Attributes bonus
+[ Yes / No ]
+
+	Is it implemented ?
+
+2 . Row formatting display bonus
+[ Yes / No ]
+
+	Is it implemented ?
+
+3 . Speed bonus
+[ Score 0 to 5 ]
+
+Assess the speed of your ls compared to the system’s. Time
+the result of ls -lR / using the command time.
+$> time ls -lR /
+
+	0 : very slow
+	5 : as fast
+
+4 . Options Bonus
+[ Score 0 to 5 ]
+
+Assess the number of additional options that are 100% functional
+
+	1 point for each additionnal option

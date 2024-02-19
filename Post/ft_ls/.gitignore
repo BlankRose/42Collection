@@ -1,0 +1,9 @@
+# EXECUTABLES
+ft_ls
+debug
+
+# TEMPORARY OBJECTS
+obj/
+*.swp
+out*
+/test

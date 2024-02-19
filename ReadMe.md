@@ -113,15 +113,21 @@
 	</h1>
 	<p>
 		<b>
-			Other :
-		</b><br>
-			<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM+%E2%98%85%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
-			<img alt="ajav-launcher" src="https://img.shields.io/static/v1?label=AjavLauncher&message=Waiting+Corrections&color=red&style=plastic"/>
-		<br><b>
 			Security :
 		</b><br>
 			<img alt="dr-quine" src="https://img.shields.io/static/v1?label=Dr+Quine&message=Waiting+Corrections&color=red&style=plastic"/>
 			<img alt="woody-woodpacker" src="https://img.shields.io/static/v1?label=Woody+Woodpacker&message=In+Progres&color=red&style=plastic"/>
+		<br><b>
+			System & Kernel :
+		</b><br>
+			<img alt="libasm" src="https://img.shields.io/static/v1?label=LibASM+%E2%98%85%E2%98%85&message=125+/+100&color=yellow&style=plastic"/>
+			<img alt="ft_ls" src="https://img.shields.io/static/v1?label=ft_ls+%E2%98%85&message=106+/+100&color=success&style=plastic"/>
+		<br><b>
+			Development :
+		</b><br>
+			<img alt="ajav-launcher" src="https://img.shields.io/static/v1?label=AjavLauncher&message=Waiting+Corrections&color=red&style=plastic"/>
+			<img alt="abstract-data" src="https://img.shields.io/static/v1?label=Abstract+Data&message=In+Progress&color=red&style=plastic"/>
+		<br>
 	</p>
 	<br>
 </div>
