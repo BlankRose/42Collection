@@ -1,0 +1,185 @@
+##############################
+#                            #
+#          DR QUINE          #
+#                            #
+##############################
+
+
+
+===   Preliminaries   ===
+[ Yes / No ]
+
+	First, check that the following is true:
+
+		Something has been uploaded to the GiT repository.
+
+		There are valid Makefiles with the usual rules where appropriate.
+
+		If any source file is read (read(), fread(), etc...) in any of the source files,
+		this is considered cheating. In this case, select the CHEAT flag.
+
+		The use of argc/argv is strictly forbidden. If used, select the CHEAT flag.
+
+
+
+===   Colleen   ===
+
+1 . Colleen_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		Two comments as specified in the subject, including comment within a function.
+		A function in addition to main().
+		A call to that function from main().
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	./Colleen > tmp_Colleen; diff tmp_Colleen Colleen.c
+
+	If there were any errors (diff output), the correction ends here.
+
+
+
+===   Grace   ===
+
+1 . Grace_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		A comment as specified in the subject.
+		No direct functions, (main() included).
+		Three defines.
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	rm Grace_kid.c; ./Grace ; diff Grace_kid.c Grace.c
+
+	If there were any errors (diff output), the correction ends here.
+
+
+
+===   Sully   ===
+
+1 . Sully_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		An integer initialized to 5.
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	mkdir -p tmp; cp Sully tmp/; cd tmp/; ./Sully ; ls -al | grep Sully | wc -l
+
+	The number displayed on the standard output should be 13.
+	Run the following command:
+	diff ../Sully.c Sully_5.c ; diff ../Sully.c Sully_4.c ; diff Sully_5.c Sully_0.c
+
+	The only difference must be the integer set initially, which is decremented at each step.
+
+	Verify that the program does not use arguments for main(). If it does, select the
+	CHEAT flag. The correction ends here.
+
+	Verify that with an initial integer of -1, the program should not do anything.
+	If there are any errors, the correction ends here.
+
+
+
+===   Colleen ASM   ===
+
+1 . Colleen_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		Two comments as specified in the subject, including comment within a function.
+		A function in addition to main().
+		A call to that function from main().
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	./Colleen > tmp_Colleen; diff tmp_Colleen Colleen.s
+
+	If there were any errors (diff output), the correction ends here.
+
+
+
+===   Grace ASM   ===
+
+1 . Grace_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		A comment as specified in the subject.
+		No direct functions, (main() included).
+		Three defines.
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	rm Grace_kid.s; ./Grace ; diff Grace_kid.s Grace.s
+
+	If there were any errors (diff output), the correction ends here.
+
+
+
+===   Sully ASM   ===
+
+1 . Sully_start
+[ Yes / No ]
+
+	Examine the source code. Make sure it follows the following restrictions:
+
+		An integer initialized to 5.
+
+2 . Compilation & checking
+[ Yes / No ]
+
+	Run make.
+
+	Once compiled (verify the executable is named correctly), run the following command:
+	mkdir -p tmp; cp Sully tmp/; cd tmp/; ./Sully ; ls -al | grep Sully | wc -l
+
+	The number displayed on the standard output should be 13.
+	Run the following command:
+	diff ../Sully.s Sully_5.s ; diff ../Sully.s Sully_4.s ; diff Sully_5.s Sully_0.s
+
+	The only difference must be the integer set initially, which is decremented at each step.
+
+	Verify that the program does not use arguments for main(). If it does, select the
+	CHEAT flag. The correction ends here.
+
+	Verify that with an initial integer of -1, the program should not do anything.
+	If there are any errors, the correction ends here.
+
+
+
+===   Dr_Quine Bonus   ===
+[ Yes / No ]
+
+	Only grade the bonus section if ALL previous cases are PERFECT.
+
+	You may only count the bonus if all three quines were recoded in another language
+	and all pass the test cases specified above.

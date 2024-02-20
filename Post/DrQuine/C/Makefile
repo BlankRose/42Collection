@@ -8,18 +8,18 @@ a: all
 all: $(ALL)
 
 .c.o:
-	gcc $(FLAGS) -o $@ -c $<
+	$(CC) $(FLAGS) -o $@ -c $<
 
 $(ALL): %: %.o
-	gcc $(LINKS) -o $@ $<
+	$(CC) $(LINKS) -o $@ $<
 
 c: clean
 clean:
-	rm -rf $(addsuffix .o, $(ALL)) out Grace_kid.c $(wildcard Sully_*)
+	$(RM) $(addsuffix .o, $(ALL)) out Grace_kid.c $(wildcard Sully_*)
 
 fc: fclean
 fclean: clean
-	rm -rf $(ALL)
+	$(RM) $(ALL)
 
 re: remake
 remake: fclean all

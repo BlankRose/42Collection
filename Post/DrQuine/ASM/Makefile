@@ -1,10 +1,10 @@
-ARCH	= macho64
-LIBS	= -lSystem # Requierds for linking against C library
+ARCH	= elf64
+LIBS	= -lc -dynamic-linker /usr/lib64/ld-linux-x86-64.so.2 # Requierds for linking against C library
 ALL		= Colleen Grace Sully
 
 #==--------------------------------------==#
 
-a: all
+#a: all
 all: $(ALL)
 
 .s.o:
