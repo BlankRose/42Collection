@@ -9,12 +9,12 @@
 		📚 <b>42 Collection</b> 📝<br>
 		<i style='font-size:120%;'>Arts of studies</i>
 	</h1>
+	<br>
 	<!-- SHORT DESCRIPTION -->
 	<p>
 		This is a compilation of every projects I completed and validated throughout my formation at <b>42-Mulhouse</b>. It only contains the core cursus of the project for now but it might contain some
 		specialities projects in the futur once I'll get there.
 	</p>
-	<br>
 	<!-- Title -->
 	<div>
 		<h1 style='font-size:160%; font-family:impact'>
@@ -41,6 +41,16 @@
 				<li>Sources files (might not reflect final push to get the mark)</li>
 			</ul>
 			Please note there might not has every correction files and there also might be some modifications in the subject since the elapsed time. If you wish to help out, feel free to contact me or pull requests to update the subjects and corrections.
+		</p>
+	</div>
+	<!-- FAIR WARNING -->
+	<div>
+		<h1 style='font-size:160%; font-family:impact'>
+			❓	Dear 42 Students
+		</h1>
+		<p>
+			This repository is mostly aimed at a sort of collection of subjects. <br>
+			It's not intended to give out solutions to projects, and I am already aware that my codes are far from being perfect!
 		</p>
 	</div>
 	<br>
@@ -115,7 +125,7 @@
 		<b>
 			Security :
 		</b><br>
-			<img alt="dr-quine" src="https://img.shields.io/static/v1?label=Dr+Quine&message=Waiting+Corrections&color=red&style=plastic"/>
+			<img alt="dr-quine" src="https://img.shields.io/static/v1?label=Dr+Quine&message=125+/+100&color=yellow&style=plastic"/>
 			<img alt="woody-woodpacker" src="https://img.shields.io/static/v1?label=Woody+Woodpacker&message=In+Progres&color=red&style=plastic"/>
 		<br><b>
 			System & Kernel :
