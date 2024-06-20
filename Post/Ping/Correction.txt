@@ -1,0 +1,99 @@
+##############################
+#                            #
+#           FT_PING          #
+#                            #
+##############################
+
+
+
+===  Base  ===
+
+Attempt to use the project with options.
+
+1 . Foreword
+[ Yes / No ]
+
+    Before starting the evaluation, make sure that:
+
+        the project is in C,
+        the project only uses the authorised functions and NOT excve, ping, fcntl, poll and ppoll functions.
+        one Makefile containing the usual rules is present.
+
+    If one of the conditions has not been met, evaluation stops.
+
+2 . Checking arguments
+[ Yes / No ]
+
+    The program checks that user has the necessary permissions and executes
+    correctly with the "?" option. It displays a simple, clear and correct
+    explanation of its use.
+
+
+
+===  IPs  ===
+
+    For all the grading system questions, you will compare the standard output with the system ping command with a diff. A 30ms +/- difference on a package will be tolerated. The tested address' DNS resolution in the return package is not mandatory. The final line (concerting the RTT) will be ignored. Program stop will be prompted by CTRL+C.
+
+1 . ft_ping good ip
+[ Yes / No ]
+
+    Run the program with a valid and functional IPv4 address as a parameter.
+    Does the program work like the system ping ?
+
+    Reminder: A 30ms +/- difference on a package will be tolerated.
+
+2 . ft_ping bad ip
+[ Yes / No ]
+
+    Run the program with a valid and non-functional IPv4 address as a parameter.
+    Does the program work like the system ping?
+
+3 . ft_ping -v bad ip
+[ Yes / No ]
+
+    Run the program with with the otion "-v" on a valid and non-functional
+    IPv4 address.
+
+    The evaluated student will have to clearly explain the display return
+    of their program.
+
+
+
+===  Hostname  ===
+
+1 . ft_ping good hostname
+[ Yes / No ]
+
+    Run the program with a valid and functional hostname as a parameter.
+    Does the program work like the system ping?
+
+2 . ft_ping bad hostname
+[ Yes / No ]
+
+    Run the program with a valid and non-functional hostname as a parameter.
+    Does the program work like the system ping?
+
+3 . ft_ping -v bad hostname
+[ Yes / No ]
+
+    Run the program with the option "-v" on a valid and non-functional
+    hostname as a parameter.
+
+    The TTL value will have to be modified. (you can use the flag --ttl if
+    the student has implemented it otherwise change the hardcoded value and
+    recompile the executable)
+
+    The evaluated student will have to clearly explain what their the display
+    of their program.
+
+
+
+===  Bonus  ===
+[ Score 0 to 5 ]
+
+    Bonus will be taken into account only if ALL the previous points are valid.
+    Bonus made for this project
+
+    For this project, you can take into account up to 5 different bonuses.
+
+    Check the subject for valid and invalid bonuses.

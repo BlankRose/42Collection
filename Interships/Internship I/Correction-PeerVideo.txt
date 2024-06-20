@@ -1,0 +1,63 @@
+##############################
+#                            #
+#        INTERNSHIP I        #
+#                            #
+##############################
+
+
+
+===  Preliminaries  ===
+
+1 . Submission
+[ Yes / No ]
+
+    As usual, clone the git repository of the person you have to correct. It must contain a file which has the link to the video stored online. If the person you are evaluating is not present, have a member of Staff check the repository to make sure it contains the link.
+    This evaluation can be done without the person you have to grade. Be aware that if this goes out of hand, we'll put back the mandatory presence part.
+    If there is no link, there's no video to watch, and the correction stops here.
+    Note than some videos are "censored" for confidentiality reasons. Not everything can be said during defense. Proceed through this evaluation with care. Even if everything is not explained explicitly to you, you must still be able to understand what's presented and the general logic.
+
+
+
+===  Submission's style  ===
+
+1 . Technical aspects
+[ Yes / No ]
+
+    The video lasts around 5 min (we will tolerate + or - 1 minute)
+    The video countains a presentation using an appropriate software (powerpoint, prezi, keynote, magicpoint, etc...)
+    The visual and sound quality of the video is acceptable, not too crappy, pixelized or inaudible
+
+2 . The staging
+[ Score 0 to 5 ]
+
+    A thumbnail of the student is visible most of the time (It's possible to have an introduction/conclusion or chapters, for example, during which the student is in close-up shot instead of the presentation, or during which they aren't visible to display a title)
+    The render is professionnal: presentation is pro, the attitude as well --> no funky fonts or flashy background burning the eyes --> no dirty shirt or sloppy style, a shirt or suit is better --> no rude langage or attitude
+    There is a little bit of roleplay: it's directed to the board, another company or someone that recently joined the company.
+
+
+
+===  The content  ===
+
+1 . Presentation and project's context
+[ Score 0 to 5 ]
+
+    You understood what the company does, in which context, on which market it evolves.
+    You understood the intern's mission, and you know their task and responsibilities specifically when part of a group project.
+    You understood the aim of the intern's mission(s) in the company's context.
+    You got the result of this or these missions, what came of it, what worked and didn't, and if there is a continuation inside the company.
+
+2 . Highlight of the qualities
+[ Score 0 to 5 ]
+
+    Without being a rug merchant, the intern highlighted themselves to promote their technical or management qualities.
+    The skills presented ("I'm able to do this or that", "I showed this or that skill", ...) are supported ? Is there specific examples of what was done during the internship to support arguments? This second point should have a major part of your evaluation on this question.
+
+
+
+===  The communication  ===
+
+1 . Oral communication
+[ Score 0 to 5 ]
+
+    The voice is composed? Calm? (more points) Or is it stressed, faltering or even distraught? (less points)
+    Are gestures sloppy or does it support the speech? Does the facial and body langage inspire confidence or is there nervous tics that raise a smile?

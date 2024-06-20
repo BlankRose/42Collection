@@ -1,0 +1,303 @@
+##############################
+#                            #
+#      PYTHON - STARTING     #
+#                            #
+##############################
+
+
+
+===  Mandatory Part  ===
+
+1 . Error Management
+[ Yes / No ]
+
+    Carry out AT LEAST the following tests to try to stress the error
+    management
+
+        The repository isn't empty.
+        No cheating.
+        No forbidden function/library.
+        The executable is named as expected.
+        Your lib imports must be explicit, for example you must "import numpy as np". (Importing "from pandas import *" is not allowed, and you will get 0 on the exercise.)
+        If an exercise is wrong, go to the next one.
+
+2 . ex00 First python script.
+[ Yes / No ]
+
+    Read the file Hello.py and make sure that the displayed items are indeed
+    the objects and not just strings otherwise you can mark the exercise as
+    wrong and move on to the next part of the evaluation.
+
+    It can happen that the program displays: {'Paris!', 'Hello'},
+    this is not wrong, you can ask the evaluated why this happens.
+
+    The exercise is incorrect if one of the requirements is not perfectly met.
+
+3 . ex01 First use of package
+[ Yes / No ]
+
+    The time must change, if the student has printed a fixed time,
+    put 0 and continue the correction.
+
+    $>python format_ft_time.py | cat -e
+    Seconds since January 1, 1970: 1,666,355,857.3622 or 1.67e+09 in scientific notation$
+    Oct 21 2022$
+    $>
+
+4 . ex02 First function python
+[ Yes / No ]
+
+    The function must print the type of object sent as argument and return 42.
+
+    Your tester.py:
+
+    from find_ft_type import all_thing_is_obj
+
+    ft_list  = ["Hello", "tata!"]
+    ft_tuple = ("Hello", "toto!")
+    ft_set   = {"Hello", "tutu!"}
+    ft_dict  = {"Hello" : "titi!"}
+
+    all_thing_is_obj(ft_list)
+    all_thing_is_obj(ft_tuple)
+    all_thing_is_obj(ft_set)
+    all_thing_is_obj(ft_dict)
+    all_thing_is_obj("John")
+    print(all_thing_is_obj(1.5))
+
+    expected output:
+
+    $> python tester.py
+    List : <class 'list'>$
+    Tuple : <class 'tuple'>$
+    Set : <class 'set'>$
+    Dict : <class 'dict'>$
+    John is in the kitchen : <class 'str'>$
+    Type not Found$
+    42$
+
+    The exercise is incorrect if one of the requirements is not perfectly met.
+
+5 . ex03 NULL not found
+[ Yes / No ]
+
+    The function must print the type of NULL and return 0 if it goes well and 1 in case of error.
+    Your tester.py:
+
+    from NULL_not_found import NULL_not_found
+
+    Nothing = None
+    Garlic  = float("NaN")
+    Fake    = False
+    Zero    = 0
+    Empty   = ""
+
+    NULL_not_found(Nothing)
+    NULL_not_found(Garlic)
+    NULL_not_found(Zero)
+    print(NULL_not_found(Empty))
+    NULL_not_found(Fake)
+    print(NULL_not_found("4.2"))
+
+    expected output:
+
+    $>python tester.py | cat -e
+    Nothing: None <class 'NoneType'>$
+    Cheese: nan <class 'float'>$
+    Zero: 0 <class 'int'>$
+    Empty:  <class 'str'>$
+    0$
+    Fake: False <class 'bool'>$
+    Type not Found$
+    1$
+    $>
+
+    The exercise is incorrect if one of the requirements is not perfectly met.
+
+6 . ex04 The Odd and the Even
+[ Yes / No ]
+
+    Carry out at least the following tests to try to stress the error
+    management:
+
+    Without argument: The program must either do nothing or display the usage.
+    Test it with a valid input: odd number, even number, negative number.
+    With more than one argument : The program must report an error and quit
+    With non integer parameters : The program must report an error and quit, test it with at least a string and a float.
+
+    Look in the code to see if the student has used the AssertionError if not it is 0 at the exercise
+
+    Expected output:
+
+    $> python whatis.py 28
+    I'm Even.
+    $>
+    $> python whatis.py -7
+    I'm Odd.
+    $>
+    $> python whatis.py
+    $>
+    $> python whatis.py 0
+    I'm Even.
+    $>
+    $> python whatis.py "Hola!"
+    AssertionError: argument is not an integer
+    $>
+    $> python whatis.py 42 42
+    AssertionError: more than one argument are provided
+    $>
+
+
+
+===  clean coding  ===
+
+1 . New rules
+[ Yes / No ]
+
+    From now on you must follow these additional rules
+
+        There is no global variable.
+        Norminette shows no errors. (pip install flake8, alias norminette=flake8, use flag Norme)
+        All your functions must have a documentation (__doc__)
+        No code in the global scope. Use functions!
+        Each program must have its main and not be a simple script
+
+    if __name__ == "__main__":
+      # your tests and your error handling
+
+2 . ex05 First standalone program python
+[ Yes / No ]
+
+    Test the program with strings directly in the argument or in the program prompt
+    by running the program without arguments.
+    If more than one argument is provided to the program, print an AssertionError.
+
+    Expected output:
+
+    $>python building.py "Python 3.0, released in 2008, was a major revision that is not completely backward-compatible with earlier versions. Python 2 was discontinued with version 2.7.18 in 2020."
+    The text contains 171 characters:
+    2 upper letters
+    121 lower letters
+    8 punctuation marks
+    25 spaces
+    15 digit
+
+    Expected output: (the carriage return counts as a space, if you don't want to return one use ctrl + D)
+
+    $>python building.py
+    What is the text to count?
+    Hello World!
+    The text contains 13 characters:
+    2 upper letters
+    8 lower letters
+    1 punctuation marks
+    2 spaces
+    0 digits
+
+    Expected output: (error handling can be different)
+
+    $>python building.py "Hello" "World!"
+    AssertionError: more than one argument are provided
+
+3 . ex06 Part 1
+[ Yes / No ]
+
+    Examine the source code of ft_filter.py and make sure it follows the following restrictions:
+
+        The function have a docstring.
+        The function use a list comprehension.
+        The function dont use the original built-in filter
+
+    Your tester.py:
+
+    from ft_filter import ft_filter
+    original = filter.__doc__
+    copy  = ft_filter.__doc__
+
+    print(copy) # output: docstring
+    print(original == copy) # output: True
+
+4 . ex06 Part 2
+[ Yes / No ]
+
+    Examine the source code of program. Make sure it follows the following restrictions:
+
+        The program use a list comprehension and a lambda.
+        The program use AssertionError for the error management
+
+    Make your own test without using Punctuation or invisible character,
+    the goal of this exercise being the comprehension list and lambda not a perfect error management.
+
+    Expected outputs:
+
+    python filterwords.py 'A robot may not injure a human being or through inaction
+    allow a human being to come to harm' 5
+
+    ['injure', 'through', 'inaction']
+
+5 . ex07 Dictionaries SoS
+[ Yes / No ]
+
+    Examine the source code of program. Make sure it follows the following restrictions:
+
+        The program use a dictionary.
+        The program use AssertionError for the error management
+
+    Carry out at least the following tests to try to stress the error management:
+
+        Test the program without arguments, with more 1 arguments
+        Test the program with special character '$', '@' ...
+
+    Expected outputs:
+
+    python sos.py 'SOS' | cat -e
+    ... --- ...$
+
+    Make your own tests, you can check the good transformation with this site for example:
+    https://morsecode.world/international/translator.html
+
+6 . ex08 Loading ...
+[ Yes / No ]
+
+    Compare the ft_tqdm function with the real one, they should be comparable,
+    but don't be too demanding, 1 or 2 pixels of difference are acceptable.
+
+    Your tester.py:
+
+    from time import sleep
+    from tqdm import tqdm
+    from Loading import ft_tqdm
+
+    for elem in ft_tqdm(range(333)):
+      sleep(0.005)
+    print()
+    for elem in tqdm(range(333)):
+      sleep(0.005)
+    print()
+
+    Expected output:
+
+    $> python tester.py
+    100%|[===============================================================>]| 333/333
+    100%|  
+
+    The "[00:01<00:00, 191.61it/s]" is not necessary,
+    in this exercise we want to learn the yield operator.
+
+7 . ex09 My first package creation
+[ Yes / No ]
+
+    write the following command and check the correct installation of the
+    package
+
+    pip install ./dist/ft\_package-0.0.1.tar.gz
+    pip install ./dist/ft\_package-0.0.1-py3-none-any.whl
+
+    pip show -v ft\_package
+
+    Write a test script to import the package and test it
+
+    from ft_package import count_in_list
+
+    print(count_in_list(["toto", "tata", "toto"], "toto")) # output: 2
+    print(count_in_list(["toto", "tata", "toto"], "tutu")) # output: 0

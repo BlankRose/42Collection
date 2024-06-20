@@ -1,0 +1,107 @@
+##############################
+#                            #
+#            SCOP            #
+#                            #
+##############################
+
+
+
+===  Preliminaries  ===
+
+Nothing out of the ordinary.
+
+1 . The basics
+[ Yes / No ]
+
+    If at least one of the following points fails, the defense stops.
+
+        git clone at the beginning of the defence.
+        There is something in the git repository.
+        The Makefile is ok
+
+2 . Libraries
+[ Yes / No ]
+
+    In this section we'll check that only the libraries authorized
+    in the subject are used. For the management of windows and
+    events. No library allowed for the matrix, the shaders or the obj files management.
+
+
+
+===  Do the job  ===
+
+1 . Display
+[ Yes / No ]
+
+    In this section check that a window opens properly and that
+    a 3D object is displayed. The hidden sides must be properly
+    managed.
+
+2 . Perspective
+[ Yes / No ]
+
+    The object is in perspective: what's in the back is smaller than
+    what's in the front.
+
+3 . Colors
+[ Yes / No ]
+
+    Check that there is indeed one color per side. Try out with
+    an object that has sides that are not triangles. This question
+    is considered OK as well if an algorithm to triangulate sides
+    which aren't is implemented. In this case it's normal to have
+    triangles of different colors.
+
+4 . It turns
+[ Yes / No ]
+
+    The object turns, around what should be gravity center on the
+    vertical axis. It's not turning around an edge.
+
+5 . Movements
+[ Yes / No ]
+
+    It's possible to move the object on the 3 axis using 6 keys.
+    When moved, the object still turns around its own axis.
+
+6 . Textures
+[ Yes / No ]
+
+    Pressing a specific key allows the smooth appearance of a
+    texture on the object. The texture don't need to be applied
+    perfectly on every faces but there needs to be some were it's
+    accurate (see example in the subject).
+
+7 . 42
+[ Yes / No ]
+
+    The 42 object is loaded, it turns on the right axis, it's
+    movable, sides are of different shades of gray, there is
+    kittens/ponies/unicorns as a texture.
+
+8 . Something else
+[ Yes / No ]
+
+    Some other simple obj files are parsed and properly displayed.
+    At least teapot2.obj but some others is also good.
+
+
+
+===  Bonus  ===
+
+1 . obj files
+[ Score 0 to 5 ]
+
+    Non trivial obj file rendering: non coplanar, concave sides,
+    triangularisation. Check with teapot.obj and at least another
+    ambiguous obj file.
+
+2 . Texture ++
+[ Yes / No ]
+
+    The texture isn't distorsed on any of the sides.
+
+3 . Other ?
+[ Score 0 to 5 ]
+
+    A lot of bonuses :)
