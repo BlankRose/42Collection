@@ -1,0 +1,86 @@
+
+===  Preliminaries  ===
+
+If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+
+1 . Preliminary tests
+
+    There is in the repository:
+        Check that the token name contains 42.
+        A README.md file in the root.
+        A non-empty folder with the name "code".
+        A non-empty folder with the name "documentation".
+        A last non-empty folder used for the deployment part.
+        No video should be available on the repository. One link is allowed.
+        If no work has been submitted (or wrong files, wrong directory, or wrong filenames), the grade is 0, and the evaluation process ends.
+
+===  Mandatory Part  ===
+
+1 . Readme.md
+
+    Inspect the contents of the readme.md file.
+
+        This is a time to discuss the different platforms that can be used and so the person being evaluated must clearly indicate the reason for his choice in this file.
+        There is an indication on the choice of the language used.
+        A short description to help understand the contents of the repository is not mandatory but highly recommended.
+
+2 . Documentation
+
+    Inspect the contents of the document folder.
+
+        You should be able to understand how the project works by using
+        this documentation. You should be able to understand the actions
+        possible with the created token but also the way to deploy this
+        token if needed.
+
+    A demonstration video is possible to explain how this token works.
+
+3 . Code review
+
+    Inspect the contents of the code folder.
+
+        You have to find other files to create a token. You must be careful to understand the logic of the code with the comments as well as the choice of variable/function names.
+        This is a moment of exchange to understand how the token works. We are aware that the language will not necessarily be understood by the evaluator but it is a good moment to try to understand with the help of the evaluator!
+        You must evaluate the quality of the code as well as the explanations of the person being evaluated.
+        Ask for an explanation of the security used in this token. The evaluator should be able to explain how ownership works and the privileges used.
+        Be careful to find the functions indicated in the documentation.
+
+4 . Deployment review
+
+    Inspect the contents of the last folder.
+
+        You must find tools that allow the deployment of this new token. It is of course forbidden to have an API key or a password in clear text used in this file. If you encounter a password/Api key you can use the appropriate flag and the evaluation stop.
+        A simple explanation of the evaluated should help you understand how this part works. The documentation should also help you if needed.
+        With the help of the person being evaluated, you must deploy this token.
+
+5 . Blockchain explorer
+
+    With the help of the evaluated person you must find the address allowing to reach
+    the explorer used to set up the token. You should see a smart contract address but
+    also the network used.
+
+    A ticker must be used and directly visible in the explorer.
+
+    Check that the token name contains 42.
+
+    The person being evaluated must be able to explain how the explorer works as well
+    as an explanation of the possible actions.
+
+    With the help of the person being evaluated, you must perform actions with the token.
+    The goal is to verify that the token is working properly.
+    Additional contracts can be added if necessary. Ensure that the token is used according
+    to the documentation.
+
+===  Bonus  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . MultiSig
+
+    Is a multisignature system available in the code and on the token that
+    is visible to the exporer?
+
+    You should see a section in the documentation explaining how it works.
+
+    A brief explanation of this system is then requested from the person being
+    evaluated.

@@ -1,0 +1,96 @@
+
+===  Foreword  ===
+
+This section is dedicated to the evaluation start and the checking of prerequisites. It's not graded, but if something's wrong or a condition is not met, a flag can be ticked if necessary.
+
+1 . Observing the general instructions
+
+    The repo contains the evaluated student's or group's work.
+    The evaluated student or group can explain their work anytime during the evaluation.
+    General and specific instructions are observed all through the evaluation.
+
+
+
+===  Notes  ===
+
+General notes about the exercises
+
+1 . Notes
+
+    For each exercise, open the project in Unity and use the execute button
+    in the editor (the little "play" button at the top of the window).
+
+    Test each exercise thoroughly to make sure the turned-in work matches
+    the subject's requirements.
+
+
+
+===  Ex00, Life of Caterpillar  ===
+
+Animation, is very important in video game.
+
+1 . A life of Caterpillar
+
+    You can see in the Stage1 scene a very beautiful caterpillar.
+
+    He can move left and right, he can jump and above all, it is animated!
+    You can see the animation when he moves left or right and a different animation
+    when he jumps.
+
+
+
+===  Ex01, A strange environment  ===
+
+Animation, in the environment.
+
+1 . Animated Background
+
+    You should see 2 types of animated objects in the background.
+    animated tree, animated leaf, animated cloud for example.
+
+2 . Animated with interactions
+
+    You should see in first plan, 2 types of object animated because of the
+    caterpillar.
+
+        A liana, animated when the caterpillar gets close to it.
+        A cactus that throw poisonous jelly if caterpillar are too close.
+
+3 . Damages Animations
+
+    You should see the caterpillar having an animation when is take damages.
+
+4 . End Game Animations
+
+    When the caterpillar lose all its HP, you can see an defeated animation and
+    a fade animation from transparent to black.
+
+    When the caterpillar respawn, you can see an wake up animation
+    and a fade animation from black to transparent.
+
+
+
+===  Ex02, A strange environment  ===
+
+Sound is very important in game. For this correction you will need to turn up the sound. But be careful with your ears.
+
+1 . Background sound
+
+    You need to hear background music
+
+2 . Player sounds
+
+    You need to hear :
+
+        Sound when the caterpillar jump.
+        Sound when the caterpillar take damages.
+        Sound when the caterpillar is defeated.
+        Sound when the caterpillar respawn.
+
+3 . enemies sounds
+
+    You need to hear :
+
+        Sound when the liana Attack.
+        Sound when the cactus send jelly.
+

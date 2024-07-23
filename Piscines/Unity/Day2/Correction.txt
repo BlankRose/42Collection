@@ -1,0 +1,93 @@
+===  Foreword  ===
+
+This section is dedicated to the evaluation start and the checking of prerequisites. It's not graded, but if something's wrong or a condition is not met, here or anytime during the evaluation, a flag can be ticked if necessary.
+
+1 . Observing the general instructions
+
+    The repo contains the evaluated student's or group's work.
+    The evaluated student or group can explain their work anytime during the evaluation.
+    General and specific instructions are observed all through the evaluation.
+
+===  Notes  ===
+
+General notes about the exercises
+
+1 . Notes
+
+    For each exercise, open the project in Unity and use the execute button
+    in the editor (the little "play" button at the top of the window).
+
+    Test each exercise thoroughly to make sure the turned-in work matches
+    the subject's requirements.
+
+    Make sure only the authorized functions were used to complete the exercise.
+
+
+
+===  Ex00, I see the world in 2D  ===
+
+a simple tiles palette
+
+1 . Little tiles
+
+    You can see in the Assets Folder an TilesPalettes folder must be contain
+    an palette (the name of palette will be chosen by student evaluated).
+
+2 . Nice map
+
+    You can see a nice map which contains a road and some decorations elements
+    (Mountains, trees ...)
+
+
+
+===  Ex01, White Walkers  ===
+
+A small White Walkers that spawns and walk. For the 2 next questions, ask the person being evaluated to deactivate the turrets if there are any on the map before start.
+
+1 . spawn and walk
+
+    When you start the game, you can see small enemies that look like white
+    capsules (or any other form or color).
+    That enemies spawn at the top of the map and move down to the base.
+
+2 . Base
+
+    When the enemies enters on the base they are destroyed, and the base
+    loose one HP per enemy who entered.
+
+    You can see the remaining base HP in the console every time the base
+    loose HP.
+
+    If the base have 0 HP Game Over is display in the console and all enemies on
+    the map are destroyed.
+
+
+
+===  Ex02, Arms!  ===
+
+Organize the defenses. Ask to the evaluated student to activate the turrets on the map. You can see 3 different turrets on the map. You will have to move them to test them.
+
+1 . Arms!
+
+    All different turrets must be have the same script.
+
+2 . Arms!
+
+    If you place turrets nearest of the road, they target the closest enemy.
+
+3 . Arms!
+
+    If you place turrets far of the road, they should not target any enemy.
+
+4 . Arms!
+
+    If the turret target an enemy, you can see bullet going from the turret to the enemy.
+
+5 . Arms!
+
+    When the enemy is hit, the bullet is destroy an enemy is destroy.
+
+6 . Arms!
+
+    Each turret must have a different speed of fire.
+

@@ -1,0 +1,75 @@
+
+===  Mandatory part ===
+
+1 . Check
+
+    The repository contains the files requested by the subject, namely:
+
+        A README.md file indicating how the program works and what must be installed to use it.
+        A Makefile allowing the compilation of the program if the code used requires a compilation.
+        A test suite to help with this evaluation.
+
+    With the help of the person being evaluated, you should be able to execute
+    the program requested by the subject for the rest of the evaluation.
+
+    If there is an error, you must stop the evaluation.
+
+2 . Request detection
+
+    You must run the program with and without parameters. The program must:
+
+        If no data is indicated it makes the GET request.
+        The application handle at least the GET and POST method.
+        The type of request can be indicated directly (GET, POST, PUT, DELETE...).
+        All exceptions are controlled.
+
+    With the help of the evaluator you have to check that the program really
+    executes a request by using the included tests
+    If there is an error, you must stop the evaluation.
+
+3 . Battery of tests
+
+    The test batteries comply with the following sections:
+
+        There are tests for at least two different database engines.
+        There are tests of at least two different types (UNION, error, Boolean...).
+
+    The person being evaluated must be able to explain the methods/engines chosen
+    and the reason for this choice.
+    
+    With the help of the assessor, check that several types of attack are
+    possible on at least 2 different engines.
+    We are not asking for a result but for an execution of these attacks.
+
+    If there is an error, you must stop the evaluation.
+
+4 . Data extraction
+
+    If injection is possible, at least the following data are extracted:
+
+        Names of the databases.
+        Names of the tables.
+        Names of the columns.
+        All the data in the database.
+
+    With the help of the evaluator you have to check that the program
+    really executes a request by using the included tests.
+    You should be able to clearly read the payload used and the result with the requested information.
+
+    If there is an error, you must stop the evaluation.
+
+
+
+===  Bonus part  ===
+
+Evaluate the bonus part if, and only if, the mandatory part has been entirely and perfectly done, and the error management handles unexpected or bad usage. In case all the mandatory points were not passed during the defense, bonus points must be totally ignored.
+
+1 . Bonus
+
+    The program provides:
+
+        Wider range of database engines. (1 point per engine added)
+        Wider range of SQL injection methods. (1 point per method added)
+        A way to edit various parameters of the request, e.g. the User-Agent. (1 point max)
+
+    Rate it from 0 (failed) through 5 (excellent)

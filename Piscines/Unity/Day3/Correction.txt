@@ -1,0 +1,101 @@
+
+===  Foreword  ===
+
+This section is dedicated to the evaluation start and the checking of prerequisites. It's not graded, but if something's wrong or a condition is not met, here or anytime during the evaluation, a flag can be ticked if necessary.
+
+1 . Observing the general instructions
+
+    The repo contains the evaluated student's or group's work.
+    The evaluated student or group can explain their work anytime during the evaluation.
+    General and specific instructions are observed all through the evaluation.
+
+
+
+===  Notes  ===
+
+General notes about the exercises
+
+1 . Notes
+
+    For each exercise, open the project in Unity and use the execute button
+    in the editor (the little "play" button at the top of the window).
+
+    Test each exercise thoroughly to make sure the turned-in work matches
+    the subject's requirements.
+
+
+
+===  Ex00, Un simple menu  ===
+
+A menu with a background, a start button and an quit button.
+
+1 . A simple menu
+
+    You can quit the game with the quit button.
+    The play button loads the following scene.
+    (check the code if there's no following scene).
+
+
+
+===  Ex01, Drag and drop  ===
+
+The tower market interface is the main element in a tower defense. Let's check it out.
+
+1 . The basics
+
+    A bar at the bottom of the screen displays the different towers available
+    in the game.
+
+2 . Drag and drop
+
+    You can drag a tower from the bottom bar and drop it on the map in an
+    available space if the player has enough energy.
+
+3 . Useful infos
+
+    The bottom bar display the important informations:
+
+        The damages, prices and cooldown for each turret.
+        HP of the base and its energy.
+        A visual feedback that helps to identify the towers you can't buy
+        If you can't buy tower, you can't select those towers in the bar.
+
+
+
+===  Ex02, Pause menu  ===
+
+How to lose stupidly when the water overflows.
+
+1 . Le menu
+
+    The menu is displayed when we press ESC and the game pauses. You can
+    resume the game with a button. You can quit the game with another
+    one. A validation box pops up if you want to quit.
+
+
+
+===  Ex03, I Am A Hero  ===
+
+The level's end screen. A element that matters.
+
+1 . Recap
+
+    At the end of the map (winning or losing), a score screen appears. It
+    displays the player's score and rank.
+
+2 . Rank management
+
+    A rank is given to the player according to their performance.
+    There must be at least 3 ranks and the evaluated student must
+    show the assessor the way the player is ranked.
+
+3 . Next!
+
+    The screen must invite the player to start the level again or go to
+    the following one. There must be a second map with an increased
+    difficulty level.
+
+4 . curtain falls
+
+    At the end of the game, when the player beats the last level, you can see
+    a classy End screen.
